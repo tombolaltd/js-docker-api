@@ -1,0 +1,49 @@
+{
+  "author": "tombola ltd",
+  "license": "ISC",
+  "name": "js-docker-api",
+  "version": "0.0.0",
+  "description": "An api to make docker cli calls from javascript",
+  "main": "./dist/node/index.js",
+  "module": "./dist/node/index.js",
+  "jsnext:main": "./dist/node/index.js",
+  "es2015": "./dist/node/index.js",
+  "types": "./dist/types/index.d.ts",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tombolaltd/js-docker-api"
+  },
+  "publishConfig": {
+    "registry": "https://packages.tombola.com/repository/npm-private-client/"
+  },
+  "scripts": {
+    "start": "npm install && npm install -g mocha",
+    "test": "npm run lint && npm run build && mocha -r ts-node/register ./tests/{,**}/*.spec.ts",
+    "build": "tsc -p tsconfig.node.json",
+    "postbuild": "npm run docs",
+    "docs": "typedoc --out dist/docs --tsconfig tsconfig.node.json",
+    "lint": "tslint -t codeFrame ./{src,tests}/{,**}/*.ts"
+  },
+  "devDependencies": {
+    "@types/bluebird": "^3.5.20",
+    "@types/chai": "^4.0.3",
+    "@types/mocha": "^2.2.41",
+    "@types/sinon": "^2.3.4",
+    "@types/sinon-chai": "^2.7.29",
+    "chai": "^4.1.2",
+    "mocha": "^3.5.0",
+    "rimraf": "^2.6.2",
+    "sinon": "^3.2.1",
+    "sinon-chai": "^2.13.0",
+    "ts-node": "^6.0.4",
+    "tslint": "^5.6.0",
+    "typedoc": "^0.8.0",
+    "typescript": "2.4.0"
+  },
+  "dependencies": {
+    "ts-process-promises": "^1.0.2"
+  }
+}

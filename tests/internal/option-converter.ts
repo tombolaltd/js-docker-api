@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import 'mocha';
 import { optionConverter } from '../../src/internal/option-converter';
 
-describe ('docker-options', () => {
+describe ('optionConverter function', () => {
     it('with no args should return empty array', () => {
         const result = optionConverter() ;
         expect(result).to.eql([]);

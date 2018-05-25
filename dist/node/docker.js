@@ -40,7 +40,7 @@ class Docker {
     static version() {
         return Docker.command({ dockerArgs: ['--version'] });
     }
-    static ps({ options, dockerArgs, spawnOptions }) {
+    static ps({ dockerArgs, spawnOptions }) {
         return Docker.command({ dockerArgs: ['--version'] });
     }
 }

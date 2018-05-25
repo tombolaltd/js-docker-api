@@ -10,8 +10,7 @@ export declare class Docker {
     }): PromiseWithEvents<any[]>;
     static help(): PromiseWithEvents<any[]>;
     static version(): PromiseWithEvents<any[]>;
-    static ps({options, dockerArgs, spawnOptions}: {
-        options?: IDockerOptions | undefined;
+    static ps({dockerArgs, spawnOptions}: {
         dockerArgs?: any[] | undefined;
         spawnOptions?: SpawnOptions | undefined;
     }): PromiseWithEvents<any[]>;

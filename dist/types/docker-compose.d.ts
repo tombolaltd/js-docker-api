@@ -7,4 +7,14 @@ export declare class DockerCompose {
         dockerArgs?: any[] | undefined;
         spawnOptions?: SpawnOptions | undefined;
     }): PromiseWithEvents<any[]>;
+    static build({composeFilepath, buildOptions, buildArguments, services, spawnOptions}?: {
+        composeFilepath?: string | undefined;
+        buildOptions?: any[] | undefined;
+        buildArguments?: Array<[string, any]> | undefined;
+        services?: any[] | undefined;
+        spawnOptions?: SpawnOptions | undefined;
+    }): PromiseWithEvents<any[]>;
+    static version({spawnOptions}?: {
+        spawnOptions?: SpawnOptions | undefined;
+    }): PromiseWithEvents<any[]>;
 }

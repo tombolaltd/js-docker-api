@@ -70,4 +70,17 @@ describe ('DockerCompose', () => {
             }).catch(done);
         });
     });
+
+    it('The version function', (done) => {
+        const stdValidator: StdValidator = new StdValidator(true);
+
+        DockerCompose.version()
+        .on('stdout', stdValidator.onStdOut)
+        .on('stderr', stdValidator.onStdErr)
+        .then((result: any) => {
+            stdValidator.validate(result);
+            expect(result).to.deep.equal(result); // The names of the services in the YAML
+            done();
+        }).catch(done);
+    });
 });

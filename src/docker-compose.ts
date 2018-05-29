@@ -45,4 +45,78 @@ export class DockerCompose {
 
         return commandSpawner('docker-compose', fullArgs, spawnOptions);
     }
+
+    //  TODO: UNTESTED
+    public static build ({
+        composeFilepath,
+        buildOptions,
+        buildArguments,
+        services,
+        spawnOptions
+        }: {composeFilepath?: string | undefined,
+            buildOptions?: any[]| undefined,
+            buildArguments?: Array<[string, any]> | undefined,
+            services?: any[] | undefined,
+            spawnOptions?: SpawnOptions | undefined
+        } = {}): PromiseWithEvents<any[]> {
+        let dockerArgs: any[] = [];
+
+        if (typeof(buildOptions) !== 'undefined' && buildOptions) {
+            dockerArgs = dockerArgs.concat(optionConverter(buildOptions));
+        }
+
+        if (typeof(buildArguments) !== 'undefined' && buildArguments) {
+            buildArguments.forEach((val: [string, any]) => {
+                dockerArgs.push(val[0]);
+                dockerArgs.push(val[1]);
+            });
+        }
+
+        if (typeof(services) !== 'undefined' && services) {
+            dockerArgs = dockerArgs.concat(optionConverter(services));
+        }
+
+        return DockerCompose.command({
+            command: 'build',
+            composeFilepath,
+            dockerArgs,
+            spawnOptions
+        });
+    }
+
+    // TODO: bundle             Generate a Docker bundle from the Compose file
+    // TODO: config             Validate and view the Compose file
+    // TODO: create             Create services
+    // down               Stop and remove containers, networks, images, and volumes
+    // TODO: events             Receive real time events from containers
+    // exec               Execute a command in a running container
+    // help               Get help on a command
+    // images             List images
+    // kill               Kill containers
+    // TODO: logs               View output from containers
+    // TODO: pause              Pause services
+    // TODO: port               Print the public port for a port binding
+    // ps                 List containers
+    // TODO: pull               Pull service images
+    // TODO: push               Push service images
+    // restart            Restart services
+    // rm                 Remove stopped containers
+    // TODO: run                Run a one-off command
+    // TODO: scale              Set number of containers for a service
+    // start              Start services
+    // stop               Stop services
+    // TODO: top                Display the running processes
+    // TODO: unpause            Unpause services
+    // up                 Create and start containers
+
+    public static version ({
+        spawnOptions
+        }: {
+            spawnOptions?: SpawnOptions | undefined
+        } = {}): PromiseWithEvents<any[]> {
+            return DockerCompose.command({
+                command: 'version',
+                spawnOptions
+            });
+        }
 }

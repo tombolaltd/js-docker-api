@@ -16,9 +16,9 @@ export function commandSpawner(command: string, fullArgs: any[], spawnOptions?: 
                 eventEmitter.emit('stderr', err);
             })
             .then((value: SpawnResult) => {
-                // console.log('**************************************************');
-                // console.log(value, `${command} ${fullArgs.join(' ')}`);
-                // console.log('**************************************************');
+                console.log('**************************************************');
+                console.log(value, `${command} ${fullArgs.join(' ')}`);
+                console.log('**************************************************');
                 if (value.exitCode === 0) {
                     resolve(result);
                 } else {

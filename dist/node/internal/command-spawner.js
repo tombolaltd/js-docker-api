@@ -14,6 +14,9 @@ function commandSpawner(command, fullArgs, spawnOptions) {
             eventEmitter.emit('stderr', err);
         })
             .then((value) => {
+            console.log('**************************************************');
+            console.log(value, `${command} ${fullArgs.join(' ')}`);
+            console.log('**************************************************');
             if (value.exitCode === 0) {
                 resolve(result);
             }

@@ -21,6 +21,22 @@ describe ('DockerCompose', () => {
             });
         });
 
+        it('when passed an unrecognised command fails reporting output', (done) => {
+            const stdValidator: StdValidator = new StdValidator();
+
+            DockerCompose.command({
+                command: 'foo'
+            })
+            .on('stdout', stdValidator.onStdOut)
+            .on('stderr', stdValidator.onStdErr)
+            .then((result: any) => {
+                done(new Error('Expected test to fail, did not'));
+            }).catch(((error: Error) => {
+                expect(error.message).to.equal('The command "docker-compose foo" returned an exit status of 1');
+                done();
+            }));
+        });
+
         it('Run as ps command with filepath - get result', (done) => {
             const stdValidator: StdValidator = new StdValidator();
 

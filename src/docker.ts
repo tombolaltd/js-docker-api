@@ -1,8 +1,8 @@
 import Promise = require('bluebird');
-import * as Events from 'events';
-import { spawn, SpawnOptions, SpawnResult } from 'ts-process-promises';
+import { SpawnOptions } from 'ts-process-promises';
 import { PromiseWithEvents } from 'ts-process-promises/lib/PromiseWithEvents';
 import { IDockerOptions } from './interfaces/docker-options';
+import { commandSpawner } from './internal/command-spawner';
 import { optionConverter } from './internal/option-converter';
 
 /**
@@ -32,7 +32,7 @@ export class Docker {
             options?: IDockerOptions | undefined,
             dockerArgs?: any[]| undefined,
             spawnOptions?: SpawnOptions | undefined
-        }): PromiseWithEvents<any[]>  {
+        } = {}): PromiseWithEvents<any[]>  {
         let fullArgs: any[] = [];
 
         if (typeof(options) !== 'undefined' && options) {
@@ -42,27 +42,12 @@ export class Docker {
         if (typeof(command) !== 'undefined' && command) {
             fullArgs.push(command);
         }
-        console.log(dockerArgs);
+
         if (typeof(dockerArgs) !== 'undefined' && dockerArgs && dockerArgs.length > 0) {
             fullArgs = fullArgs.concat(dockerArgs);
         }
 
-        return new PromiseWithEvents<any[]>((resolve: ((reason: any[] | Promise.Thenable<any[]> ) => void), reject: ((error: any) => void), eventEmitter: Events.EventEmitter) => {
-            const result: any[] = [];
-            spawn('docker', fullArgs, spawnOptions)
-                .on('stdout', (line: any) => {
-                    eventEmitter.emit('stdout', line);
-                    result.push(line);
-                })
-                .on('error', (err: any) => { throw err; })
-                .then((value: SpawnResult) => {
-                    if (value.exitCode === 0) {
-                        resolve(result);
-                    } else {
-                        reject(new Error(`The command returned an exit status of ${value.exitCode}`));
-                    }
-                });
-        });
+        return commandSpawner('docker', fullArgs, spawnOptions);
     }
 
     /**
@@ -100,8 +85,8 @@ export class Docker {
         spawnOptions
         }: { dockerArgs?: any[]| undefined,
             spawnOptions?: SpawnOptions | undefined
-        }): PromiseWithEvents<any[]> {
+        } = {}): PromiseWithEvents<any[]> {
         // This is an function is an example command - to provide a pattern for syntactic sugar over the other commands
-        return Docker.command({dockerArgs: ['--version']});
+        return Docker.command({command: 'ps', dockerArgs, spawnOptions});
     }
 }

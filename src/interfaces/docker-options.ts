@@ -26,7 +26,7 @@ export interface IDockerOptions {
      * @type {string}
      * @memberof IDockerOptions
      */
-    'log-level': string;
+    'log-level'?: 'DEBUG' | 'INFO' | 'WARN' | 'ERROR' | 'FATAL';
 
     /**
      * Use TLS; implied by --tlsverify
@@ -34,7 +34,7 @@ export interface IDockerOptions {
      * @type {boolean}
      * @memberof IDockerOptions
      */
-    'tls': boolean;
+    'tls'?: boolean;
 
     /**
      * Trust certs signed only by this CA (default "/root/.docker/ca.pem")
@@ -42,7 +42,7 @@ export interface IDockerOptions {
      * @type {string}
      * @memberof IDockerOptions
      */
-    'tlscacert': string;
+    'tlscacert'?: string;
 
     /**
      * Path to TLS certificate file (default "/root/.docker/cert.pem")
@@ -50,7 +50,7 @@ export interface IDockerOptions {
      * @type {string}
      * @memberof IDockerOptions
      */
-    'tlscert': string;
+    'tlscert'?: string;
 
     /**
      * Path to TLS key file (default "/root/.docker/key.pem")
@@ -58,7 +58,7 @@ export interface IDockerOptions {
      * @type {string}
      * @memberof IDockerOptions
      */
-    'tlskey': string;
+    'tlskey'?: string;
 
     /**
      * Use TLS and verify the remote
@@ -66,5 +66,5 @@ export interface IDockerOptions {
      * @type {boolean}
      * @memberof IDockerOptions
      */
-    'tlsverify': boolean;
+    'tlsverify'?: boolean;
 }

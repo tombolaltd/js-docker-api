@@ -88,6 +88,7 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_docker_compose_.dockercompose.html#command" class="tsd-kind-icon">command</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_docker_compose_.dockercompose.html#down" class="tsd-kind-icon">down</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_docker_compose_.dockercompose.html#exec" class="tsd-kind-icon">exec</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_docker_compose_.dockercompose.html#run" class="tsd-kind-icon">run</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_docker_compose_.dockercompose.html#up" class="tsd-kind-icon">up</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_docker_compose_.dockercompose.html#version" class="tsd-kind-icon">version</a></li>
 							</ul>
@@ -107,7 +108,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/2545523/src/docker-compose.ts#L47">docker-compose.ts:47</a></li>
+									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/85b44c3/src/docker-compose.ts#L47">docker-compose.ts:47</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -123,6 +124,9 @@
 										</li>
 										<li class="tsd-parameter">
 											<h5>compose<wbr>Filepath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>docker<wbr>Compose<wbr>Options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_interfaces_docker_compose_options_.idockercomposeoptions.html" class="tsd-signature-type">IDockerComposeOptions</a></h5>
 										</li>
 										<li class="tsd-parameter">
 											<h5>services<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></h5>
@@ -147,7 +151,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/2545523/src/docker-compose.ts#L24">docker-compose.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/85b44c3/src/docker-compose.ts#L24">docker-compose.ts:24</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -175,7 +179,7 @@
 											</div>
 										</li>
 										<li class="tsd-parameter">
-											<h5>command<wbr>Args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></h5>
+											<h5>command<wbr>Arguments<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></h5>
 										</li>
 										<li class="tsd-parameter">
 											<h5>compose<wbr>Filepath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
@@ -184,10 +188,7 @@
 											</div>
 										</li>
 										<li class="tsd-parameter">
-											<h5>docker<wbr>Args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
-											<div class="tsd-comment tsd-typography">
-												<p>an array of arguments added to the docker ps command (e.g. --all for docker ps --all)</p>
-											</div>
+											<h5>docker<wbr>Compose<wbr>Options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_interfaces_docker_compose_options_.idockercomposeoptions.html" class="tsd-signature-type">IDockerComposeOptions</a></h5>
 										</li>
 										<li class="tsd-parameter">
 											<h5>spawn<wbr>Options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">SpawnOptions</span></h5>
@@ -215,7 +216,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/2545523/src/docker-compose.ts#L79">docker-compose.ts:79</a></li>
+									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/85b44c3/src/docker-compose.ts#L82">docker-compose.ts:82</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -225,6 +226,9 @@
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter">
 											<h5>compose<wbr>Filepath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>docker<wbr>Compose<wbr>Options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_interfaces_docker_compose_options_.idockercomposeoptions.html" class="tsd-signature-type">IDockerComposeOptions</a></h5>
 										</li>
 										<li class="tsd-parameter">
 											<h5>down<wbr>Options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></h5>
@@ -249,7 +253,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/2545523/src/docker-compose.ts#L104">docker-compose.ts:104</a></li>
+									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/85b44c3/src/docker-compose.ts#L110">docker-compose.ts:110</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -261,10 +265,13 @@
 											<h5>command<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 										</li>
 										<li class="tsd-parameter">
-											<h5>command<wbr>Arguments<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+											<h5>command<wbr>Arguments<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></h5>
 										</li>
 										<li class="tsd-parameter">
 											<h5>compose<wbr>Filepath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>docker<wbr>Compose<wbr>Options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_interfaces_docker_compose_options_.idockercomposeoptions.html" class="tsd-signature-type">IDockerComposeOptions</a></h5>
 										</li>
 										<li class="tsd-parameter">
 											<h5>environment<wbr>Variables<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></h5>
@@ -286,6 +293,64 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="run" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> run</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">run<span class="tsd-signature-symbol">(</span>__namedParameters<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">PromiseWithEvents</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/85b44c3/src/docker-compose.ts#L157">docker-compose.ts:157</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> __namedParameters: <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> =&nbsp;{}</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter">
+											<h5>command<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>command<wbr>Arguments<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>compose<wbr>Filepath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>docker<wbr>Compose<wbr>Options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_interfaces_docker_compose_options_.idockercomposeoptions.html" class="tsd-signature-type">IDockerComposeOptions</a></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>environment<wbr>Variables<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>labels<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>ports<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>run<wbr>Options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>service<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>spawn<wbr>Options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">SpawnOptions</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>volumes<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></h5>
+										</li>
+									</ul>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">PromiseWithEvents</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
 					<a name="up" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> up</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
@@ -295,7 +360,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/2545523/src/docker-compose.ts#L209">docker-compose.ts:209</a></li>
+									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/85b44c3/src/docker-compose.ts#L209">docker-compose.ts:209</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -305,6 +370,9 @@
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter">
 											<h5>compose<wbr>Filepath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+										</li>
+										<li class="tsd-parameter">
+											<h5>docker<wbr>Compose<wbr>Options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_interfaces_docker_compose_options_.idockercomposeoptions.html" class="tsd-signature-type">IDockerComposeOptions</a></h5>
 										</li>
 										<li class="tsd-parameter">
 											<h5>scale<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></h5>
@@ -335,7 +403,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/2545523/src/docker-compose.ts#L235">docker-compose.ts:235</a></li>
+									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/85b44c3/src/docker-compose.ts#L238">docker-compose.ts:238</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -343,6 +411,9 @@
 								<li>
 									<h5><span class="tsd-flag ts-flagDefault value">Default value</span> __namedParameters: <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> =&nbsp;{}</span></h5>
 									<ul class="tsd-parameters">
+										<li class="tsd-parameter">
+											<h5>docker<wbr>Compose<wbr>Options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><a href="../interfaces/_interfaces_docker_compose_options_.idockercomposeoptions.html" class="tsd-signature-type">IDockerComposeOptions</a></h5>
+										</li>
 										<li class="tsd-parameter">
 											<h5>spawn<wbr>Options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">SpawnOptions</span></h5>
 										</li>
@@ -411,6 +482,9 @@
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 								<a href="_docker_compose_.dockercompose.html#exec" class="tsd-kind-icon">exec</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="_docker_compose_.dockercompose.html#run" class="tsd-kind-icon">run</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
 								<a href="_docker_compose_.dockercompose.html#up" class="tsd-kind-icon">up</a>

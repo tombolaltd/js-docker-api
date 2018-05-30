@@ -60,7 +60,7 @@ describe ('DockerCompose', () => {
             DockerCompose.command({
                 composeFilepath: './tests/assets/docker-compose.yml',
                 command: 'ps',
-                commandArgs: '--services',
+                commandArguments: '--services',
             })
             .on('stdout', stdValidator.onStdOut)
             .on('stderr', stdValidator.onStdErr)

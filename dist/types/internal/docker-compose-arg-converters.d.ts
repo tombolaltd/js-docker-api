@@ -1,10 +1,11 @@
+import { IDockerComposeOptions } from '../interfaces/docker-compose-options';
 import { KeyValuePair } from '../key-value-pair';
 export declare class DockerComposeArgConverters {
-    static command({command, commandArgs, composeFilepath, dockerArgs}?: {
+    static command({command, commandArguments, composeFilepath, dockerComposeOptions}?: {
         command?: string | undefined;
-        commandArgs?: string | string[] | undefined;
+        commandArguments?: string | string[] | undefined;
         composeFilepath?: string | string[] | undefined;
-        dockerArgs?: any | any[] | undefined;
+        dockerComposeOptions?: IDockerComposeOptions;
     }): any[];
     static build({buildOptions, buildArguments, services}?: {
         buildOptions?: any | any[] | undefined;
@@ -17,6 +18,16 @@ export declare class DockerComposeArgConverters {
     static exec({execOptions, environmentVariables, service, command, commandArguments}?: {
         execOptions?: any | any[] | undefined;
         environmentVariables?: KeyValuePair | KeyValuePair[] | undefined;
+        service?: string | undefined;
+        command?: string | undefined;
+        commandArguments?: any | any[] | undefined;
+    }): any;
+    static run({runOptions, volumes, ports, environmentVariables, labels, service, command, commandArguments}?: {
+        runOptions?: any | any[] | undefined;
+        volumes?: any | any[] | undefined;
+        ports?: any | any[] | undefined;
+        environmentVariables?: KeyValuePair | KeyValuePair[] | undefined;
+        labels?: KeyValuePair | KeyValuePair[] | undefined;
         service?: string | undefined;
         command?: string | undefined;
         commandArguments?: any | any[] | undefined;

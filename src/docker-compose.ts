@@ -22,22 +22,22 @@ export class DockerCompose {
      * @memberof Docker
      */
     public static command({command,
-        commandArgs,
+        commandArguments,
         composeFilepath,
-        dockerArgs,
+        dockerComposeOptions,
         spawnOptions
         }: {command?: string | undefined,
-            commandArgs?: | any | any[] | undefined
+            commandArguments?: | any | any[] | undefined
             composeFilepath?: string | string[] | undefined,
-            dockerArgs?: any[]| undefined,
+            dockerComposeOptions?: IDockerComposeOptions,
             spawnOptions?: SpawnOptions | undefined
         } = {}): PromiseWithEvents<any[]>  {
 
         const fullArgs: any[] = DockerComposeArgConverters.command({
             command,
-            commandArgs,
+            commandArguments,
             composeFilepath,
-            dockerArgs
+            dockerComposeOptions
         });
 
         return commandSpawner('docker-compose', fullArgs, spawnOptions);
@@ -48,15 +48,17 @@ export class DockerCompose {
         composeFilepath,
         buildOptions,
         buildArguments,
+        dockerComposeOptions,
         services,
         spawnOptions
         }: {composeFilepath?: string | string[] | undefined,
             buildOptions?: any | any[]| undefined,
             buildArguments?: KeyValuePair | KeyValuePair[] | undefined,
+            dockerComposeOptions?: IDockerComposeOptions | undefined
             services?: any | any[] | undefined,
             spawnOptions?: SpawnOptions | undefined
         } = {}): PromiseWithEvents<any[]> {
-        const dockerArgs: any[] = DockerComposeArgConverters.build({
+        const commandArguments: any[] = DockerComposeArgConverters.build({
             buildOptions,
             buildArguments,
             services,
@@ -64,8 +66,9 @@ export class DockerCompose {
 
         return DockerCompose.command({
             command: 'build',
+            commandArguments,
             composeFilepath,
-            dockerArgs,
+            dockerComposeOptions,
             spawnOptions
         });
     }
@@ -78,21 +81,24 @@ export class DockerCompose {
     // Stop and remove containers, networks, images, and volumes
     public static down ({
         composeFilepath,
+        dockerComposeOptions,
         downOptions,
         spawnOptions
         }: {composeFilepath?: string | undefined,
+            dockerComposeOptions?: IDockerComposeOptions | undefined
             downOptions?: any | any[]| undefined,
             spawnOptions?: SpawnOptions | undefined
         } = {}): PromiseWithEvents<any[]> {
 
-        const dockerArgs: any[] = DockerComposeArgConverters.down({
+        const commandArguments: any[] = DockerComposeArgConverters.down({
             downOptions
         });
 
         return DockerCompose.command({
             command: 'down',
             composeFilepath,
-            dockerArgs,
+            commandArguments,
+            dockerComposeOptions,
             spawnOptions
         });
     }
@@ -103,6 +109,7 @@ export class DockerCompose {
     // Execute a command in a running container
     public static exec ({
         composeFilepath,
+        dockerComposeOptions,
         execOptions,
         environmentVariables,
         service,
@@ -110,14 +117,15 @@ export class DockerCompose {
         commandArguments,
         spawnOptions
         }: {composeFilepath?: string | undefined,
+            dockerComposeOptions?: IDockerComposeOptions | undefined,
             execOptions?: any | any[]| undefined,
             environmentVariables?: KeyValuePair | KeyValuePair[] | undefined,
             service?: string | undefined,
             command?: string | undefined,
-            commandArguments?: any[] | undefined,
+            commandArguments?: any | any[] | undefined,
             spawnOptions?: SpawnOptions | undefined
         } = {}): PromiseWithEvents<any[]> {
-        const dockerArgs: any[] = DockerComposeArgConverters.exec({
+        const fullCommandArgs: any[] = DockerComposeArgConverters.exec({
                 execOptions,
                 environmentVariables,
                 service,
@@ -128,7 +136,8 @@ export class DockerCompose {
         return DockerCompose.command({
             command: 'exec',
             composeFilepath,
-            dockerArgs,
+            commandArguments: fullCommandArgs,
+            dockerComposeOptions,
             spawnOptions
         });
     }
@@ -145,58 +154,49 @@ export class DockerCompose {
     // TODO: rm                 Remove stopped containers
 
     // Run a one-off command
-    // public static run ({
-    //     composeFilepath,
-    //     runOptions,
-    //     ports,
-    //     environmentVariables,
-    //     labels,
-    //     service,
-    //     command,
-    //     commandArguments,
-    //     spawnOptions
-    //     }: {composeFilepath?: string | undefined,
-    //         runOptions?: any[]| undefined,
-    //         ports?: Array<[string, any]> | undefined,
-    //         environmentVariables?: Array<[string, any]> | undefined,
-    //         labels?: Array<[string, any]> | undefined,
-    //         service?: string | undefined,
-    //         command?: string | undefined,
-    //         commandArguments?: any[] | undefined,
-    //         spawnOptions?: SpawnOptions | undefined
-    //     } = {}): PromiseWithEvents<any[]> {
-    //     let dockerArgs: any[] = [];
+    public static run ({
+        composeFilepath,
+        dockerComposeOptions,
+        runOptions,
+        volumes,
+        ports,
+        environmentVariables,
+        labels,
+        service,
+        command,
+        commandArguments,
+        spawnOptions
+        }: {composeFilepath?: string | undefined,
+            dockerComposeOptions?: IDockerComposeOptions | undefined,
+            runOptions?: any | any[]| undefined,
+            volumes?: any| any[] | undefined,
+            ports?: any| any[] | undefined,
+            environmentVariables?: KeyValuePair | KeyValuePair[] | undefined,
+            labels?: KeyValuePair| KeyValuePair[] | undefined,
+            service?: string | undefined,
+            command?: string | undefined,
+            commandArguments?: any | any[] | undefined
+            spawnOptions?: SpawnOptions | undefined
+        } = {}): PromiseWithEvents<any[]> {
+        const fullCommandArgs: any[] = DockerComposeArgConverters.run({
+            runOptions,
+            volumes,
+            ports,
+            environmentVariables,
+            labels,
+            service,
+            command,
+            commandArguments
+        });
 
-    //     if (typeof(runOptions) !== 'undefined' && runOptions) {
-    //         dockerArgs = dockerArgs.concat(runOptions);
-    //     }
-
-    //     if (typeof(environmentVariables) !== 'undefined' && environmentVariables) {
-    //         environmentVariables.forEach((val: [string, any]) => {
-    //             dockerArgs.push('--env');
-    //             dockerArgs.push(`${val[0]}=${val[1]}`);
-    //         });
-    //     }
-
-    //     if (typeof(service) !== 'undefined' && service) {
-    //         dockerArgs.push(service);
-    //     }
-
-    //     if (typeof(command) !== 'undefined' && command) {
-    //         dockerArgs.push(command);
-    //     }
-
-    //     if (typeof(commandArguments) !== 'undefined' && commandArguments) {
-    //         dockerArgs = dockerArgs.concat(commandArguments);
-    //     }
-
-    //     return DockerCompose.command({
-    //         command: 'exec',
-    //         composeFilepath,
-    //         dockerArgs,
-    //         spawnOptions
-    //     });
-    // }
+        return DockerCompose.command({
+            command: 'run',
+            composeFilepath,
+            commandArguments: fullCommandArgs,
+            dockerComposeOptions,
+            spawnOptions
+        });
+    }
     // TODO: scale              Set number of containers for a service
     // TODO: start              Start services
     // TODO: stop               Stop services
@@ -208,17 +208,19 @@ export class DockerCompose {
     // Create and start containers
     public static up ({
         composeFilepath,
+        dockerComposeOptions,
         upOptions,
         scale,
         services,
         spawnOptions
         }: {composeFilepath?: string | undefined,
+            dockerComposeOptions?: IDockerComposeOptions | undefined
             upOptions?: any | any[]| undefined,
             scale?: KeyValuePair[] | undefined,
             services?: any | any[] | undefined,
             spawnOptions?: SpawnOptions | undefined
         } = {}): PromiseWithEvents<any[]> {
-        const dockerArgs: any[] = DockerComposeArgConverters.up({
+        const commandArguments: any[] = DockerComposeArgConverters.up({
             upOptions,
             scale,
             services
@@ -227,17 +229,21 @@ export class DockerCompose {
         return DockerCompose.command({
             command: 'up',
             composeFilepath,
-            dockerArgs,
+            commandArguments,
+            dockerComposeOptions,
             spawnOptions
         });
     }
 
     public static version ({
+        dockerComposeOptions,
         spawnOptions
-    }: { spawnOptions?: SpawnOptions | undefined
+    }: { dockerComposeOptions?: IDockerComposeOptions | undefined
+        spawnOptions?: SpawnOptions | undefined
        } = {}): PromiseWithEvents<any[]> {
             return DockerCompose.command({
                 command: 'version',
+                dockerComposeOptions,
                 spawnOptions
         });
     }

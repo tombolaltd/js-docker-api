@@ -1,42 +1,55 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const argument_builders_1 = require("./argument-builders");
+const option_converter_1 = require("./option-converter");
 class DockerComposeArgConverters {
-    static command({ command, commandArgs, composeFilepath, dockerArgs, } = {}) {
+    static command({ command, commandArguments, composeFilepath, dockerComposeOptions, } = {}) {
         const fullArgs = [];
         argument_builders_1.ArgumentBuilders.pushFlaggedArgs(fullArgs, '--file', composeFilepath);
-        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullArgs, dockerArgs);
+        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullArgs, option_converter_1.optionConverter(dockerComposeOptions));
         argument_builders_1.ArgumentBuilders.pushPlainArgs(fullArgs, command);
-        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullArgs, commandArgs);
+        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullArgs, commandArguments);
         return fullArgs;
     }
     static build({ buildOptions, buildArguments, services, } = {}) {
-        const dockerArgs = [];
-        argument_builders_1.ArgumentBuilders.pushPlainArgs(dockerArgs, buildOptions);
-        argument_builders_1.ArgumentBuilders.pushFlaggedKeyValueArgs(dockerArgs, '--build-arg', buildArguments);
-        argument_builders_1.ArgumentBuilders.pushPlainArgs(dockerArgs, services);
-        return dockerArgs;
+        const fullCommandArgs = [];
+        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, buildOptions);
+        argument_builders_1.ArgumentBuilders.pushFlaggedKeyValueArgs(fullCommandArgs, '--build-arg', buildArguments);
+        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, services);
+        return fullCommandArgs;
     }
     static down({ downOptions } = {}) {
-        const dockerArgs = [];
-        argument_builders_1.ArgumentBuilders.pushPlainArgs(dockerArgs, downOptions);
-        return dockerArgs;
+        const fullCommandArgs = [];
+        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, downOptions);
+        return fullCommandArgs;
     }
     static exec({ execOptions, environmentVariables, service, command, commandArguments } = {}) {
-        const dockerArgs = [];
-        argument_builders_1.ArgumentBuilders.pushPlainArgs(dockerArgs, execOptions);
-        argument_builders_1.ArgumentBuilders.pushFlaggedKeyValueArgs(dockerArgs, '--env', environmentVariables);
-        argument_builders_1.ArgumentBuilders.pushPlainArgs(dockerArgs, service);
-        argument_builders_1.ArgumentBuilders.pushPlainArgs(dockerArgs, command);
-        argument_builders_1.ArgumentBuilders.pushPlainArgs(dockerArgs, commandArguments);
-        return dockerArgs;
+        const fullCommandArgs = [];
+        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, execOptions);
+        argument_builders_1.ArgumentBuilders.pushFlaggedKeyValueArgs(fullCommandArgs, '--env', environmentVariables);
+        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, service);
+        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, command);
+        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, commandArguments);
+        return fullCommandArgs;
+    }
+    static run({ runOptions, volumes, ports, environmentVariables, labels, service, command, commandArguments } = {}) {
+        const fullCommandArgs = [];
+        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, runOptions);
+        argument_builders_1.ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--volume', volumes);
+        argument_builders_1.ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--publish', ports);
+        argument_builders_1.ArgumentBuilders.pushFlaggedKeyValueArgs(fullCommandArgs, '-e', environmentVariables);
+        argument_builders_1.ArgumentBuilders.pushFlaggedKeyValueArgs(fullCommandArgs, '--label', labels);
+        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, service);
+        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, command);
+        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, commandArguments);
+        return fullCommandArgs;
     }
     static up({ upOptions, scale, services } = {}) {
-        const dockerArgs = [];
-        argument_builders_1.ArgumentBuilders.pushPlainArgs(dockerArgs, upOptions);
-        argument_builders_1.ArgumentBuilders.pushFlaggedKeyValueArgs(dockerArgs, '--scale', scale);
-        argument_builders_1.ArgumentBuilders.pushPlainArgs(dockerArgs, services);
-        return dockerArgs;
+        const fullCommandArgs = [];
+        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, upOptions);
+        argument_builders_1.ArgumentBuilders.pushFlaggedKeyValueArgs(fullCommandArgs, '--scale', scale);
+        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, services);
+        return fullCommandArgs;
     }
 }
 exports.DockerComposeArgConverters = DockerComposeArgConverters;

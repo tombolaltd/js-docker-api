@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import 'mocha';
+import { SpawnOptions } from 'ts-process-promises';
 import { DockerCompose, IDockerComposeOptions } from '../';
 import { StdValidator } from './common/std-validator';
 
@@ -59,7 +60,7 @@ describe ('DockerCompose', () => {
             DockerCompose.command({
                 composeFilepath: './tests/assets/docker-compose.yml',
                 command: 'ps',
-                dockerArgs: ['--services']
+                commandArgs: '--services',
             })
             .on('stdout', stdValidator.onStdOut)
             .on('stderr', stdValidator.onStdErr)

@@ -22,6 +22,10 @@ export class StdValidator {
         expect(result).to.deep.equal(this.stdOutput);
     }
 
+    public resetStdOut = () => {
+        this.stdOutput = [];
+    }
+
     private outputDebugInfoLine (line: string): void {
         if ( this.outputDebugInfo ) {
             console.log(line);

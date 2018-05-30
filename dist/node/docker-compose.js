@@ -1,38 +1,64 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const command_spawner_1 = require("./internal/command-spawner");
-const option_converter_1 = require("./internal/option-converter");
+const docker_compose_arg_converters_1 = require("./internal/docker-compose-arg-converters");
 class DockerCompose {
-    static command({ command, composeFilepath, dockerArgs, spawnOptions } = {}) {
-        let fullArgs = [];
-        if (typeof (composeFilepath) !== 'undefined' && composeFilepath) {
-            fullArgs = fullArgs.concat('--file');
-            fullArgs = fullArgs.concat(composeFilepath);
-        }
-        if (typeof (command) !== 'undefined' && command) {
-            fullArgs.push(command);
-        }
-        if (typeof (dockerArgs) !== 'undefined' && dockerArgs && dockerArgs.length > 0) {
-            fullArgs = fullArgs.concat(dockerArgs);
-        }
+    static command({ command, commandArgs, composeFilepath, dockerArgs, spawnOptions } = {}) {
+        const fullArgs = docker_compose_arg_converters_1.DockerComposeArgConverters.command({
+            command,
+            commandArgs,
+            composeFilepath,
+            dockerArgs
+        });
         return command_spawner_1.commandSpawner('docker-compose', fullArgs, spawnOptions);
     }
     static build({ composeFilepath, buildOptions, buildArguments, services, spawnOptions } = {}) {
-        let dockerArgs = [];
-        if (typeof (buildOptions) !== 'undefined' && buildOptions) {
-            dockerArgs = dockerArgs.concat(option_converter_1.optionConverter(buildOptions));
-        }
-        if (typeof (buildArguments) !== 'undefined' && buildArguments) {
-            buildArguments.forEach((val) => {
-                dockerArgs.push(val[0]);
-                dockerArgs.push(val[1]);
-            });
-        }
-        if (typeof (services) !== 'undefined' && services) {
-            dockerArgs = dockerArgs.concat(option_converter_1.optionConverter(services));
-        }
+        const dockerArgs = docker_compose_arg_converters_1.DockerComposeArgConverters.build({
+            buildOptions,
+            buildArguments,
+            services,
+        });
         return DockerCompose.command({
             command: 'build',
+            composeFilepath,
+            dockerArgs,
+            spawnOptions
+        });
+    }
+    static down({ composeFilepath, downOptions, spawnOptions } = {}) {
+        const dockerArgs = docker_compose_arg_converters_1.DockerComposeArgConverters.down({
+            downOptions
+        });
+        return DockerCompose.command({
+            command: 'down',
+            composeFilepath,
+            dockerArgs,
+            spawnOptions
+        });
+    }
+    static exec({ composeFilepath, execOptions, environmentVariables, service, command, commandArguments, spawnOptions } = {}) {
+        const dockerArgs = docker_compose_arg_converters_1.DockerComposeArgConverters.exec({
+            execOptions,
+            environmentVariables,
+            service,
+            command,
+            commandArguments
+        });
+        return DockerCompose.command({
+            command: 'exec',
+            composeFilepath,
+            dockerArgs,
+            spawnOptions
+        });
+    }
+    static up({ composeFilepath, upOptions, scale, services, spawnOptions } = {}) {
+        const dockerArgs = docker_compose_arg_converters_1.DockerComposeArgConverters.up({
+            upOptions,
+            scale,
+            services
+        });
+        return DockerCompose.command({
+            command: 'up',
             composeFilepath,
             dockerArgs,
             spawnOptions

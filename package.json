@@ -44,6 +44,7 @@
     "typescript": "2.4.0"
   },
   "dependencies": {
+    "@types/node": "^10.1.4",
     "ts-process-promises": "^1.0.2"
   }
 }

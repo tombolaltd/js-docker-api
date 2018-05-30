@@ -1,3 +1,11 @@
+// ***********************************************************
+// ***********************************************************
+// THIS NEEDS TO FOLLOW THE SAME PATTERN AS DOCKER-COMPOSE
+// 1. Testable argument converters
+// 2. DockerArgs are really DockerOptions - these are
+//    separate from args relating to the actual command run
+// ***********************************************************
+// ***********************************************************
 import Promise = require('bluebird');
 import { SpawnOptions } from 'ts-process-promises';
 import { PromiseWithEvents } from 'ts-process-promises/lib/PromiseWithEvents';

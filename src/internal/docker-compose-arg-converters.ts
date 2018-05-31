@@ -53,12 +53,14 @@ export class DockerComposeArgConverters {
     }
     public static exec({
         disablePsuedoTty,
+        index,
         execOptions,
         environmentVariables,
         service,
         command,
         commandArguments
         }: {disablePsuedoTty?: boolean | undefined
+            index?: number,
             execOptions?: any | any[]| undefined,
             environmentVariables?: KeyValuePair<any> | Array<KeyValuePair<any>> | undefined,
             service?: string | undefined,
@@ -72,6 +74,11 @@ export class DockerComposeArgConverters {
         if (disablePsuedoTty) {
             ArgumentBuilders.pushPlainArgs(fullCommandArgs, '-T');
         }
+
+        if (typeof(index) === 'number') {
+            ArgumentBuilders.pushPlainArgs(fullCommandArgs, `--index=${index}`);
+        }
+
         ArgumentBuilders.pushPlainArgs(fullCommandArgs, execOptions);
         ArgumentBuilders.pushFlaggedKeyValueArgs(fullCommandArgs, '--env', environmentVariables);
         ArgumentBuilders.pushPlainArgs(fullCommandArgs, service);

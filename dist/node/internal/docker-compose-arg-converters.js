@@ -23,10 +23,13 @@ class DockerComposeArgConverters {
         argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, option_converter_1.optionConverter(downOptions));
         return fullCommandArgs;
     }
-    static exec({ disablePsuedoTty, execOptions, environmentVariables, service, command, commandArguments } = {}) {
+    static exec({ disablePsuedoTty, index, execOptions, environmentVariables, service, command, commandArguments } = {}) {
         const fullCommandArgs = [];
         if (disablePsuedoTty) {
             argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, '-T');
+        }
+        if (typeof (index) === 'number') {
+            argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, `--index=${index}`);
         }
         argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, execOptions);
         argument_builders_1.ArgumentBuilders.pushFlaggedKeyValueArgs(fullCommandArgs, '--env', environmentVariables);

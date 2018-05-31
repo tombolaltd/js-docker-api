@@ -27,10 +27,11 @@ export declare class DockerCompose {
         spawnOptions?: SpawnOptions | undefined;
         useStdIo?: boolean | undefined;
     }): PromiseWithEvents<any[]>;
-    static exec({composeFilepath, dockerComposeOptions, disablePsuedoTty, execOptions, environmentVariables, service, command, commandArguments, spawnOptions, useStdIo}?: {
+    static exec({composeFilepath, dockerComposeOptions, disablePsuedoTty, index, execOptions, environmentVariables, service, command, commandArguments, spawnOptions, useStdIo}?: {
         composeFilepath?: string | undefined;
         dockerComposeOptions?: OptionsInterfaces.IDockerComposeOptions | undefined;
         disablePsuedoTty?: boolean | undefined;
+        index?: number;
         execOptions?: any | any[] | undefined;
         environmentVariables?: KeyValuePair<any> | Array<KeyValuePair<any>> | undefined;
         service?: string | undefined;

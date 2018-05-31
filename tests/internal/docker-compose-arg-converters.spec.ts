@@ -165,6 +165,11 @@ describe('The docker-compose-arg-converters class', () => {
             expect(result).to.deep.equal(['-T']);
         });
 
+        it('Passing index as value populates correctly', ()  => {
+            const result: any[] = DockerComposeArgConverters.exec({ index: 42 });
+            expect(result).to.deep.equal(['--index=42']);
+        });
+
         it('Passing disablePsuedoTty as false does not adds flag', ()  => {
             const result: any[] = DockerComposeArgConverters.exec({ disablePsuedoTty: false});
             expect(result).to.deep.equal([]);
@@ -203,6 +208,7 @@ describe('The docker-compose-arg-converters class', () => {
         it('Passing all options value populates correctly - in the expected order', ()  => {
             const result: any[] = DockerComposeArgConverters.exec({
                 disablePsuedoTty: true,
+                index: 0,
                 execOptions: ['opt1', 'opt2'],
                 environmentVariables: [{ key1: 'value1'}, { key2: 'value2'}],
                 service: 'myService',
@@ -211,6 +217,7 @@ describe('The docker-compose-arg-converters class', () => {
             });
             expect(result).to.deep.equal([
                 '-T',
+                '--index=0',
                 'opt1', 'opt2',
                 '--env', 'key1=value1', '--env', 'key2=value2',
                 'myService',

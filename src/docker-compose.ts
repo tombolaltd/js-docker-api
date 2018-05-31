@@ -123,6 +123,7 @@ export class DockerCompose {
         composeFilepath,
         dockerComposeOptions,
         disablePsuedoTty,
+        index,
         execOptions,
         environmentVariables,
         service,
@@ -133,6 +134,7 @@ export class DockerCompose {
         }: {composeFilepath?: string | undefined,
             dockerComposeOptions?: OptionsInterfaces.IDockerComposeOptions | undefined,
             disablePsuedoTty?: boolean | undefined
+            index?: number,
             execOptions?: any | any[]| undefined,
             environmentVariables?: KeyValuePair<any> | Array<KeyValuePair<any>> | undefined,
             service?: string | undefined,
@@ -143,6 +145,7 @@ export class DockerCompose {
         } = {}): PromiseWithEvents<any[]> {
         const fullCommandArgs: any[] = DockerComposeArgConverters.exec({
                 disablePsuedoTty,
+                index,
                 execOptions,
                 environmentVariables,
                 service,

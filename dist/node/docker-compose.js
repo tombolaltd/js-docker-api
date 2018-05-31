@@ -3,16 +3,20 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const command_spawner_1 = require("./internal/command-spawner");
 const docker_compose_arg_converters_1 = require("./internal/docker-compose-arg-converters");
 class DockerCompose {
-    static command({ command, commandArguments, composeFilepath, dockerComposeOptions, spawnOptions } = {}) {
+    static command({ command, commandArguments, composeFilepath, dockerComposeOptions, spawnOptions, useStdIo } = {}) {
         const fullArgs = docker_compose_arg_converters_1.DockerComposeArgConverters.command({
             command,
             commandArguments,
             composeFilepath,
             dockerComposeOptions
         });
-        return command_spawner_1.commandSpawner('docker-compose', fullArgs, spawnOptions);
+        const spawner = command_spawner_1.commandSpawner('docker-compose', fullArgs, spawnOptions);
+        if (useStdIo) {
+            return spawner.on('stdout', console.log).on('stderr', console.error);
+        }
+        return spawner;
     }
-    static build({ composeFilepath, buildOptions, buildArguments, dockerComposeOptions, services, spawnOptions } = {}) {
+    static build({ composeFilepath, buildOptions, buildArguments, dockerComposeOptions, services, spawnOptions, useStdIo } = {}) {
         const commandArguments = docker_compose_arg_converters_1.DockerComposeArgConverters.build({
             buildOptions,
             buildArguments,
@@ -23,10 +27,11 @@ class DockerCompose {
             commandArguments,
             composeFilepath,
             dockerComposeOptions,
-            spawnOptions
+            spawnOptions,
+            useStdIo
         });
     }
-    static down({ composeFilepath, dockerComposeOptions, downOptions, spawnOptions } = {}) {
+    static down({ composeFilepath, dockerComposeOptions, downOptions, spawnOptions, useStdIo } = {}) {
         const commandArguments = docker_compose_arg_converters_1.DockerComposeArgConverters.down({
             downOptions
         });
@@ -35,10 +40,11 @@ class DockerCompose {
             composeFilepath,
             commandArguments,
             dockerComposeOptions,
-            spawnOptions
+            spawnOptions,
+            useStdIo
         });
     }
-    static exec({ composeFilepath, dockerComposeOptions, execOptions, environmentVariables, service, command, commandArguments, spawnOptions } = {}) {
+    static exec({ composeFilepath, dockerComposeOptions, execOptions, environmentVariables, service, command, commandArguments, spawnOptions, useStdIo } = {}) {
         const fullCommandArgs = docker_compose_arg_converters_1.DockerComposeArgConverters.exec({
             execOptions,
             environmentVariables,
@@ -51,10 +57,11 @@ class DockerCompose {
             composeFilepath,
             commandArguments: fullCommandArgs,
             dockerComposeOptions,
-            spawnOptions
+            spawnOptions,
+            useStdIo
         });
     }
-    static run({ composeFilepath, dockerComposeOptions, runOptions, volumes, ports, environmentVariables, labels, service, command, commandArguments, spawnOptions } = {}) {
+    static run({ composeFilepath, dockerComposeOptions, runOptions, volumes, ports, environmentVariables, labels, service, command, commandArguments, spawnOptions, useStdIo } = {}) {
         const fullCommandArgs = docker_compose_arg_converters_1.DockerComposeArgConverters.run({
             runOptions,
             volumes,
@@ -70,10 +77,11 @@ class DockerCompose {
             composeFilepath,
             commandArguments: fullCommandArgs,
             dockerComposeOptions,
-            spawnOptions
+            spawnOptions,
+            useStdIo
         });
     }
-    static up({ composeFilepath, dockerComposeOptions, upOptions, scale, services, spawnOptions } = {}) {
+    static up({ composeFilepath, dockerComposeOptions, upOptions, scale, services, spawnOptions, useStdIo } = {}) {
         const commandArguments = docker_compose_arg_converters_1.DockerComposeArgConverters.up({
             upOptions,
             scale,
@@ -84,14 +92,16 @@ class DockerCompose {
             composeFilepath,
             commandArguments,
             dockerComposeOptions,
-            spawnOptions
+            spawnOptions,
+            useStdIo
         });
     }
-    static version({ dockerComposeOptions, spawnOptions } = {}) {
+    static version({ dockerComposeOptions, spawnOptions, useStdIo } = {}) {
         return DockerCompose.command({
             command: 'version',
             dockerComposeOptions,
-            spawnOptions
+            spawnOptions,
+            useStdIo
         });
     }
 }

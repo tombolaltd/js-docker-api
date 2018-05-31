@@ -25,12 +25,14 @@ export class DockerCompose {
         commandArguments,
         composeFilepath,
         dockerComposeOptions,
-        spawnOptions
+        spawnOptions,
+        useStdIo
         }: {command?: string | undefined,
             commandArguments?: | any | any[] | undefined
             composeFilepath?: string | string[] | undefined,
             dockerComposeOptions?: IDockerComposeOptions,
-            spawnOptions?: SpawnOptions | undefined
+            spawnOptions?: SpawnOptions | undefined,
+            useStdIo?: boolean | undefined
         } = {}): PromiseWithEvents<any[]>  {
 
         const fullArgs: any[] = DockerComposeArgConverters.command({
@@ -40,7 +42,11 @@ export class DockerCompose {
             dockerComposeOptions
         });
 
-        return commandSpawner('docker-compose', fullArgs, spawnOptions);
+        const spawner: PromiseWithEvents<any> = commandSpawner('docker-compose', fullArgs, spawnOptions);
+        if (useStdIo){
+            return spawner.on('stdout', console.log).on('stderr', console.error);
+        }
+        return spawner;
     }
 
     //  TODO: UNTESTED
@@ -50,13 +56,15 @@ export class DockerCompose {
         buildArguments,
         dockerComposeOptions,
         services,
-        spawnOptions
+        spawnOptions,
+        useStdIo
         }: {composeFilepath?: string | string[] | undefined,
             buildOptions?: any | any[]| undefined,
             buildArguments?: KeyValuePair | KeyValuePair[] | undefined,
             dockerComposeOptions?: IDockerComposeOptions | undefined
             services?: any | any[] | undefined,
-            spawnOptions?: SpawnOptions | undefined
+            spawnOptions?: SpawnOptions | undefined,
+            useStdIo?: boolean | undefined
         } = {}): PromiseWithEvents<any[]> {
         const commandArguments: any[] = DockerComposeArgConverters.build({
             buildOptions,
@@ -69,7 +77,8 @@ export class DockerCompose {
             commandArguments,
             composeFilepath,
             dockerComposeOptions,
-            spawnOptions
+            spawnOptions,
+            useStdIo
         });
     }
 
@@ -83,11 +92,13 @@ export class DockerCompose {
         composeFilepath,
         dockerComposeOptions,
         downOptions,
-        spawnOptions
+        spawnOptions,
+        useStdIo
         }: {composeFilepath?: string | undefined,
             dockerComposeOptions?: IDockerComposeOptions | undefined
             downOptions?: any | any[]| undefined,
-            spawnOptions?: SpawnOptions | undefined
+            spawnOptions?: SpawnOptions | undefined,
+            useStdIo?: boolean | undefined
         } = {}): PromiseWithEvents<any[]> {
 
         const commandArguments: any[] = DockerComposeArgConverters.down({
@@ -99,7 +110,8 @@ export class DockerCompose {
             composeFilepath,
             commandArguments,
             dockerComposeOptions,
-            spawnOptions
+            spawnOptions,
+            useStdIo
         });
     }
 
@@ -115,7 +127,8 @@ export class DockerCompose {
         service,
         command,
         commandArguments,
-        spawnOptions
+        spawnOptions,
+        useStdIo
         }: {composeFilepath?: string | undefined,
             dockerComposeOptions?: IDockerComposeOptions | undefined,
             execOptions?: any | any[]| undefined,
@@ -123,7 +136,8 @@ export class DockerCompose {
             service?: string | undefined,
             command?: string | undefined,
             commandArguments?: any | any[] | undefined,
-            spawnOptions?: SpawnOptions | undefined
+            spawnOptions?: SpawnOptions | undefined,
+            useStdIo?: boolean | undefined
         } = {}): PromiseWithEvents<any[]> {
         const fullCommandArgs: any[] = DockerComposeArgConverters.exec({
                 execOptions,
@@ -138,7 +152,8 @@ export class DockerCompose {
             composeFilepath,
             commandArguments: fullCommandArgs,
             dockerComposeOptions,
-            spawnOptions
+            spawnOptions,
+            useStdIo
         });
     }
     // TODO: help               Get help on a command
@@ -165,7 +180,8 @@ export class DockerCompose {
         service,
         command,
         commandArguments,
-        spawnOptions
+        spawnOptions,
+        useStdIo
         }: {composeFilepath?: string | undefined,
             dockerComposeOptions?: IDockerComposeOptions | undefined,
             runOptions?: any | any[]| undefined,
@@ -176,7 +192,8 @@ export class DockerCompose {
             service?: string | undefined,
             command?: string | undefined,
             commandArguments?: any | any[] | undefined
-            spawnOptions?: SpawnOptions | undefined
+            spawnOptions?: SpawnOptions | undefined,
+            useStdIo?: boolean | undefined
         } = {}): PromiseWithEvents<any[]> {
         const fullCommandArgs: any[] = DockerComposeArgConverters.run({
             runOptions,
@@ -194,7 +211,8 @@ export class DockerCompose {
             composeFilepath,
             commandArguments: fullCommandArgs,
             dockerComposeOptions,
-            spawnOptions
+            spawnOptions,
+            useStdIo
         });
     }
     // TODO: scale              Set number of containers for a service
@@ -212,13 +230,15 @@ export class DockerCompose {
         upOptions,
         scale,
         services,
-        spawnOptions
+        spawnOptions,
+        useStdIo
         }: {composeFilepath?: string | undefined,
             dockerComposeOptions?: IDockerComposeOptions | undefined
             upOptions?: any | any[]| undefined,
             scale?: KeyValuePair[] | undefined,
             services?: any | any[] | undefined,
-            spawnOptions?: SpawnOptions | undefined
+            spawnOptions?: SpawnOptions | undefined,
+            useStdIo?: boolean | undefined
         } = {}): PromiseWithEvents<any[]> {
         const commandArguments: any[] = DockerComposeArgConverters.up({
             upOptions,
@@ -231,20 +251,24 @@ export class DockerCompose {
             composeFilepath,
             commandArguments,
             dockerComposeOptions,
-            spawnOptions
+            spawnOptions,
+            useStdIo
         });
     }
 
     public static version ({
         dockerComposeOptions,
-        spawnOptions
+        spawnOptions,
+        useStdIo
     }: { dockerComposeOptions?: IDockerComposeOptions | undefined
-        spawnOptions?: SpawnOptions | undefined
+        spawnOptions?: SpawnOptions | undefined,
+        useStdIo?: boolean | undefined
        } = {}): PromiseWithEvents<any[]> {
             return DockerCompose.command({
                 command: 'version',
                 dockerComposeOptions,
-                spawnOptions
+                spawnOptions,
+                useStdIo
         });
     }
 }

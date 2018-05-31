@@ -24,9 +24,13 @@ export declare class DockerComposeArgConverters {
         command?: string | undefined;
         commandArguments?: any | any[] | undefined;
     }): any;
-    static run({runOptions, volumes, ports, environmentVariables, labels, service, command, commandArguments}?: {
-        runOptions?: any | any[] | undefined;
+    static run({disablePsuedoTty, user, runOptions, publish, volumes, workdir, ports, environmentVariables, labels, service, command, commandArguments}?: {
+        disablePsuedoTty?: boolean | undefined;
+        user?: string | undefined;
+        runOptions?: OptionsInterfaces.IRunOptions | undefined;
+        publish?: any | any[] | undefined;
         volumes?: any | any[] | undefined;
+        workdir?: string | string | undefined;
         ports?: any | any[] | undefined;
         environmentVariables?: KeyValuePair<any> | Array<KeyValuePair<any>> | undefined;
         labels?: KeyValuePair<string> | Array<KeyValuePair<string>> | undefined;

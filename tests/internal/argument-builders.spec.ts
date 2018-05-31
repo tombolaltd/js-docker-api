@@ -45,6 +45,21 @@ describe('The ArgumentBuilders class', () => {
             ArgumentBuilders.pushPlainArgs(workingArray, '--maymay');
             expect(workingArray).to.deep.equal(['foo', 'bar', '--maymay']);
         });
+
+        it('uith non array falsy values correctly concatenates value', () => {
+            const originalArray = ['foo', 'bar'];
+            const workingArray = originalArray.slice(0);
+            ArgumentBuilders.pushPlainArgs(workingArray, 0);
+            expect(workingArray).to.deep.equal(['foo', 'bar', 0]);
+        });
+
+        it('uith empty string does not concatenate the value', () => {
+            const originalArray = ['foo', 'bar'];
+            const workingArray = originalArray.slice(0);
+            ArgumentBuilders.pushPlainArgs(workingArray, '');
+            expect(workingArray).to.deep.equal(['foo', 'bar']);
+        });
+
     });
 
     describe('pushFlaggedKeyValueArgs function', () => {
@@ -130,6 +145,71 @@ describe('The ArgumentBuilders class', () => {
             const workingArray = originalArray.slice(0);
             ArgumentBuilders.pushFlaggedArgs(workingArray, '--baz', ['qux', 'quux', 'corge']);
             expect(workingArray).to.deep.equal(['foo', 'bar', '--baz', 'qux', '--baz', 'quux', '--baz', 'corge']);
+        });
+
+        it('using an single non array value which is falsy correctly concatenates value', () => {
+            const originalArray = ['foo', 'bar'];
+            const workingArray = originalArray.slice(0);
+            ArgumentBuilders.pushFlaggedArgs(workingArray, '--baz', 0);
+            expect(workingArray).to.deep.equal(['foo', 'bar', '--baz', 0]);
+        });
+
+        it('using an empty string no value is concatenated', () => {
+            const originalArray = ['foo', 'bar'];
+            const workingArray = originalArray.slice(0);
+            ArgumentBuilders.pushFlaggedArgs(workingArray, '--baz', '');
+            expect(workingArray).to.deep.equal(['foo', 'bar']);
+        });
+    });
+
+    describe('pushEqualArgs function', () => {
+        it('using undefined results in the original array', () => {
+            const originalArray = ['foo', 'bar'];
+            const workingArray = originalArray.slice(0);
+            ArgumentBuilders.pushEqualArgs(workingArray, '--baz', undefined);
+            expect(workingArray).to.deep.equal(originalArray);
+        });
+
+        it('using null results in the original array', () => {
+            const originalArray = ['foo', 'bar'];
+            const workingArray = originalArray.slice(0);
+            ArgumentBuilders.pushEqualArgs(workingArray, '--baz', null);
+            expect(workingArray).to.deep.equal(originalArray);
+        });
+
+        it('using an single non array value correctly concatenates value', () => {
+            const originalArray = ['foo', 'bar'];
+            const workingArray = originalArray.slice(0);
+            ArgumentBuilders.pushEqualArgs(workingArray, '--baz', 'quux');
+            expect(workingArray).to.deep.equal(['foo', 'bar', '--baz=quux']);
+        });
+
+        it('using an array value with one item correctly concatenates value', () => {
+            const originalArray = ['foo', 'bar'];
+            const workingArray = originalArray.slice(0);
+            ArgumentBuilders.pushEqualArgs(workingArray, '--baz', ['quux']);
+            expect(workingArray).to.deep.equal(['foo', 'bar', '--baz=quux']);
+        });
+
+        it('using an multi value array correctly concatenates values', () => {
+            const originalArray = ['foo', 'bar'];
+            const workingArray = originalArray.slice(0);
+            ArgumentBuilders.pushEqualArgs(workingArray, '--baz', ['qux', 'quux', 'corge']);
+            expect(workingArray).to.deep.equal(['foo', 'bar', '--baz=qux', '--baz=quux', '--baz=corge']);
+        });
+
+        it('using an single non array value which is falsy correctly concatenates value', () => {
+            const originalArray = ['foo', 'bar'];
+            const workingArray = originalArray.slice(0);
+            ArgumentBuilders.pushEqualArgs(workingArray, '--baz', 0);
+            expect(workingArray).to.deep.equal(['foo', 'bar', '--baz=0']);
+        });
+
+        it('using an empty string no value is concatenated', () => {
+            const originalArray = ['foo', 'bar'];
+            const workingArray = originalArray.slice(0);
+            ArgumentBuilders.pushEqualArgs(workingArray, '--baz', '');
+            expect(workingArray).to.deep.equal(['foo', 'bar']);
         });
     });
 });

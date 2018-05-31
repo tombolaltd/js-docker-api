@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IDockerOptions | js-docker-api</title>
+	<title>IRunOptions | js-docker-api</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,35 +56,24 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_interfaces_docker_options_docker_options_.html">&quot;interfaces/docker-options/docker-options&quot;</a>
+					<a href="../modules/_interfaces_docker_compose_options_run_options_.html">&quot;interfaces/docker-compose-options/run-options&quot;</a>
 				</li>
 				<li>
-					<a href="_interfaces_docker_options_docker_options_.idockeroptions.html">IDockerOptions</a>
+					<a href="_interfaces_docker_compose_options_run_options_.irunoptions.html">IRunOptions</a>
 				</li>
 			</ul>
-			<h1>Interface IDockerOptions</h1>
+			<h1>Interface IRunOptions</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<dl class="tsd-comment-tags">
-						<dt>export</dt>
-						<dd></dd>
-						<dt>interface</dt>
-						<dd><p>IDockerOptions provides the option flags when running a docker command</p>
-						</dd>
-					</dl>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">IDockerOptions</span>
+						<span class="target">IRunOptions</span>
 					</li>
 				</ul>
 			</section>
@@ -95,14 +84,14 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_options_docker_options_.idockeroptions.html#config" class="tsd-kind-icon">config</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_options_docker_options_.idockeroptions.html#host" class="tsd-kind-icon">host</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_options_docker_options_.idockeroptions.html#log_level" class="tsd-kind-icon">log-<wbr>level</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_options_docker_options_.idockeroptions.html#tls" class="tsd-kind-icon">tls</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_options_docker_options_.idockeroptions.html#tlscacert" class="tsd-kind-icon">tlscacert</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_options_docker_options_.idockeroptions.html#tlscert" class="tsd-kind-icon">tlscert</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_options_docker_options_.idockeroptions.html#tlskey" class="tsd-kind-icon">tlskey</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_options_docker_options_.idockeroptions.html#tlsverify" class="tsd-kind-icon">tlsverify</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_compose_options_run_options_.irunoptions.html#detach" class="tsd-kind-icon">detach</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_compose_options_run_options_.irunoptions.html#entrypoint" class="tsd-kind-icon">entrypoint</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_compose_options_run_options_.irunoptions.html#label" class="tsd-kind-icon">label</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_compose_options_run_options_.irunoptions.html#name" class="tsd-kind-icon">name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_compose_options_run_options_.irunoptions.html#no_deps" class="tsd-kind-icon">no-<wbr>deps</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_compose_options_run_options_.irunoptions.html#rm" class="tsd-kind-icon">rm</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_compose_options_run_options_.irunoptions.html#service_ports" class="tsd-kind-icon">service-<wbr>ports</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_compose_options_run_options_.irunoptions.html#use_aliases" class="tsd-kind-icon">use-<wbr>aliases</a></li>
 							</ul>
 						</section>
 					</div>
@@ -111,188 +100,84 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="config" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> config</h3>
-					<div class="tsd-signature tsd-kind-icon">config<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<a name="detach" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> detach</h3>
+					<div class="tsd-signature tsd-kind-icon">detach<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/d699c82/src/interfaces/docker-options/docker-options.ts#L13">interfaces/docker-options/docker-options.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/d699c82/src/interfaces/docker-compose-options/run-options.ts#L5">interfaces/docker-compose-options/run-options.ts:5</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Location of client config files (default &quot;/root/.docker&quot;)</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type</dt>
-							<dd><p>{string}</p>
-							</dd>
-							<dt>memberof</dt>
-							<dd><p>IDockerOptions</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="host" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> host</h3>
-					<div class="tsd-signature tsd-kind-icon">host<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<a name="entrypoint" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> entrypoint</h3>
+					<div class="tsd-signature tsd-kind-icon">entrypoint<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/d699c82/src/interfaces/docker-options/docker-options.ts#L21">interfaces/docker-options/docker-options.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/d699c82/src/interfaces/docker-compose-options/run-options.ts#L11">interfaces/docker-compose-options/run-options.ts:11</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Daemon socket(s) to connect to (default [])</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type</dt>
-							<dd><p>{string}</p>
-							</dd>
-							<dt>memberof</dt>
-							<dd><p>IDockerOptions</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="log_level" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> log-<wbr>level</h3>
-					<div class="tsd-signature tsd-kind-icon">log-<wbr>level<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"DEBUG"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"INFO"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"WARN"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"ERROR"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"FATAL"</span></div>
+					<a name="label" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> label</h3>
+					<div class="tsd-signature tsd-kind-icon">label<span class="tsd-signature-symbol">:</span> <a href="../modules/_key_value_pair_.html#keyvaluepair" class="tsd-signature-type">KeyValuePair</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/_key_value_pair_.html#keyvaluepair" class="tsd-signature-type">KeyValuePair</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/d699c82/src/interfaces/docker-options/docker-options.ts#L29">interfaces/docker-options/docker-options.ts:29</a></li>
+							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/d699c82/src/interfaces/docker-compose-options/run-options.ts#L14">interfaces/docker-compose-options/run-options.ts:14</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Set the logging level (&quot;debug&quot;|&quot;info&quot;|&quot;warn&quot;|&quot;error&quot;|&quot;fatal&quot;) (default &quot;info&quot;)</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type</dt>
-							<dd><p>{string}</p>
-							</dd>
-							<dt>memberof</dt>
-							<dd><p>IDockerOptions</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="tls" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> tls</h3>
-					<div class="tsd-signature tsd-kind-icon">tls<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
+					<a name="name" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> name</h3>
+					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/d699c82/src/interfaces/docker-options/docker-options.ts#L37">interfaces/docker-options/docker-options.ts:37</a></li>
+							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/d699c82/src/interfaces/docker-compose-options/run-options.ts#L8">interfaces/docker-compose-options/run-options.ts:8</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Use TLS; implied by --tlsverify</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type</dt>
-							<dd><p>{boolean}</p>
-							</dd>
-							<dt>memberof</dt>
-							<dd><p>IDockerOptions</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="tlscacert" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> tlscacert</h3>
-					<div class="tsd-signature tsd-kind-icon">tlscacert<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<a name="no_deps" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> no-<wbr>deps</h3>
+					<div class="tsd-signature tsd-kind-icon">no-<wbr>deps<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/d699c82/src/interfaces/docker-options/docker-options.ts#L45">interfaces/docker-options/docker-options.ts:45</a></li>
+							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/d699c82/src/interfaces/docker-compose-options/run-options.ts#L17">interfaces/docker-compose-options/run-options.ts:17</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Trust certs signed only by this CA (default &quot;/root/.docker/ca.pem&quot;)</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type</dt>
-							<dd><p>{string}</p>
-							</dd>
-							<dt>memberof</dt>
-							<dd><p>IDockerOptions</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="tlscert" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> tlscert</h3>
-					<div class="tsd-signature tsd-kind-icon">tlscert<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<a name="rm" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> rm</h3>
+					<div class="tsd-signature tsd-kind-icon">rm<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/d699c82/src/interfaces/docker-options/docker-options.ts#L53">interfaces/docker-options/docker-options.ts:53</a></li>
+							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/d699c82/src/interfaces/docker-compose-options/run-options.ts#L20">interfaces/docker-compose-options/run-options.ts:20</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Path to TLS certificate file (default &quot;/root/.docker/cert.pem&quot;)</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type</dt>
-							<dd><p>{string}</p>
-							</dd>
-							<dt>memberof</dt>
-							<dd><p>IDockerOptions</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="tlskey" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> tlskey</h3>
-					<div class="tsd-signature tsd-kind-icon">tlskey<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<a name="service_ports" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> service-<wbr>ports</h3>
+					<div class="tsd-signature tsd-kind-icon">service-<wbr>ports<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/d699c82/src/interfaces/docker-options/docker-options.ts#L61">interfaces/docker-options/docker-options.ts:61</a></li>
+							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/d699c82/src/interfaces/docker-compose-options/run-options.ts#L23">interfaces/docker-compose-options/run-options.ts:23</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Path to TLS key file (default &quot;/root/.docker/key.pem&quot;)</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type</dt>
-							<dd><p>{string}</p>
-							</dd>
-							<dt>memberof</dt>
-							<dd><p>IDockerOptions</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="tlsverify" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> tlsverify</h3>
-					<div class="tsd-signature tsd-kind-icon">tlsverify<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
+					<a name="use_aliases" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> use-<wbr>aliases</h3>
+					<div class="tsd-signature tsd-kind-icon">use-<wbr>aliases<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/d699c82/src/interfaces/docker-options/docker-options.ts#L69">interfaces/docker-options/docker-options.ts:69</a></li>
+							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/d699c82/src/interfaces/docker-compose-options/run-options.ts#L26">interfaces/docker-compose-options/run-options.ts:26</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Use TLS and verify the remote</p>
-						</div>
-						<dl class="tsd-comment-tags">
-							<dt>type</dt>
-							<dd><p>{boolean}</p>
-							</dd>
-							<dt>memberof</dt>
-							<dd><p>IDockerOptions</p>
-							</dd>
-						</dl>
-					</div>
 				</section>
 			</section>
 		</div>
@@ -326,13 +211,13 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_interfaces_docker_compose_options_index_.html">"interfaces/docker-<wbr>compose-<wbr>options/index"</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/_interfaces_docker_compose_options_run_options_.html">"interfaces/docker-<wbr>compose-<wbr>options/run-<wbr>options"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_interfaces_docker_compose_options_up_options_.html">"interfaces/docker-<wbr>compose-<wbr>options/up-<wbr>options"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_interfaces_docker_options_docker_options_.html">"interfaces/docker-<wbr>options/docker-<wbr>options"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -363,31 +248,31 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_interfaces_docker_options_docker_options_.idockeroptions.html" class="tsd-kind-icon">IDocker<wbr>Options</a>
+						<a href="_interfaces_docker_compose_options_run_options_.irunoptions.html" class="tsd-kind-icon">IRun<wbr>Options</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_docker_options_docker_options_.idockeroptions.html#config" class="tsd-kind-icon">config</a>
+								<a href="_interfaces_docker_compose_options_run_options_.irunoptions.html#detach" class="tsd-kind-icon">detach</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_docker_options_docker_options_.idockeroptions.html#host" class="tsd-kind-icon">host</a>
+								<a href="_interfaces_docker_compose_options_run_options_.irunoptions.html#entrypoint" class="tsd-kind-icon">entrypoint</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_docker_options_docker_options_.idockeroptions.html#log_level" class="tsd-kind-icon">log-<wbr>level</a>
+								<a href="_interfaces_docker_compose_options_run_options_.irunoptions.html#label" class="tsd-kind-icon">label</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_docker_options_docker_options_.idockeroptions.html#tls" class="tsd-kind-icon">tls</a>
+								<a href="_interfaces_docker_compose_options_run_options_.irunoptions.html#name" class="tsd-kind-icon">name</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_docker_options_docker_options_.idockeroptions.html#tlscacert" class="tsd-kind-icon">tlscacert</a>
+								<a href="_interfaces_docker_compose_options_run_options_.irunoptions.html#no_deps" class="tsd-kind-icon">no-<wbr>deps</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_docker_options_docker_options_.idockeroptions.html#tlscert" class="tsd-kind-icon">tlscert</a>
+								<a href="_interfaces_docker_compose_options_run_options_.irunoptions.html#rm" class="tsd-kind-icon">rm</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_docker_options_docker_options_.idockeroptions.html#tlskey" class="tsd-kind-icon">tlskey</a>
+								<a href="_interfaces_docker_compose_options_run_options_.irunoptions.html#service_ports" class="tsd-kind-icon">service-<wbr>ports</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_docker_options_docker_options_.idockeroptions.html#tlsverify" class="tsd-kind-icon">tlsverify</a>
+								<a href="_interfaces_docker_compose_options_run_options_.irunoptions.html#use_aliases" class="tsd-kind-icon">use-<wbr>aliases</a>
 							</li>
 						</ul>
 					</li>

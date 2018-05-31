@@ -258,33 +258,46 @@ describe('The docker-compose-arg-converters class', () => {
         });
 
         it('Passing options value populates correctly', ()  => {
-            const result: any[] = DockerComposeArgConverters.run({ runOptions: 'qux'});
-            expect(result).to.deep.equal(['qux']);
+            const result: any[] = DockerComposeArgConverters.run({ runOptions: {
+                'detach': true,
+                'use-aliases': false
+            }});
+            expect(result).to.deep.equal(['--detach']);
         });
 
-        it('Passing options array populates correctly', ()  => {
-            const result: any[] = DockerComposeArgConverters.run({ runOptions: ['qux', 'quux']});
-            expect(result).to.deep.equal(['qux', 'quux']);
+        it('Passing disablePsuedoTty as true populates correctly', ()  => {
+            const result: any[] = DockerComposeArgConverters.run({ disablePsuedoTty: true});
+            expect(result).to.deep.equal(['-T']);
+        });
+
+        it('Passing user as true populates correctly', ()  => {
+            const result: any[] = DockerComposeArgConverters.run({ user: 'fred'});
+            expect(result).to.deep.equal(['--user=fred']);
+        });
+
+        it('Passing workdir as true populates correctly', ()  => {
+            const result: any[] = DockerComposeArgConverters.run({ workdir: '/src'});
+            expect(result).to.deep.equal(['--workdir=/src']);
         });
 
         it('Passing volumes arg populates correctly', ()  => {
             const result: any[] = DockerComposeArgConverters.run({ volumes: '[]'});
-            expect(result).to.deep.equal([ '--volume', '[]']);
+            expect(result).to.deep.equal([ '--volume=[]']);
         });
 
         it('Passing volumes array populates correctly', ()  => {
             const result: any[] = DockerComposeArgConverters.run({ volumes: ['qux', 'quux']});
-            expect(result).to.deep.equal(['--volume', 'qux', '--volume', 'quux']);
+            expect(result).to.deep.equal(['--volume=qux', '--volume=quux']);
         });
 
         it('Passing ports arg populates correctly', ()  => {
             const result: any[] = DockerComposeArgConverters.run({ ports: '[]'});
-            expect(result).to.deep.equal([ '--publish', '[]']);
+            expect(result).to.deep.equal([ '--publish=[]']);
         });
 
         it('Passing ports array populates correctly', ()  => {
             const result: any[] = DockerComposeArgConverters.run({ ports: ['qux', 'quux']});
-            expect(result).to.deep.equal(['--publish', 'qux', '--publish', 'quux']);
+            expect(result).to.deep.equal(['--publish=qux', '--publish=quux']);
         });
 
         it('Passing single environment variable value populates correctly', ()  => {
@@ -307,8 +320,6 @@ describe('The docker-compose-arg-converters class', () => {
             expect(result).to.deep.equal(['--label', 'key1=value1', '--label', 'key2=value2']);
         });
 
-        // labels?: KeyValuePair| KeyValuePair[] | undefined,
-
         it('Passing service value populates correctly', ()  => {
             const result: any[] = DockerComposeArgConverters.run({ service: 'qux'});
             expect(result).to.deep.equal(['qux']);
@@ -329,9 +340,20 @@ describe('The docker-compose-arg-converters class', () => {
             expect(result).to.deep.equal(['qux', 'quux']);
         });
 
+        // publish=[]        Publish a container's port(s) to the host
+    // volume=[]         Bind mount a volume (default [])
+    // user              Run as specified username or uid
+    // disablePsuedoTty  Disable pseudo-tty allocation. By default `docker-compose run` allocates a TTY.
+    // workdir=""      Working directory inside the container
         it('Passing all options value populates correctly - in the expected order', ()  => {
             const result: any[] = DockerComposeArgConverters.run({
-                runOptions: ['opt1', 'opt2'],
+                disablePsuedoTty: true,
+                runOptions:  {
+                    'detach': true,
+                    'use-aliases': false
+                },
+                user: '"Norville Rogers"',
+                workdir: '"/users/norville rogers/documents"',
                 volumes: '[]',
                 ports: ['porta', 'portb'],
                 environmentVariables: [{ key1: 'value1'}, { key2: 'value2'}],
@@ -341,10 +363,13 @@ describe('The docker-compose-arg-converters class', () => {
                 commandArguments: ['arg1', 'arg2']
             });
             expect(result).to.deep.equal([
-                'opt1', 'opt2',
-                '--volume', '[]',
-                '--publish', 'porta',
-                '--publish', 'portb',
+                '-T',
+                '--user="Norville Rogers"',
+                '--detach',
+                '--volume=[]',
+                '--publish=porta',
+                '--publish=portb',
+                '--workdir="/users/norville rogers/documents"',
                 '-e', 'key1=value1', '-e', 'key2=value2',
                 '--label', 'key1=label1', '--label', 'key2=label2',
                 'myService',

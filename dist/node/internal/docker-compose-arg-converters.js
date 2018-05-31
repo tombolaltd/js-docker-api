@@ -29,7 +29,7 @@ class DockerComposeArgConverters {
             argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, '-T');
         }
         if (typeof (index) === 'number') {
-            argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, `--index=${index}`);
+            argument_builders_1.ArgumentBuilders.pushEqualArgs(fullCommandArgs, '--index', index);
         }
         argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, option_converter_1.optionConverter(execOptions));
         argument_builders_1.ArgumentBuilders.pushFlaggedKeyValueArgs(fullCommandArgs, '--env', environmentVariables);
@@ -38,11 +38,16 @@ class DockerComposeArgConverters {
         argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, commandArguments);
         return fullCommandArgs;
     }
-    static run({ runOptions, volumes, ports, environmentVariables, labels, service, command, commandArguments } = {}) {
+    static run({ disablePsuedoTty, user, runOptions, publish, volumes, workdir, ports, environmentVariables, labels, service, command, commandArguments } = {}) {
         const fullCommandArgs = [];
-        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, runOptions);
-        argument_builders_1.ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--volume', volumes);
-        argument_builders_1.ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--publish', ports);
+        if (disablePsuedoTty) {
+            argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, '-T');
+        }
+        argument_builders_1.ArgumentBuilders.pushEqualArgs(fullCommandArgs, '--user', user);
+        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, option_converter_1.optionConverter(runOptions));
+        argument_builders_1.ArgumentBuilders.pushEqualArgs(fullCommandArgs, '--volume', volumes);
+        argument_builders_1.ArgumentBuilders.pushEqualArgs(fullCommandArgs, '--publish', ports);
+        argument_builders_1.ArgumentBuilders.pushEqualArgs(fullCommandArgs, '--workdir', workdir);
         argument_builders_1.ArgumentBuilders.pushFlaggedKeyValueArgs(fullCommandArgs, '-e', environmentVariables);
         argument_builders_1.ArgumentBuilders.pushFlaggedKeyValueArgs(fullCommandArgs, '--label', labels);
         argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, service);

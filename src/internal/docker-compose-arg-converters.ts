@@ -76,7 +76,7 @@ export class DockerComposeArgConverters {
         }
 
         if (typeof(index) === 'number') {
-            ArgumentBuilders.pushPlainArgs(fullCommandArgs, `--index=${index}`);
+            ArgumentBuilders.pushEqualArgs(fullCommandArgs, '--index', index);
         }
 
         ArgumentBuilders.pushPlainArgs(fullCommandArgs, optionConverter(execOptions));
@@ -88,16 +88,24 @@ export class DockerComposeArgConverters {
     }
 
     public static run({
+            disablePsuedoTty,
+            user,
             runOptions,
+            publish,
             volumes,
+            workdir,
             ports,
             environmentVariables,
             labels,
             service,
             command,
             commandArguments
-        }: {runOptions?: any | any[]| undefined,
+        }: {disablePsuedoTty?: boolean | undefined,
+            user?: string | undefined,
+            runOptions?: OptionsInterfaces.IRunOptions | undefined,
+            publish?: any| any[] | undefined,
             volumes?: any| any[] | undefined,
+            workdir?: string | string | undefined,
             ports?: any| any[] | undefined,
             environmentVariables?: KeyValuePair<any> | Array<KeyValuePair<any>> | undefined,
             labels?: KeyValuePair<string> | Array<KeyValuePair<string>> | undefined,
@@ -106,9 +114,17 @@ export class DockerComposeArgConverters {
             commandArguments?: any | any[] | undefined
         } = {}): any{
         const fullCommandArgs: any[] = [];
-        ArgumentBuilders.pushPlainArgs(fullCommandArgs, runOptions);
-        ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--volume', volumes);
-        ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--publish', ports);
+
+        if (disablePsuedoTty) {
+            ArgumentBuilders.pushPlainArgs(fullCommandArgs, '-T');
+        }
+
+        ArgumentBuilders.pushEqualArgs(fullCommandArgs, '--user', user);
+
+        ArgumentBuilders.pushPlainArgs(fullCommandArgs,  optionConverter(runOptions));
+        ArgumentBuilders.pushEqualArgs(fullCommandArgs, '--volume', volumes);
+        ArgumentBuilders.pushEqualArgs(fullCommandArgs, '--publish', ports);
+        ArgumentBuilders.pushEqualArgs(fullCommandArgs, '--workdir', workdir);
 
         ArgumentBuilders.pushFlaggedKeyValueArgs(fullCommandArgs, '-e', environmentVariables);
         ArgumentBuilders.pushFlaggedKeyValueArgs(fullCommandArgs, '--label', labels);

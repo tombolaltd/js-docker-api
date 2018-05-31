@@ -178,8 +178,12 @@ export class DockerCompose {
     public static run ({
         composeFilepath,
         dockerComposeOptions,
+        disablePsuedoTty,
+        user,
         runOptions,
+        publish,
         volumes,
+        workdir,
         ports,
         environmentVariables,
         labels,
@@ -190,20 +194,28 @@ export class DockerCompose {
         useStdIo
         }: {composeFilepath?: string | undefined,
             dockerComposeOptions?: OptionsInterfaces.IDockerComposeOptions | undefined,
-            runOptions?: any | any[]| undefined,
+            disablePsuedoTty?: boolean | undefined,
+            user?: string | undefined,
+            runOptions?: OptionsInterfaces.IRunOptions | undefined,
+            publish?: any| any[] | undefined,
             volumes?: any| any[] | undefined,
+            workdir?: string | string | undefined,
             ports?: any| any[] | undefined,
             environmentVariables?: KeyValuePair<any> | Array<KeyValuePair<any>> | undefined,
             labels?: KeyValuePair<string> | Array<KeyValuePair<string>> | undefined,
             service?: string | undefined,
             command?: string | undefined,
-            commandArguments?: any | any[] | undefined
+            commandArguments?: any | any[] | undefined,
             spawnOptions?: SpawnOptions | undefined,
             useStdIo?: boolean | undefined
         } = {}): PromiseWithEvents<any[]> {
         const fullCommandArgs: any[] = DockerComposeArgConverters.run({
+            disablePsuedoTty,
+            user,
             runOptions,
+            publish,
             volumes,
+            workdir,
             ports,
             environmentVariables,
             labels,

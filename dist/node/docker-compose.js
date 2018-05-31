@@ -63,10 +63,14 @@ class DockerCompose {
             useStdIo
         });
     }
-    static run({ composeFilepath, dockerComposeOptions, runOptions, volumes, ports, environmentVariables, labels, service, command, commandArguments, spawnOptions, useStdIo } = {}) {
+    static run({ composeFilepath, dockerComposeOptions, disablePsuedoTty, user, runOptions, publish, volumes, workdir, ports, environmentVariables, labels, service, command, commandArguments, spawnOptions, useStdIo } = {}) {
         const fullCommandArgs = docker_compose_arg_converters_1.DockerComposeArgConverters.run({
+            disablePsuedoTty,
+            user,
             runOptions,
+            publish,
             volumes,
+            workdir,
             ports,
             environmentVariables,
             labels,

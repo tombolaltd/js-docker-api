@@ -61,7 +61,7 @@ export class DockerComposeArgConverters {
         commandArguments
         }: {disablePsuedoTty?: boolean | undefined
             index?: number,
-            execOptions?: any | any[]| undefined,
+            execOptions?: OptionsInterfaces.IExecOptions | undefined,
             environmentVariables?: KeyValuePair<any> | Array<KeyValuePair<any>> | undefined,
             service?: string | undefined,
             command?: string | undefined,
@@ -79,7 +79,7 @@ export class DockerComposeArgConverters {
             ArgumentBuilders.pushPlainArgs(fullCommandArgs, `--index=${index}`);
         }
 
-        ArgumentBuilders.pushPlainArgs(fullCommandArgs, execOptions);
+        ArgumentBuilders.pushPlainArgs(fullCommandArgs, optionConverter(execOptions));
         ArgumentBuilders.pushFlaggedKeyValueArgs(fullCommandArgs, '--env', environmentVariables);
         ArgumentBuilders.pushPlainArgs(fullCommandArgs, service);
         ArgumentBuilders.pushPlainArgs(fullCommandArgs, command);

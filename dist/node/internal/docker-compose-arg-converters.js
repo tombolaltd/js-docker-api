@@ -31,7 +31,7 @@ class DockerComposeArgConverters {
         if (typeof (index) === 'number') {
             argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, `--index=${index}`);
         }
-        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, execOptions);
+        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, option_converter_1.optionConverter(execOptions));
         argument_builders_1.ArgumentBuilders.pushFlaggedKeyValueArgs(fullCommandArgs, '--env', environmentVariables);
         argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, service);
         argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, command);

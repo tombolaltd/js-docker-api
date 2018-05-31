@@ -1,7 +1,7 @@
 import { KeyValuePair } from '../../key-value-pair';
 
 export interface IExecOptions {
-    // -T is implemented in the DockerCompose method, it has the snowflake nature
+    // -T is implemented in the DockerCompose method, as is --index, the exec command has the snowflake nature
 
     // Detached mode: Run command in the background.
     'detach'?: boolean;

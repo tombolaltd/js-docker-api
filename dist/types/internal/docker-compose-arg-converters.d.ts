@@ -18,7 +18,7 @@ export declare class DockerComposeArgConverters {
     static exec({disablePsuedoTty, index, execOptions, environmentVariables, service, command, commandArguments}?: {
         disablePsuedoTty?: boolean | undefined;
         index?: number;
-        execOptions?: any | any[] | undefined;
+        execOptions?: OptionsInterfaces.IExecOptions | undefined;
         environmentVariables?: KeyValuePair<any> | Array<KeyValuePair<any>> | undefined;
         service?: string | undefined;
         command?: string | undefined;

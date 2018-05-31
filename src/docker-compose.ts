@@ -135,7 +135,7 @@ export class DockerCompose {
             dockerComposeOptions?: OptionsInterfaces.IDockerComposeOptions | undefined,
             disablePsuedoTty?: boolean | undefined
             index?: number,
-            execOptions?: any | any[]| undefined,
+            execOptions?: OptionsInterfaces.IExecOptions | undefined,
             environmentVariables?: KeyValuePair<any> | Array<KeyValuePair<any>> | undefined,
             service?: string | undefined,
             command?: string | undefined,

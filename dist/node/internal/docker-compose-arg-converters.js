@@ -20,7 +20,7 @@ class DockerComposeArgConverters {
     }
     static down({ downOptions } = {}) {
         const fullCommandArgs = [];
-        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, downOptions);
+        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, option_converter_1.optionConverter(downOptions));
         return fullCommandArgs;
     }
     static exec({ execOptions, environmentVariables, service, command, commandArguments } = {}) {

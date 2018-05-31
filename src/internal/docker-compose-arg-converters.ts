@@ -45,10 +45,10 @@ export class DockerComposeArgConverters {
     }
 
     public static down ({ downOptions }: {
-            downOptions?: any | any[]| undefined,
+            downOptions?: OptionsInterfaces.IDownOptions | undefined,
         } = {}): any[] {
         const fullCommandArgs: any[] = [];
-        ArgumentBuilders.pushPlainArgs(fullCommandArgs, downOptions);
+        ArgumentBuilders.pushPlainArgs(fullCommandArgs, optionConverter(downOptions));
         return fullCommandArgs;
     }
     public static exec({

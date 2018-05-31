@@ -23,7 +23,7 @@ export declare class DockerCompose {
     static down({composeFilepath, dockerComposeOptions, downOptions, spawnOptions, useStdIo}?: {
         composeFilepath?: string | undefined;
         dockerComposeOptions?: OptionsInterfaces.IDockerComposeOptions | undefined;
-        downOptions?: any | any[] | undefined;
+        downOptions?: OptionsInterfaces.IDownOptions | undefined;
         spawnOptions?: SpawnOptions | undefined;
         useStdIo?: boolean | undefined;
     }): PromiseWithEvents<any[]>;

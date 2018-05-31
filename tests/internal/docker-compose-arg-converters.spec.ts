@@ -131,14 +131,12 @@ describe('The docker-compose-arg-converters class', () => {
         });
 
         it('Passing options value populates correctly', ()  => {
-            const result: any[] = DockerComposeArgConverters.down({ downOptions: 'qux'});
-            expect(result).to.deep.equal(['qux']);
+            const result: any[] = DockerComposeArgConverters.down({
+                downOptions: {'remove-orphans': true, 'volumes': false, 'timeout': 100}
+            });
+            expect(result).to.deep.equal(['--remove-orphans', '--timeout', 100]);
         });
 
-        it('Passing options array populates correctly', ()  => {
-            const result: any[] = DockerComposeArgConverters.down({ downOptions: ['qux', 'quux']});
-            expect(result).to.deep.equal(['qux', 'quux']);
-        });
     });
 
     describe('The exec function', () => {

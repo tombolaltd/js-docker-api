@@ -13,7 +13,7 @@ export declare class DockerComposeArgConverters {
         services?: any | any[] | undefined;
     }): any[];
     static down({downOptions}?: {
-        downOptions?: any | any[] | undefined;
+        downOptions?: OptionsInterfaces.IDownOptions | undefined;
     }): any[];
     static exec({execOptions, environmentVariables, service, command, commandArguments}?: {
         execOptions?: any | any[] | undefined;

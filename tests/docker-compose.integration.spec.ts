@@ -13,23 +13,27 @@ describe('Integration test - up a service, exec, then down it', () => {
         .then((resultUp: any) => {
             stdValidator.validate(resultUp);
             stdValidator.resetStdOut();
-            DockerCompose.run({composeFilepath: './tests/assets/integration/docker-compose.yml',
+             return DockerCompose.run({composeFilepath: './tests/assets/integration/docker-compose.yml',
                 service: 'foo',
                 command: 'ls',
                 commandArguments: '-la',
             })
             .on('stdout', stdValidator.onStdOut)
+            .on('stderr', stdValidator.onStdErr);
+        }).then((resultRun: any) => {
+            stdValidator.validate(resultRun);
+            stdValidator.resetStdOut();
+            return DockerCompose.down({
+                composeFilepath: './tests/assets/integration/docker-compose.yml',
+                downOptions: {
+                    rmi: 'all'
+                }
+            })
+            .on('stdout', stdValidator.onStdOut)
             .on('stderr', stdValidator.onStdErr)
-            .then((resultRun: any) => {
-                stdValidator.validate(resultRun);
-                stdValidator.resetStdOut();
-                DockerCompose.down({composeFilepath: './tests/assets/integration/docker-compose.yml'})
-                    .on('stdout', stdValidator.onStdOut)
-                    .on('stderr', stdValidator.onStdErr)
-                    .then((resultDown: any) => {
-                       stdValidator.validate(resultDown);
-                        done();
-                    });
+            .then((resultDown: any) => {
+                stdValidator.validate(resultDown);
+                done();
             });
         })
         .catch(done);

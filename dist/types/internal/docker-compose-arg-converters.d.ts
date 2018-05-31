@@ -15,7 +15,8 @@ export declare class DockerComposeArgConverters {
     static down({downOptions}?: {
         downOptions?: OptionsInterfaces.IDownOptions | undefined;
     }): any[];
-    static exec({execOptions, environmentVariables, service, command, commandArguments}?: {
+    static exec({disablePsuedoTty, execOptions, environmentVariables, service, command, commandArguments}?: {
+        disablePsuedoTty?: boolean | undefined;
         execOptions?: any | any[] | undefined;
         environmentVariables?: KeyValuePair<any> | Array<KeyValuePair<any>> | undefined;
         service?: string | undefined;

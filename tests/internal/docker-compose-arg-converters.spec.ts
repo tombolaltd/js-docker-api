@@ -160,9 +160,14 @@ describe('The docker-compose-arg-converters class', () => {
             expect(result).to.deep.equal(['qux']);
         });
 
-        it('Passing options array populates correctly', ()  => {
-            const result: any[] = DockerComposeArgConverters.exec({ execOptions: ['qux', 'quux']});
-            expect(result).to.deep.equal(['qux', 'quux']);
+        it('Passing disablePsuedoTty as true populates correctly', ()  => {
+            const result: any[] = DockerComposeArgConverters.exec({ disablePsuedoTty: true});
+            expect(result).to.deep.equal(['-T']);
+        });
+
+        it('Passing disablePsuedoTty as false does not adds flag', ()  => {
+            const result: any[] = DockerComposeArgConverters.exec({ disablePsuedoTty: false});
+            expect(result).to.deep.equal([]);
         });
 
         it('Passing single environment variable value populates correctly', ()  => {
@@ -197,6 +202,7 @@ describe('The docker-compose-arg-converters class', () => {
 
         it('Passing all options value populates correctly - in the expected order', ()  => {
             const result: any[] = DockerComposeArgConverters.exec({
+                disablePsuedoTty: true,
                 execOptions: ['opt1', 'opt2'],
                 environmentVariables: [{ key1: 'value1'}, { key2: 'value2'}],
                 service: 'myService',
@@ -204,6 +210,7 @@ describe('The docker-compose-arg-converters class', () => {
                 commandArguments: ['arg1', 'arg2']
             });
             expect(result).to.deep.equal([
+                '-T',
                 'opt1', 'opt2',
                 '--env', 'key1=value1', '--env', 'key2=value2',
                 'myService',

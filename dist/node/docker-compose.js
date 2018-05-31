@@ -44,8 +44,9 @@ class DockerCompose {
             useStdIo
         });
     }
-    static exec({ composeFilepath, dockerComposeOptions, execOptions, environmentVariables, service, command, commandArguments, spawnOptions, useStdIo } = {}) {
+    static exec({ composeFilepath, dockerComposeOptions, disablePsuedoTty, execOptions, environmentVariables, service, command, commandArguments, spawnOptions, useStdIo } = {}) {
         const fullCommandArgs = docker_compose_arg_converters_1.DockerComposeArgConverters.exec({
+            disablePsuedoTty,
             execOptions,
             environmentVariables,
             service,

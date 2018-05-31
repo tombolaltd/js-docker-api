@@ -122,6 +122,7 @@ export class DockerCompose {
     public static exec ({
         composeFilepath,
         dockerComposeOptions,
+        disablePsuedoTty,
         execOptions,
         environmentVariables,
         service,
@@ -131,6 +132,7 @@ export class DockerCompose {
         useStdIo
         }: {composeFilepath?: string | undefined,
             dockerComposeOptions?: OptionsInterfaces.IDockerComposeOptions | undefined,
+            disablePsuedoTty?: boolean | undefined
             execOptions?: any | any[]| undefined,
             environmentVariables?: KeyValuePair<any> | Array<KeyValuePair<any>> | undefined,
             service?: string | undefined,
@@ -140,6 +142,7 @@ export class DockerCompose {
             useStdIo?: boolean | undefined
         } = {}): PromiseWithEvents<any[]> {
         const fullCommandArgs: any[] = DockerComposeArgConverters.exec({
+                disablePsuedoTty,
                 execOptions,
                 environmentVariables,
                 service,

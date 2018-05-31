@@ -52,18 +52,26 @@ export class DockerComposeArgConverters {
         return fullCommandArgs;
     }
     public static exec({
+        disablePsuedoTty,
         execOptions,
         environmentVariables,
         service,
         command,
         commandArguments
-        }: {execOptions?: any | any[]| undefined,
+        }: {disablePsuedoTty?: boolean | undefined
+            execOptions?: any | any[]| undefined,
             environmentVariables?: KeyValuePair<any> | Array<KeyValuePair<any>> | undefined,
             service?: string | undefined,
             command?: string | undefined,
             commandArguments?: any | any[] | undefined
         } = {}): any{
         const fullCommandArgs: any[] = [];
+        // This is a poorly documented feature only added for compatibility:
+        // It can't be part of the normal options object as it is only short
+        // form (e.g. "-T" rather than "--psuedo-tty-disable")
+        if (disablePsuedoTty) {
+            ArgumentBuilders.pushPlainArgs(fullCommandArgs, '-T');
+        }
         ArgumentBuilders.pushPlainArgs(fullCommandArgs, execOptions);
         ArgumentBuilders.pushFlaggedKeyValueArgs(fullCommandArgs, '--env', environmentVariables);
         ArgumentBuilders.pushPlainArgs(fullCommandArgs, service);

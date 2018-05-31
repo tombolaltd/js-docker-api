@@ -31,13 +31,13 @@ export class DockerComposeArgConverters {
             buildArguments,
             services,
         }: {
-            buildOptions?: any | any[]| undefined,
+            buildOptions?: OptionsInterfaces.IBuildOptions | undefined,
             buildArguments?: KeyValuePair<any> | Array<KeyValuePair<any>> | undefined,
-            services?: any | any[] | undefined
+            services?: string | string[] | undefined
         } = {}): any[]  {
         const fullCommandArgs: any[] = [];
 
-        ArgumentBuilders.pushPlainArgs(fullCommandArgs, buildOptions);
+        ArgumentBuilders.pushPlainArgs(fullCommandArgs, optionConverter(buildOptions));
         ArgumentBuilders.pushFlaggedKeyValueArgs(fullCommandArgs, '--build-arg', buildArguments);
         ArgumentBuilders.pushPlainArgs(fullCommandArgs, services);
 

@@ -13,7 +13,7 @@ class DockerComposeArgConverters {
     }
     static build({ buildOptions, buildArguments, services, } = {}) {
         const fullCommandArgs = [];
-        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, buildOptions);
+        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, option_converter_1.optionConverter(buildOptions));
         argument_builders_1.ArgumentBuilders.pushFlaggedKeyValueArgs(fullCommandArgs, '--build-arg', buildArguments);
         argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, services);
         return fullCommandArgs;

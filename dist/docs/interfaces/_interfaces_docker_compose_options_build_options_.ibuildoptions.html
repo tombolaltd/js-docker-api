@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IDownOptions | js-docker-api</title>
+	<title>IBuildOptions | js-docker-api</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_interfaces_docker_compose_options_down_options_.html">&quot;interfaces/docker-compose-options/down-options&quot;</a>
+					<a href="../modules/_interfaces_docker_compose_options_build_options_.html">&quot;interfaces/docker-compose-options/build-options&quot;</a>
 				</li>
 				<li>
-					<a href="_interfaces_docker_compose_options_down_options_.idownoptions.html">IDownOptions</a>
+					<a href="_interfaces_docker_compose_options_build_options_.ibuildoptions.html">IBuildOptions</a>
 				</li>
 			</ul>
-			<h1>Interface IDownOptions</h1>
+			<h1>Interface IBuildOptions</h1>
 		</div>
 	</div>
 </header>
@@ -73,7 +73,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">IDownOptions</span>
+						<span class="target">IBuildOptions</span>
 					</li>
 				</ul>
 			</section>
@@ -84,10 +84,12 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_compose_options_down_options_.idownoptions.html#remove_orphans" class="tsd-kind-icon">remove-<wbr>orphans</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_compose_options_down_options_.idownoptions.html#rmi" class="tsd-kind-icon">rmi</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_compose_options_down_options_.idownoptions.html#timeout" class="tsd-kind-icon">timeout</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_compose_options_down_options_.idownoptions.html#volumes" class="tsd-kind-icon">volumes</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_compose_options_build_options_.ibuildoptions.html#build_arg" class="tsd-kind-icon">build-<wbr>arg</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_compose_options_build_options_.ibuildoptions.html#compress" class="tsd-kind-icon">compress</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_compose_options_build_options_.ibuildoptions.html#force_rm" class="tsd-kind-icon">force-<wbr>rm</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_compose_options_build_options_.ibuildoptions.html#memory" class="tsd-kind-icon">memory</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_compose_options_build_options_.ibuildoptions.html#no_cache" class="tsd-kind-icon">no-<wbr>cache</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_compose_options_build_options_.ibuildoptions.html#pull" class="tsd-kind-icon">pull</a></li>
 							</ul>
 						</section>
 					</div>
@@ -96,42 +98,62 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="remove_orphans" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> remove-<wbr>orphans</h3>
-					<div class="tsd-signature tsd-kind-icon">remove-<wbr>orphans<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
+					<a name="build_arg" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> build-<wbr>arg</h3>
+					<div class="tsd-signature tsd-kind-icon">build-<wbr>arg<span class="tsd-signature-symbol">:</span> <a href="../modules/_key_value_pair_.html#keyvaluepair" class="tsd-signature-type">KeyValuePair</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/_key_value_pair_.html#keyvaluepair" class="tsd-signature-type">KeyValuePair</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/818408b/src/interfaces/docker-compose-options/down-options.ts#L11">interfaces/docker-compose-options/down-options.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/818408b/src/interfaces/docker-compose-options/build-options.ts#L19">interfaces/docker-compose-options/build-options.ts:19</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="rmi" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> rmi</h3>
-					<div class="tsd-signature tsd-kind-icon">rmi<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"all"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"local"</span></div>
+					<a name="compress" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> compress</h3>
+					<div class="tsd-signature tsd-kind-icon">compress<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/818408b/src/interfaces/docker-compose-options/down-options.ts#L5">interfaces/docker-compose-options/down-options.ts:5</a></li>
+							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/818408b/src/interfaces/docker-compose-options/build-options.ts#L4">interfaces/docker-compose-options/build-options.ts:4</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="timeout" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> timeout</h3>
-					<div class="tsd-signature tsd-kind-icon">timeout<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
+					<a name="force_rm" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> force-<wbr>rm</h3>
+					<div class="tsd-signature tsd-kind-icon">force-<wbr>rm<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/818408b/src/interfaces/docker-compose-options/down-options.ts#L14">interfaces/docker-compose-options/down-options.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/818408b/src/interfaces/docker-compose-options/build-options.ts#L7">interfaces/docker-compose-options/build-options.ts:7</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="volumes" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> volumes</h3>
-					<div class="tsd-signature tsd-kind-icon">volumes<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
+					<a name="memory" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> memory</h3>
+					<div class="tsd-signature tsd-kind-icon">memory<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/818408b/src/interfaces/docker-compose-options/down-options.ts#L8">interfaces/docker-compose-options/down-options.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/818408b/src/interfaces/docker-compose-options/build-options.ts#L16">interfaces/docker-compose-options/build-options.ts:16</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="no_cache" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> no-<wbr>cache</h3>
+					<div class="tsd-signature tsd-kind-icon">no-<wbr>cache<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/818408b/src/interfaces/docker-compose-options/build-options.ts#L10">interfaces/docker-compose-options/build-options.ts:10</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="pull" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> pull</h3>
+					<div class="tsd-signature tsd-kind-icon">pull<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/818408b/src/interfaces/docker-compose-options/build-options.ts#L13">interfaces/docker-compose-options/build-options.ts:13</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -152,13 +174,13 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_index_.html">"index"</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/_interfaces_docker_compose_options_build_options_.html">"interfaces/docker-<wbr>compose-<wbr>options/build-<wbr>options"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_interfaces_docker_compose_options_docker_compose_options_.html">"interfaces/docker-<wbr>compose-<wbr>options/docker-<wbr>compose-<wbr>options"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_interfaces_docker_compose_options_down_options_.html">"interfaces/docker-<wbr>compose-<wbr>options/down-<wbr>options"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -204,19 +226,25 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_interfaces_docker_compose_options_down_options_.idownoptions.html" class="tsd-kind-icon">IDown<wbr>Options</a>
+						<a href="_interfaces_docker_compose_options_build_options_.ibuildoptions.html" class="tsd-kind-icon">IBuild<wbr>Options</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_docker_compose_options_down_options_.idownoptions.html#remove_orphans" class="tsd-kind-icon">remove-<wbr>orphans</a>
+								<a href="_interfaces_docker_compose_options_build_options_.ibuildoptions.html#build_arg" class="tsd-kind-icon">build-<wbr>arg</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_docker_compose_options_down_options_.idownoptions.html#rmi" class="tsd-kind-icon">rmi</a>
+								<a href="_interfaces_docker_compose_options_build_options_.ibuildoptions.html#compress" class="tsd-kind-icon">compress</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_docker_compose_options_down_options_.idownoptions.html#timeout" class="tsd-kind-icon">timeout</a>
+								<a href="_interfaces_docker_compose_options_build_options_.ibuildoptions.html#force_rm" class="tsd-kind-icon">force-<wbr>rm</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_docker_compose_options_down_options_.idownoptions.html#volumes" class="tsd-kind-icon">volumes</a>
+								<a href="_interfaces_docker_compose_options_build_options_.ibuildoptions.html#memory" class="tsd-kind-icon">memory</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_interfaces_docker_compose_options_build_options_.ibuildoptions.html#no_cache" class="tsd-kind-icon">no-<wbr>cache</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_interfaces_docker_compose_options_build_options_.ibuildoptions.html#pull" class="tsd-kind-icon">pull</a>
 							</li>
 						</ul>
 					</li>

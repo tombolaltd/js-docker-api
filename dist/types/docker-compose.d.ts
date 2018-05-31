@@ -13,10 +13,10 @@ export declare class DockerCompose {
     }): PromiseWithEvents<any[]>;
     static build({composeFilepath, buildOptions, buildArguments, dockerComposeOptions, services, spawnOptions, useStdIo}?: {
         composeFilepath?: string | string[] | undefined;
-        buildOptions?: any | any[] | undefined;
+        buildOptions?: OptionsInterfaces.IBuildOptions | undefined;
         buildArguments?: KeyValuePair<any> | Array<KeyValuePair<any>> | undefined;
         dockerComposeOptions?: OptionsInterfaces.IDockerComposeOptions | undefined;
-        services?: any | any[] | undefined;
+        services?: string | string[] | undefined;
         spawnOptions?: SpawnOptions | undefined;
         useStdIo?: boolean | undefined;
     }): PromiseWithEvents<any[]>;

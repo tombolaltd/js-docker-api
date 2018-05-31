@@ -8,9 +8,9 @@ export declare class DockerComposeArgConverters {
         dockerComposeOptions?: OptionsInterfaces.IDockerComposeOptions;
     }): any[];
     static build({buildOptions, buildArguments, services}?: {
-        buildOptions?: any | any[] | undefined;
+        buildOptions?: OptionsInterfaces.IBuildOptions | undefined;
         buildArguments?: KeyValuePair<any> | Array<KeyValuePair<any>> | undefined;
-        services?: any | any[] | undefined;
+        services?: string | string[] | undefined;
     }): any[];
     static down({downOptions}?: {
         downOptions?: OptionsInterfaces.IDownOptions | undefined;

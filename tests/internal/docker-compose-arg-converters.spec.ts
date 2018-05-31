@@ -76,13 +76,14 @@ describe('The docker-compose-arg-converters class', () => {
         });
 
         it('Passing options value populates correctly', ()  => {
-            const result: any[] = DockerComposeArgConverters.build({ buildOptions: 'qux'});
-            expect(result).to.deep.equal(['qux']);
-        });
-
-        it('Passing options array populates correctly', ()  => {
-            const result: any[] = DockerComposeArgConverters.build({ buildOptions: ['qux', 'quux']});
-            expect(result).to.deep.equal(['qux', 'quux']);
+            const result: any[] = DockerComposeArgConverters.build({
+                buildOptions: {
+                    'compress': true,
+                    'pull': false,
+                    'build-arg': [{key1: 'val1'}, {key2: 2}]
+                }
+            });
+            expect(result).to.deep.equal(['--compress', '--build-arg', 'key1=val1', '--build-arg', 'key2=2']);
         });
 
         it('Passing single build args value populates correctly', ()  => {
@@ -108,11 +109,15 @@ describe('The docker-compose-arg-converters class', () => {
         it('Passing all options value populates correctly - in the expected order', ()  => {
             const result: any[] = DockerComposeArgConverters.build({
                 buildArguments: [{ key1: 'value1'}, { key2: 'value2'}],
-                buildOptions: ['opts1', 'opts2'],
+                buildOptions: {
+                    'compress': true,
+                    'pull': false,
+                    'build-arg': [{key1: 'val1'}, {key2: 2}]
+                },
                 services: ['qux', 'quux']
             });
             expect(result).to.deep.equal([
-                'opts1', 'opts2',
+                '--compress', '--build-arg', 'key1=val1', '--build-arg', 'key2=2',
                 '--build-arg', 'key1=value1', '--build-arg', 'key2=value2',
                 'qux', 'quux'
             ]);

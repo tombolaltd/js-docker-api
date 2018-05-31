@@ -1,4 +1,4 @@
-import { IDockerComposeOptions } from '../interfaces/docker-compose-options';
+import * as OptionsInterfaces from '../interfaces/docker-compose-options';
 import { KeyValuePair } from '../key-value-pair';
 import { ArgumentBuilders } from './argument-builders';
 import { optionConverter } from './option-converter';
@@ -14,7 +14,7 @@ export class DockerComposeArgConverters {
             command?: string | undefined,
             commandArguments?: string | string[] | undefined
             composeFilepath?: string | string[] | undefined,
-            dockerComposeOptions?: IDockerComposeOptions
+            dockerComposeOptions?: OptionsInterfaces.IDockerComposeOptions
         } = {}): any[]  {
         const fullArgs: any[] = [];
 
@@ -32,7 +32,7 @@ export class DockerComposeArgConverters {
             services,
         }: {
             buildOptions?: any | any[]| undefined,
-            buildArguments?: KeyValuePair | KeyValuePair[] | undefined,
+            buildArguments?: KeyValuePair<any> | Array<KeyValuePair<any>> | undefined,
             services?: any | any[] | undefined
         } = {}): any[]  {
         const fullCommandArgs: any[] = [];
@@ -58,7 +58,7 @@ export class DockerComposeArgConverters {
         command,
         commandArguments
         }: {execOptions?: any | any[]| undefined,
-            environmentVariables?: KeyValuePair | KeyValuePair[] | undefined,
+            environmentVariables?: KeyValuePair<any> | Array<KeyValuePair<any>> | undefined,
             service?: string | undefined,
             command?: string | undefined,
             commandArguments?: any | any[] | undefined
@@ -84,8 +84,8 @@ export class DockerComposeArgConverters {
         }: {runOptions?: any | any[]| undefined,
             volumes?: any| any[] | undefined,
             ports?: any| any[] | undefined,
-            environmentVariables?: KeyValuePair | KeyValuePair[] | undefined,
-            labels?: KeyValuePair| KeyValuePair[] | undefined,
+            environmentVariables?: KeyValuePair<any> | Array<KeyValuePair<any>> | undefined,
+            labels?: KeyValuePair<string> | Array<KeyValuePair<string>> | undefined,
             service?: string | undefined,
             command?: string | undefined,
             commandArguments?: any | any[] | undefined
@@ -108,12 +108,12 @@ export class DockerComposeArgConverters {
         upOptions,
         scale,
         services
-        }: {upOptions?: any | any[]| undefined,
-            scale?: KeyValuePair| KeyValuePair[] | undefined,
-            services?: any | any[] | undefined,
-        } = {}): any{
+        }: {upOptions?: OptionsInterfaces.IUpOptions | undefined,
+            scale?: KeyValuePair<number>| Array<KeyValuePair<number>> | undefined,
+            services?: string | string[] | undefined,
+        } = {}): any {
         const fullCommandArgs: any[] = [];
-        ArgumentBuilders.pushPlainArgs(fullCommandArgs, upOptions);
+        ArgumentBuilders.pushPlainArgs(fullCommandArgs, optionConverter(upOptions));
         ArgumentBuilders.pushFlaggedKeyValueArgs(fullCommandArgs, '--scale', scale);
         ArgumentBuilders.pushPlainArgs(fullCommandArgs, services);
         return fullCommandArgs;

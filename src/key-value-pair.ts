@@ -1,1 +1,1 @@
-export type KeyValuePair = { [key: string]: any; } & object;
+export type KeyValuePair<T> = { [key: string]: T; } & object;

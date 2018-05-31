@@ -1,13 +1,13 @@
 import { expect } from 'chai';
 import 'mocha';
 import { SpawnOptions } from 'ts-process-promises';
-import { DockerCompose, IDockerComposeOptions } from '../';
+import { DockerCompose } from '../';
 import { StdValidator } from './common/std-validator';
 
 describe('Integration test - up a service, exec, then down it', () => {
     const stdValidator: StdValidator = new StdValidator(false);
     it('Do it', (done) => {
-        DockerCompose.up({composeFilepath: './tests/assets/integration/docker-compose.yml', upOptions: ['--detach']})
+        DockerCompose.up({composeFilepath: './tests/assets/integration/docker-compose.yml', upOptions: {detach: true}})
         .on('stdout', stdValidator.onStdOut)
         .on('stderr', stdValidator.onStdErr)
         .then((resultUp: any) => {

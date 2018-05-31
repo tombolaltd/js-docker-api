@@ -1,15 +1,15 @@
-import { IDockerComposeOptions } from '../interfaces/docker-compose-options';
+import * as OptionsInterfaces from '../interfaces/docker-compose-options';
 import { KeyValuePair } from '../key-value-pair';
 export declare class DockerComposeArgConverters {
     static command({command, commandArguments, composeFilepath, dockerComposeOptions}?: {
         command?: string | undefined;
         commandArguments?: string | string[] | undefined;
         composeFilepath?: string | string[] | undefined;
-        dockerComposeOptions?: IDockerComposeOptions;
+        dockerComposeOptions?: OptionsInterfaces.IDockerComposeOptions;
     }): any[];
     static build({buildOptions, buildArguments, services}?: {
         buildOptions?: any | any[] | undefined;
-        buildArguments?: KeyValuePair | KeyValuePair[] | undefined;
+        buildArguments?: KeyValuePair<any> | Array<KeyValuePair<any>> | undefined;
         services?: any | any[] | undefined;
     }): any[];
     static down({downOptions}?: {
@@ -17,7 +17,7 @@ export declare class DockerComposeArgConverters {
     }): any[];
     static exec({execOptions, environmentVariables, service, command, commandArguments}?: {
         execOptions?: any | any[] | undefined;
-        environmentVariables?: KeyValuePair | KeyValuePair[] | undefined;
+        environmentVariables?: KeyValuePair<any> | Array<KeyValuePair<any>> | undefined;
         service?: string | undefined;
         command?: string | undefined;
         commandArguments?: any | any[] | undefined;
@@ -26,15 +26,15 @@ export declare class DockerComposeArgConverters {
         runOptions?: any | any[] | undefined;
         volumes?: any | any[] | undefined;
         ports?: any | any[] | undefined;
-        environmentVariables?: KeyValuePair | KeyValuePair[] | undefined;
-        labels?: KeyValuePair | KeyValuePair[] | undefined;
+        environmentVariables?: KeyValuePair<any> | Array<KeyValuePair<any>> | undefined;
+        labels?: KeyValuePair<string> | Array<KeyValuePair<string>> | undefined;
         service?: string | undefined;
         command?: string | undefined;
         commandArguments?: any | any[] | undefined;
     }): any;
     static up({upOptions, scale, services}?: {
-        upOptions?: any | any[] | undefined;
-        scale?: KeyValuePair | KeyValuePair[] | undefined;
-        services?: any | any[] | undefined;
+        upOptions?: OptionsInterfaces.IUpOptions | undefined;
+        scale?: KeyValuePair<number> | Array<KeyValuePair<number>> | undefined;
+        services?: string | string[] | undefined;
     }): any;
 }

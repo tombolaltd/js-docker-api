@@ -1,7 +1,7 @@
 import { KeyValuePair } from '../key-value-pair';
 
 export class ArgumentBuilders {
-    public static pushFlaggedKeyValueArgs(args: any[], argFlagName: string, values: KeyValuePair | KeyValuePair[] | undefined): void {
+    public static pushFlaggedKeyValueArgs(args: any[], argFlagName: string, values: KeyValuePair<any> | Array<KeyValuePair<any>> | undefined): void {
         if (typeof(values) !== 'undefined' && values) {
             if (Array.isArray(values)){
                 values.forEach((value: any) => {
@@ -50,7 +50,7 @@ export class ArgumentBuilders {
         }
     }
 
-    private static pushFlaggedKeyValueArg(args: any[], argFlagName: string, value: KeyValuePair | undefined): void {
+    private static pushFlaggedKeyValueArg(args: any[], argFlagName: string, value: KeyValuePair<any> | undefined): void {
         if (typeof(value) !== 'undefined' && value !== null) {
             // kvp.jkey is coming back undefined, do this instead.
             const key = Object.getOwnPropertyNames(value)[0];

@@ -2,7 +2,7 @@
 import Promise = require('bluebird');
 import { SpawnOptions } from 'ts-process-promises';
 import { PromiseWithEvents } from 'ts-process-promises/lib/PromiseWithEvents';
-import { IDockerComposeOptions } from './interfaces/docker-compose-options';
+import * as OptionsInterfaces from './interfaces/docker-compose-options';
 import { commandSpawner } from './internal/command-spawner';
 import { DockerComposeArgConverters } from './internal/docker-compose-arg-converters';
 import { KeyValuePair } from './key-value-pair';
@@ -30,7 +30,7 @@ export class DockerCompose {
         }: {command?: string | undefined,
             commandArguments?: | any | any[] | undefined
             composeFilepath?: string | string[] | undefined,
-            dockerComposeOptions?: IDockerComposeOptions,
+            dockerComposeOptions?: OptionsInterfaces.IDockerComposeOptions,
             spawnOptions?: SpawnOptions | undefined,
             useStdIo?: boolean | undefined
         } = {}): PromiseWithEvents<any[]>  {
@@ -60,8 +60,8 @@ export class DockerCompose {
         useStdIo
         }: {composeFilepath?: string | string[] | undefined,
             buildOptions?: any | any[]| undefined,
-            buildArguments?: KeyValuePair | KeyValuePair[] | undefined,
-            dockerComposeOptions?: IDockerComposeOptions | undefined
+            buildArguments?: KeyValuePair<any> | Array<KeyValuePair<any>> | undefined,
+            dockerComposeOptions?: OptionsInterfaces.IDockerComposeOptions | undefined
             services?: any | any[] | undefined,
             spawnOptions?: SpawnOptions | undefined,
             useStdIo?: boolean | undefined
@@ -95,7 +95,7 @@ export class DockerCompose {
         spawnOptions,
         useStdIo
         }: {composeFilepath?: string | undefined,
-            dockerComposeOptions?: IDockerComposeOptions | undefined
+            dockerComposeOptions?: OptionsInterfaces.IDockerComposeOptions | undefined
             downOptions?: any | any[]| undefined,
             spawnOptions?: SpawnOptions | undefined,
             useStdIo?: boolean | undefined
@@ -130,9 +130,9 @@ export class DockerCompose {
         spawnOptions,
         useStdIo
         }: {composeFilepath?: string | undefined,
-            dockerComposeOptions?: IDockerComposeOptions | undefined,
+            dockerComposeOptions?: OptionsInterfaces.IDockerComposeOptions | undefined,
             execOptions?: any | any[]| undefined,
-            environmentVariables?: KeyValuePair | KeyValuePair[] | undefined,
+            environmentVariables?: KeyValuePair<any> | Array<KeyValuePair<any>> | undefined,
             service?: string | undefined,
             command?: string | undefined,
             commandArguments?: any | any[] | undefined,
@@ -183,12 +183,12 @@ export class DockerCompose {
         spawnOptions,
         useStdIo
         }: {composeFilepath?: string | undefined,
-            dockerComposeOptions?: IDockerComposeOptions | undefined,
+            dockerComposeOptions?: OptionsInterfaces.IDockerComposeOptions | undefined,
             runOptions?: any | any[]| undefined,
             volumes?: any| any[] | undefined,
             ports?: any| any[] | undefined,
-            environmentVariables?: KeyValuePair | KeyValuePair[] | undefined,
-            labels?: KeyValuePair| KeyValuePair[] | undefined,
+            environmentVariables?: KeyValuePair<any> | Array<KeyValuePair<any>> | undefined,
+            labels?: KeyValuePair<string> | Array<KeyValuePair<string>> | undefined,
             service?: string | undefined,
             command?: string | undefined,
             commandArguments?: any | any[] | undefined
@@ -233,10 +233,10 @@ export class DockerCompose {
         spawnOptions,
         useStdIo
         }: {composeFilepath?: string | undefined,
-            dockerComposeOptions?: IDockerComposeOptions | undefined
-            upOptions?: any | any[]| undefined,
-            scale?: KeyValuePair[] | undefined,
-            services?: any | any[] | undefined,
+            dockerComposeOptions?: OptionsInterfaces.IDockerComposeOptions | undefined
+            upOptions?: OptionsInterfaces.IUpOptions| undefined,
+            scale?: KeyValuePair<number> | Array<KeyValuePair<number>> | undefined,
+            services?: string | string[] | undefined,
             spawnOptions?: SpawnOptions | undefined,
             useStdIo?: boolean | undefined
         } = {}): PromiseWithEvents<any[]> {
@@ -260,7 +260,7 @@ export class DockerCompose {
         dockerComposeOptions,
         spawnOptions,
         useStdIo
-    }: { dockerComposeOptions?: IDockerComposeOptions | undefined
+    }: { dockerComposeOptions?: OptionsInterfaces.IDockerComposeOptions | undefined
         spawnOptions?: SpawnOptions | undefined,
         useStdIo?: boolean | undefined
        } = {}): PromiseWithEvents<any[]> {

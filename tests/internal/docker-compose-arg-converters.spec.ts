@@ -327,14 +327,14 @@ describe('The docker-compose-arg-converters class', () => {
             expect(result).to.deep.equal([]);
         });
 
-        it('Passing options value populates correctly', ()  => {
-            const result: any[] = DockerComposeArgConverters.up({ upOptions: 'qux'});
-            expect(result).to.deep.equal(['qux']);
-        });
-
         it('Passing options array populates correctly', ()  => {
-            const result: any[] = DockerComposeArgConverters.up({ upOptions: ['qux', 'quux']});
-            expect(result).to.deep.equal(['qux', 'quux']);
+            const result: any[] = DockerComposeArgConverters.up({
+                upOptions: {
+                    'detach': true,
+                    'no-color': false
+                }
+            });
+            expect(result).to.deep.equal(['--detach']);
         });
 
         it('Passing single scale variable value populates correctly', ()  => {
@@ -359,12 +359,18 @@ describe('The docker-compose-arg-converters class', () => {
 
         it('Passing all options value populates correctly - in the expected order', ()  => {
             const result: any[] = DockerComposeArgConverters.up({
-                upOptions: ['opt1', 'opt2'],
+                upOptions: {
+                    'detach': true,
+                    'no-color': false,
+                    'no-deps': true,
+                    'scale': [{ myService3: 3}, { myService4: 4}]
+                },
                 scale: [{ key1: 1}, { key2: 2}],
                 services: ['myService1', 'myService2']
             });
             expect(result).to.deep.equal([
-                'opt1', 'opt2',
+                '--detach', '--no-deps',
+                '--scale', 'myService3=3', '--scale', 'myService4=4',
                 '--scale', 'key1=1', '--scale', 'key2=2',
                 'myService1', 'myService2'
             ]);

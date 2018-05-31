@@ -74,8 +74,8 @@
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_internal_option_converter_.html#addoption" class="tsd-kind-icon">add<wbr>Option</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_internal_option_converter_.html#addoptions" class="tsd-kind-icon">add<wbr>Options</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_internal_option_converter_.html#optionconverter" class="tsd-kind-icon">option<wbr>Converter</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_internal_option_converter_.html#pushoption" class="tsd-kind-icon">push<wbr>Option</a></li>
 							</ul>
 						</section>
 					</div>
@@ -87,13 +87,13 @@
 					<a name="addoption" class="tsd-anchor"></a>
 					<h3>add<wbr>Option</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">add<wbr>Option<span class="tsd-signature-symbol">(</span>returnedArray<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Option<span class="tsd-signature-symbol">(</span>returnedArray<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/7443613/src/internal/option-converter.ts#L8">internal/option-converter.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/aaceae3/src/internal/option-converter.ts#L3">internal/option-converter.ts:3</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -102,10 +102,39 @@
 									<h5>returnedArray: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
 								</li>
 								<li>
-									<h5>options: <span class="tsd-signature-type">any</span></h5>
+									<h5>key: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>value: <span class="tsd-signature-type">any</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="addoptions" class="tsd-anchor"></a>
+					<h3>add<wbr>Options</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Options<span class="tsd-signature-symbol">(</span>returnedArray<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, values<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/aaceae3/src/internal/option-converter.ts#L21">internal/option-converter.ts:21</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>returnedArray: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
 								</li>
 								<li>
 									<h5>key: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5>values: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -122,7 +151,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/7443613/src/internal/option-converter.ts#L18">internal/option-converter.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/aaceae3/src/internal/option-converter.ts#L27">internal/option-converter.ts:27</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -132,35 +161,6 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-					<a name="pushoption" class="tsd-anchor"></a>
-					<h3>push<wbr>Option</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">push<wbr>Option<span class="tsd-signature-symbol">(</span>array<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, value<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/7443613/src/internal/option-converter.ts#L1">internal/option-converter.ts:1</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>array: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
-								</li>
-								<li>
-									<h5>key: <span class="tsd-signature-type">string</span></h5>
-								</li>
-								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> value: <span class="tsd-signature-type">any</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -182,10 +182,22 @@
 						<a href="_index_.html">"index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_interfaces_docker_compose_options_.html">"interfaces/docker-<wbr>compose-<wbr>options"</a>
+						<a href="_interfaces_docker_compose_options_docker_compose_options_.html">"interfaces/docker-<wbr>compose-<wbr>options/docker-<wbr>compose-<wbr>options"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_interfaces_docker_options_.html">"interfaces/docker-<wbr>options"</a>
+						<a href="_interfaces_docker_compose_options_index_.html">"interfaces/docker-<wbr>compose-<wbr>options/index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_interfaces_docker_compose_options_up_options_.html">"interfaces/docker-<wbr>compose-<wbr>options/up-<wbr>options"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_interfaces_docker_options_docker_options_.html">"interfaces/docker-<wbr>options/docker-<wbr>options"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_interfaces_docker_options_index_.html">"interfaces/docker-<wbr>options/index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_interfaces_index_.html">"interfaces/index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="_internal_argument_builders_.html">"internal/argument-<wbr>builders"</a>
@@ -209,11 +221,11 @@
 					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="_internal_option_converter_.html#addoption" class="tsd-kind-icon">add<wbr>Option</a>
 					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_internal_option_converter_.html#addoptions" class="tsd-kind-icon">add<wbr>Options</a>
+					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_internal_option_converter_.html#optionconverter" class="tsd-kind-icon">option<wbr>Converter</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_internal_option_converter_.html#pushoption" class="tsd-kind-icon">push<wbr>Option</a>
 					</li>
 				</ul>
 			</nav>

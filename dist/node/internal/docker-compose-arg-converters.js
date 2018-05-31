@@ -46,7 +46,7 @@ class DockerComposeArgConverters {
     }
     static up({ upOptions, scale, services } = {}) {
         const fullCommandArgs = [];
-        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, upOptions);
+        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, option_converter_1.optionConverter(upOptions));
         argument_builders_1.ArgumentBuilders.pushFlaggedKeyValueArgs(fullCommandArgs, '--scale', scale);
         argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, services);
         return fullCommandArgs;

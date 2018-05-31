@@ -79,4 +79,49 @@ describe ('optionConverter function', () => {
             42
         ]);
     });
+
+    it('with object having array arg should add it as a set of flags', () => {
+        const result = optionConverter({
+            'true-bool': true,
+            'false-bool': false,
+            'true-string': 'true',
+            'false-string': 'false',
+            'string': ['Ford Prefect', 'Triumph Spitfire', 'Lamborghini LM002'],
+            'number': [42, 41, 40]
+        }) ;
+
+        expect(result).to.eql([ '--true-bool',
+            '--true-string',
+            'true',
+            '--false-string',
+            'false',
+            '--string',
+            'Ford Prefect',
+            '--string',
+            'Triumph Spitfire',
+            '--string',
+            'Lamborghini LM002',
+            '--number',
+            42,
+            '--number',
+            41,
+            '--number',
+            40
+        ]);
+    });
+
+    it('with object having array arg should add it as a set of flags', () => {
+        const result = optionConverter({
+            keyValuePairString: {Key1: 'Value1'},
+            keyValuePairNumber: {Key2: 2},
+            keyValueArray: [{Key3: 'Value3'}, {Key4: 4}]
+        }) ;
+
+        expect(result).to.eql([
+            '--keyValuePairString', 'Key1=Value1',
+            '--keyValuePairNumber', 'Key2=2',
+            '--keyValueArray', 'Key3=Value3',
+            '--keyValueArray', 'Key4=4',
+        ]);
+    });
 });

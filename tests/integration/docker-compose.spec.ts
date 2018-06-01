@@ -1,87 +1,62 @@
-// import { expect } from 'chai';
-// import 'mocha';
-// import { SpawnOptions } from 'ts-process-promises';
-// import { DockerCompose } from '../';
-// import { StdValidator } from './common/std-validator';
+import { expect } from 'chai';
+import 'mocha';
+import { DockerCompose } from '../../src';
 
-// describe ('DockerCompose', () => {
-//     describe('The command function', () => {
-//         it('Run as ps command without filepath - get error', (done) => {
-//             const stdValidator: StdValidator = new StdValidator();
+describe('DockerCompose', () => {
+    describe('The command function', () => {
+        it('Run as ps command without filepath - get error', (done) => {
+            DockerCompose.command({
+                command: 'ps'
+            })
+            .then((result: any) => {
+                expect.fail('Expected error - none was returned');
+            }).catch((err: number) => {
+                expect(err).to.equal(1);
+                done();
+            });
+        });
 
-//             DockerCompose.command({
-//                 command: 'ps'
-//             })
-//             .on('stdout', stdValidator.onStdOut)
-//             .on('stderr', stdValidator.onStdErr)
-//             .then((result: any) => {
-//                 expect.fail('Expected error - none was returned');
-//             }).catch((err: Error) => {
-//                 expect(err.message).to.equal('The command "docker-compose ps" returned an exit status of 1');
-//                 done();
-//             });
-//         });
+        it('when passed an unrecognised command fails reporting output', (done) => {
+            DockerCompose.command({
+                command: 'foo'
+            })
+            .then((result: any) => {
+                done(new Error('Expected test to fail, did not'));
+            }).catch(((error: number) => {
+                expect(error).to.equal(1);
+                done();
+            }));
+        });
 
-//         it('when passed an unrecognised command fails reporting output', (done) => {
-//             const stdValidator: StdValidator = new StdValidator();
+        it('Run as ps command with filepath - get result', (done) => {
+            DockerCompose.command({
+                composeFilepath: './tests/assets/docker-compose.yml',
+                command: 'ps'
+            })
+            .then((result: string) => {
+                expect(result).to.equal('done');
+                done();
+            }).catch(done);
+        });
 
-//             DockerCompose.command({
-//                 command: 'foo'
-//             })
-//             .on('stdout', stdValidator.onStdOut)
-//             .on('stderr', stdValidator.onStdErr)
-//             .then((result: any) => {
-//                 done(new Error('Expected test to fail, did not'));
-//             }).catch(((error: Error) => {
-//                 expect(error.message).to.equal('The command "docker-compose foo" returned an exit status of 1');
-//                 done();
-//             }));
-//         });
+        it('Run as ps --service command with filepath - get result', (done) => {
+            DockerCompose.command({
+                composeFilepath: './tests/assets/docker-compose.yml',
+                command: 'ps',
+                commandArguments: '--services',
+            })
+            .then((result: string) => {
+                expect(result).to.equal('done');
+                done();
+            }).catch(done);
+        });
+    });
 
-//         it('Run as ps command with filepath - get result', (done) => {
-//             const stdValidator: StdValidator = new StdValidator();
-
-//             DockerCompose.command({
-//                 composeFilepath: './tests/assets/docker-compose.yml',
-//                 command: 'ps'
-//             })
-//             .on('stdout', stdValidator.onStdOut)
-//             .on('stderr', stdValidator.onStdErr)
-//             .then((result: any) => {
-//                 expect(result).is.a('array');
-//                 stdValidator.validate(result);
-//                 done();
-//             }).catch(done);
-//         });
-
-//         it('Run as ps --service command with filepath - get result', (done) => {
-//             const stdValidator: StdValidator = new StdValidator();
-
-//             DockerCompose.command({
-//                 composeFilepath: './tests/assets/docker-compose.yml',
-//                 command: 'ps',
-//                 commandArguments: '--services',
-//             })
-//             .on('stdout', stdValidator.onStdOut)
-//             .on('stderr', stdValidator.onStdErr)
-//             .then((result: any) => {
-//                 stdValidator.validate(result);
-//                 expect(result).to.deep.equal(['foo']); // The names of the services in the YAML
-//                 done();
-//             }).catch(done);
-//         });
-//     });
-
-//     it('The version function', (done) => {
-//         const stdValidator: StdValidator = new StdValidator(true);
-
-//         DockerCompose.version()
-//         .on('stdout', stdValidator.onStdOut)
-//         .on('stderr', stdValidator.onStdErr)
-//         .then((result: any) => {
-//             stdValidator.validate(result);
-//             expect(result).to.deep.equal(result); // The names of the services in the YAML
-//             done();
-//         }).catch(done);
-//     });
-// });
+    it('The version function', (done) => {
+        DockerCompose.version()
+        .then((result: any) => {
+            expect(result).to.equal('done');
+            done();
+        }).catch(done);
+    });
+});

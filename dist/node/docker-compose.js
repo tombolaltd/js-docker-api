@@ -1,105 +1,65 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const OptionsConverters = require("./internal/command-converters/docker-compose");
 const command_spawner_1 = require("./internal/command-spawner");
-const docker_compose_arg_converters_1 = require("./internal/docker-compose-arg-converters");
 class DockerCompose {
-    static command({ command, commandArguments, composeFilepath, dockerComposeOptions, spawnOptions, useStdIo } = {}) {
-        const fullArgs = docker_compose_arg_converters_1.DockerComposeArgConverters.command({
-            command,
-            commandArguments,
-            composeFilepath,
-            dockerComposeOptions
-        });
-        const spawner = command_spawner_1.commandSpawner('docker-compose', fullArgs, spawnOptions);
-        if (useStdIo) {
-            return spawner.on('stdout', console.log).on('stderr', console.error);
+    static command(options = {}) {
+        const fullArgs = OptionsConverters.commandOptionsConverter(options);
+        const spawner = command_spawner_1.commandSpawner('docker-compose', fullArgs, options.spawnOptions);
+        if (options.useStdIo) {
+            return spawner.on('stdout', console.log)
+                .on('stderr', console.error);
         }
         return spawner;
     }
-    static build({ composeFilepath, buildOptions, buildArguments, dockerComposeOptions, services, spawnOptions, useStdIo } = {}) {
-        const commandArguments = docker_compose_arg_converters_1.DockerComposeArgConverters.build({
-            buildOptions,
-            buildArguments,
-            services,
-        });
+    static build(options = {}) {
         return DockerCompose.command({
             command: 'build',
-            commandArguments,
-            composeFilepath,
-            dockerComposeOptions,
-            spawnOptions,
-            useStdIo
+            composeFilepath: options.composeFilepath,
+            commandArguments: OptionsConverters.buildOptionsConverter(options),
+            dockerComposeOptions: options.dockerComposeOptions,
+            spawnOptions: options.spawnOptions,
+            useStdIo: options.useStdIo
         });
     }
-    static down({ composeFilepath, dockerComposeOptions, downOptions, spawnOptions, useStdIo } = {}) {
-        const commandArguments = docker_compose_arg_converters_1.DockerComposeArgConverters.down({
-            downOptions
-        });
+    static down(options = {}) {
         return DockerCompose.command({
             command: 'down',
-            composeFilepath,
-            commandArguments,
-            dockerComposeOptions,
-            spawnOptions,
-            useStdIo
+            composeFilepath: options.composeFilepath,
+            commandArguments: OptionsConverters.downOptionsConverter(options),
+            dockerComposeOptions: options.dockerComposeOptions,
+            spawnOptions: options.spawnOptions,
+            useStdIo: options.useStdIo
         });
     }
-    static exec({ composeFilepath, dockerComposeOptions, disablePsuedoTty, index, execOptions, environmentVariables, service, command, commandArguments, spawnOptions, useStdIo } = {}) {
-        const fullCommandArgs = docker_compose_arg_converters_1.DockerComposeArgConverters.exec({
-            disablePsuedoTty,
-            index,
-            execOptions,
-            environmentVariables,
-            service,
-            command,
-            commandArguments
-        });
+    static exec(options = {}) {
         return DockerCompose.command({
             command: 'exec',
-            composeFilepath,
-            commandArguments: fullCommandArgs,
-            dockerComposeOptions,
-            spawnOptions,
-            useStdIo
+            composeFilepath: options.composeFilepath,
+            commandArguments: OptionsConverters.execOptionsConverter(options),
+            dockerComposeOptions: options.dockerComposeOptions,
+            spawnOptions: options.spawnOptions,
+            useStdIo: options.useStdIo
         });
     }
-    static run({ composeFilepath, dockerComposeOptions, disablePsuedoTty, user, runOptions, publish, volumes, workdir, ports, environmentVariables, labels, service, command, commandArguments, spawnOptions, useStdIo } = {}) {
-        const fullCommandArgs = docker_compose_arg_converters_1.DockerComposeArgConverters.run({
-            disablePsuedoTty,
-            user,
-            runOptions,
-            publish,
-            volumes,
-            workdir,
-            ports,
-            environmentVariables,
-            labels,
-            service,
-            command,
-            commandArguments
-        });
+    static run(options = {}) {
         return DockerCompose.command({
             command: 'run',
-            composeFilepath,
-            commandArguments: fullCommandArgs,
-            dockerComposeOptions,
-            spawnOptions,
-            useStdIo
+            composeFilepath: options.composeFilepath,
+            commandArguments: OptionsConverters.runOptionsConverter(options),
+            dockerComposeOptions: options.dockerComposeOptions,
+            spawnOptions: options.spawnOptions,
+            useStdIo: options.useStdIo
         });
     }
-    static up({ composeFilepath, dockerComposeOptions, upOptions, scale, services, spawnOptions, useStdIo } = {}) {
-        const commandArguments = docker_compose_arg_converters_1.DockerComposeArgConverters.up({
-            upOptions,
-            scale,
-            services
-        });
+    static up(options = {}) {
         return DockerCompose.command({
             command: 'up',
-            composeFilepath,
-            commandArguments,
-            dockerComposeOptions,
-            spawnOptions,
-            useStdIo
+            composeFilepath: options.composeFilepath,
+            commandArguments: OptionsConverters.upOptionsConverter(options),
+            dockerComposeOptions: options.dockerComposeOptions,
+            spawnOptions: options.spawnOptions,
+            useStdIo: options.useStdIo
         });
     }
     static version({ dockerComposeOptions, spawnOptions, useStdIo } = {}) {

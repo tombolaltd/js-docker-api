@@ -1,9 +1,11 @@
 import { KeyValuePair } from '../../key-value-pair';
-export interface IBuildOptions {
-    'compress'?: boolean;
-    'force-rm'?: boolean;
-    'no-cache'?: boolean;
-    'pull'?: boolean;
-    'memory'?: string;
-    'build-arg'?: KeyValuePair<any> | Array<KeyValuePair<any>>;
+import { ICommandBaseOptions } from './command-base-options';
+export interface IBuildOptions extends ICommandBaseOptions {
+    compress?: boolean;
+    forceRm?: boolean;
+    noCache?: boolean;
+    pull?: boolean;
+    memory?: string;
+    buildArguments?: KeyValuePair<any> | Array<KeyValuePair<any>>;
+    services?: string | string[];
 }

@@ -1,27 +1,37 @@
 import { KeyValuePair } from '../../key-value-pair';
+import { ICommandBaseOptions } from './command-base-options';
 
-export interface IRunOptions {
+export interface IRunOptions extends ICommandBaseOptions {
     // Detached mode: Run container in the background, print new container name.
-    'detach'?: boolean;
+    detach?: boolean;
 
     // Assign a name to the container
-    'name'?: string;
+    name?: string;
 
     // Override the entrypoint of the image.
-    'entrypoint'?: string;
-
-    // Add or override a label
-    'label'?: KeyValuePair<string> | Array<KeyValuePair<string>>;
+    entrypoint?: string;
 
     // Don't start linked services.
-    'no-deps'?: boolean;
+    noDeps?: boolean;
 
     // Remove container after run. Ignored in detached mode.
-    'rm'?: boolean;
+    rm?: boolean;
 
     // Run command with the service's ports enabled and mapped to the host.
-    'service-ports'?: boolean;
+    servicePorts?: boolean;
 
     // Use the service's network aliases in the network(s) the container connects to.
-    'use-aliases'?: boolean;
+    useAliases?: boolean;
+
+    disablePsuedoTty?: boolean;
+    user?: string;
+    publish?: any| any[];
+    volumes?: any| any[];
+    workdir?: string | string;
+    ports?: any| any[];
+    environmentVariables?: KeyValuePair<any> | Array<KeyValuePair<any>>;
+    labels?: KeyValuePair<string> | Array<KeyValuePair<string>>;
+    service?: string;
+    command?: string;
+    commandArguments?: any | any[];
 }

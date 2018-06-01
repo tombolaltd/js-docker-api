@@ -212,4 +212,10 @@ describe('The ArgumentBuilders class', () => {
             expect(workingArray).to.deep.equal(['foo', 'bar']);
         });
     });
+
+    describe('pushBooleanArgs function', () => {
+        it('TODO', () => {
+            expect.fail('TODO');
+        });
+    });
 });

@@ -21,11 +21,11 @@
   },
   "scripts": {
     "start": "npm install && npm install -g mocha",
-    "test": "npm run lint && npm run build && mocha -r ts-node/register ./tests/{,**}/*.spec.ts",
+    "test": "npm run lint && npm run build && mocha -r ts-node/register ./tests/{,**}/**/*.spec.ts",
     "build": "tsc -p tsconfig.node.json",
     "postbuild": "npm run docs",
     "docs": "typedoc --out dist/docs --tsconfig tsconfig.node.json",
-    "lint": "tslint -t codeFrame ./{src,tests}/{,**}/*.ts"
+    "lint": "tslint -t codeFrame ./{src,tests}/{,**}/**/*.ts"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.20",

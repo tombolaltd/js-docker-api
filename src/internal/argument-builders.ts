@@ -49,6 +49,21 @@ export class ArgumentBuilders {
         }
     }
 
+    /**
+     * Used when passing as simple flag e.g. { foo: true } => "--foo"
+     *
+     * @static
+     * @param {any[]} args the args list to add to
+     * @param {string} flag the flag to add
+     * @param {boolean} [value] whether or not to add the flag.
+     * @memberof ArgumentBuilders
+     */
+    public static pushBooleanArgs(args: any[], flag: string, value?: boolean): void {
+        if (typeof(value) !== 'undefined' && value) {
+            ArgumentBuilders.pushPlainArg(args, flag);
+        }
+    }
+
     private static pushFlaggedArg(args: any[], flag: string, value: any | undefined): void {
         if (typeof(value) !== 'undefined' && ArgumentBuilders.canAddValue(value)) {
             args.push(flag);

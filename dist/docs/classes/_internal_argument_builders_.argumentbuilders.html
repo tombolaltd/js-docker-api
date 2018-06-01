@@ -85,6 +85,7 @@
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_internal_argument_builders_.argumentbuilders.html#canaddvalue" class="tsd-kind-icon">can<wbr>Add<wbr>Value</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_internal_argument_builders_.argumentbuilders.html#pushbooleanargs" class="tsd-kind-icon">push<wbr>Boolean<wbr>Args</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_internal_argument_builders_.argumentbuilders.html#pushequalarg" class="tsd-kind-icon">push<wbr>Equal<wbr>Arg</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-static"><a href="_internal_argument_builders_.argumentbuilders.html#pushequalargs" class="tsd-kind-icon">push<wbr>Equal<wbr>Args</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="_internal_argument_builders_.argumentbuilders.html#pushflaggedarg" class="tsd-kind-icon">push<wbr>Flagged<wbr>Arg</a></li>
@@ -110,7 +111,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/d699c82/src/internal/argument-builders.ts#L80">internal/argument-builders.ts:80</a></li>
+									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/11dc115/src/internal/argument-builders.ts#L95">internal/argument-builders.ts:95</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -120,6 +121,53 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-static">
+					<a name="pushbooleanargs" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> push<wbr>Boolean<wbr>Args</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-static">
+						<li class="tsd-signature tsd-kind-icon">push<wbr>Boolean<wbr>Args<span class="tsd-signature-symbol">(</span>args<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, flag<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, value<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/11dc115/src/internal/argument-builders.ts#L61">internal/argument-builders.ts:61</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Used when passing as simple flag e.g. { foo: true } =&gt; &quot;--foo&quot;</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>static</dt>
+									<dd></dd>
+									<dt>memberof</dt>
+									<dd><p>ArgumentBuilders</p>
+									</dd>
+								</dl>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>args: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the args list to add to</p>
+									</div>
+								</li>
+								<li>
+									<h5>flag: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>the flag to add</p>
+									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> value: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -133,7 +181,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/d699c82/src/internal/argument-builders.ts#L65">internal/argument-builders.ts:65</a></li>
+									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/11dc115/src/internal/argument-builders.ts#L80">internal/argument-builders.ts:80</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -162,7 +210,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/d699c82/src/internal/argument-builders.ts#L40">internal/argument-builders.ts:40</a></li>
+									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/11dc115/src/internal/argument-builders.ts#L40">internal/argument-builders.ts:40</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -191,7 +239,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/d699c82/src/internal/argument-builders.ts#L52">internal/argument-builders.ts:52</a></li>
+									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/11dc115/src/internal/argument-builders.ts#L67">internal/argument-builders.ts:67</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -220,7 +268,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/d699c82/src/internal/argument-builders.ts#L28">internal/argument-builders.ts:28</a></li>
+									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/11dc115/src/internal/argument-builders.ts#L28">internal/argument-builders.ts:28</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -249,7 +297,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/d699c82/src/internal/argument-builders.ts#L71">internal/argument-builders.ts:71</a></li>
+									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/11dc115/src/internal/argument-builders.ts#L86">internal/argument-builders.ts:86</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -278,7 +326,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/d699c82/src/internal/argument-builders.ts#L4">internal/argument-builders.ts:4</a></li>
+									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/11dc115/src/internal/argument-builders.ts#L4">internal/argument-builders.ts:4</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -307,7 +355,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/d699c82/src/internal/argument-builders.ts#L59">internal/argument-builders.ts:59</a></li>
+									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/11dc115/src/internal/argument-builders.ts#L74">internal/argument-builders.ts:74</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -333,7 +381,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/d699c82/src/internal/argument-builders.ts#L16">internal/argument-builders.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/11dc115/src/internal/argument-builders.ts#L16">internal/argument-builders.ts:16</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -370,6 +418,9 @@
 						<a href="../modules/_interfaces_docker_compose_options_build_options_.html">"interfaces/docker-<wbr>compose-<wbr>options/build-<wbr>options"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="../modules/_interfaces_docker_compose_options_command_base_options_.html">"interfaces/docker-<wbr>compose-<wbr>options/command-<wbr>base-<wbr>options"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_interfaces_docker_compose_options_docker_compose_options_.html">"interfaces/docker-<wbr>compose-<wbr>options/docker-<wbr>compose-<wbr>options"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -400,6 +451,12 @@
 						<a href="../modules/_internal_argument_builders_.html">"internal/argument-<wbr>builders"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="../modules/_internal_command_converters_docker_compose_index_.html">"internal/command-<wbr>converters/docker-<wbr>compose/index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_internal_command_converters_docker_compose_run_options_converter_.html">"internal/command-<wbr>converters/docker-<wbr>compose/run-<wbr>options-<wbr>converter"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_internal_command_spawner_.html">"internal/command-<wbr>spawner"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -422,6 +479,9 @@
 						<ul>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
 								<a href="_internal_argument_builders_.argumentbuilders.html#canaddvalue" class="tsd-kind-icon">can<wbr>Add<wbr>Value</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-static">
+								<a href="_internal_argument_builders_.argumentbuilders.html#pushbooleanargs" class="tsd-kind-icon">push<wbr>Boolean<wbr>Args</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
 								<a href="_internal_argument_builders_.argumentbuilders.html#pushequalarg" class="tsd-kind-icon">push<wbr>Equal<wbr>Arg</a>

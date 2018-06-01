@@ -1,25 +1,17 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const ts_process_promises_1 = require("ts-process-promises");
-const PromiseWithEvents_1 = require("ts-process-promises/lib/PromiseWithEvents");
-function commandSpawner(command, fullArgs, spawnOptions) {
-    return new PromiseWithEvents_1.PromiseWithEvents((resolve, reject, eventEmitter) => {
-        const result = [];
-        ts_process_promises_1.spawn(command, fullArgs, spawnOptions)
-            .on('stdout', (line) => {
-            eventEmitter.emit('stdout', line);
-            result.push(line);
-        })
-            .on('stderr', (err) => {
-            eventEmitter.emit('stderr', err);
-        })
-            .then((value) => {
-            if (value.exitCode === 0) {
-                resolve(result);
+const childProcess = require("child_process");
+function commandSpawner(command, fullArgs, spawnOptions, onData) {
+    return new Promise((resolve, reject) => {
+        const process = childProcess.spawn(command, fullArgs, spawnOptions);
+        if (typeof onData === 'function') {
+            process.on('data', onData);
+        }
+        process.on('exit', (returnCode, signal) => {
+            if (returnCode > 0) {
+                return reject(`The process errored with a non-zero code: ${returnCode}: ${signal}`);
             }
-            else {
-                reject(new Error(`The command "${command} ${fullArgs.join(' ')}" returned an exit status of ${value.exitCode}`));
-            }
+            resolve(signal);
         });
     });
 }

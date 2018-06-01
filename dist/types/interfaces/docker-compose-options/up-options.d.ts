@@ -1,19 +1,21 @@
-import { KeyValuePair } from '../../key-value-pair';
-export interface IUpOptions {
-    'detach'?: boolean | undefined;
-    'no-color'?: boolean | undefined;
-    'quiet-pull'?: boolean | undefined;
-    'no-deps'?: boolean | undefined;
-    'force-recreate'?: boolean | undefined;
-    'always-recreate-deps'?: boolean | undefined;
-    'no-recreate'?: boolean | undefined;
-    'no-build'?: boolean | undefined;
-    'no-start'?: boolean | undefined;
-    'build'?: boolean | undefined;
-    'abort-on-container-exit '?: boolean | undefined;
-    'timeout'?: number | undefined;
-    'renew-anon-volumes'?: boolean | undefined;
-    'remove-orphans'?: boolean | undefined;
-    'exit-code-from'?: boolean | undefined;
-    'scale'?: KeyValuePair<number> | Array<KeyValuePair<number>> | undefined;
+import { KeyValuePair } from '@common/key-value-pair';
+import { ICommandBaseOptions } from './command-base-options';
+export interface IUpOptions extends ICommandBaseOptions {
+    detach?: boolean;
+    noColor?: boolean;
+    quietPull?: boolean;
+    noDeps?: boolean;
+    forceRecreate?: boolean;
+    alwaysRecreateDeps?: boolean;
+    noRecreate?: boolean;
+    noBuild?: boolean;
+    noStart?: boolean;
+    build?: boolean;
+    abortOnContainerExit?: boolean;
+    timeout?: number;
+    renewAnonVolumes?: boolean;
+    removeOrphans?: boolean;
+    exitCodeFrom?: boolean;
+    scale?: KeyValuePair<number> | Array<KeyValuePair<number>>;
+    services?: string | string[];
 }

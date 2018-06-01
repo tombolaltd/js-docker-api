@@ -38,23 +38,6 @@ class DockerComposeArgConverters {
         argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, commandArguments);
         return fullCommandArgs;
     }
-    static run({ disablePsuedoTty, user, runOptions, publish, volumes, workdir, ports, environmentVariables, labels, service, command, commandArguments } = {}) {
-        const fullCommandArgs = [];
-        if (disablePsuedoTty) {
-            argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, '-T');
-        }
-        argument_builders_1.ArgumentBuilders.pushEqualArgs(fullCommandArgs, '--user', user);
-        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, option_converter_1.optionConverter(runOptions));
-        argument_builders_1.ArgumentBuilders.pushEqualArgs(fullCommandArgs, '--volume', volumes);
-        argument_builders_1.ArgumentBuilders.pushEqualArgs(fullCommandArgs, '--publish', ports);
-        argument_builders_1.ArgumentBuilders.pushEqualArgs(fullCommandArgs, '--workdir', workdir);
-        argument_builders_1.ArgumentBuilders.pushFlaggedKeyValueArgs(fullCommandArgs, '-e', environmentVariables);
-        argument_builders_1.ArgumentBuilders.pushFlaggedKeyValueArgs(fullCommandArgs, '--label', labels);
-        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, service);
-        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, command);
-        argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, commandArguments);
-        return fullCommandArgs;
-    }
     static up({ upOptions, scale, services } = {}) {
         const fullCommandArgs = [];
         argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, option_converter_1.optionConverter(upOptions));

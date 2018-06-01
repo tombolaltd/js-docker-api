@@ -49,6 +49,11 @@ class ArgumentBuilders {
             }
         }
     }
+    static pushBooleanArgs(args, flag, value) {
+        if (typeof (value) !== 'undefined' && value) {
+            ArgumentBuilders.pushPlainArg(args, flag);
+        }
+    }
     static pushFlaggedArg(args, flag, value) {
         if (typeof (value) !== 'undefined' && ArgumentBuilders.canAddValue(value)) {
             args.push(flag);

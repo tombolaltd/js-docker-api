@@ -21,14 +21,18 @@
   },
   "scripts": {
     "start": "npm install && npm install -g mocha",
-    "test": "npm run lint && npm run build && mocha -r ts-node/register ./tests/{,**}/*.spec.ts",
-    "build": "tsc -p tsconfig.node.json",
+    "test": "npm run lint && npm run build && find ./tests/ -name '*.spec.ts' | xargs mocha -r ts-node/register -r tsconfig-paths/register",
+    "build": "tsc -p tsconfig.json",
     "postbuild": "npm run docs",
-    "docs": "typedoc --out dist/docs --tsconfig tsconfig.node.json",
-    "lint": "tslint -t codeFrame ./{src,tests}/{,**}/*.ts"
+    "docs": "typedoc --out dist/docs --tsconfig tsconfig.json",
+    "lint": "tslint -t codeFrame ./{src,tests}/{,**}/**/**/**/*.ts"
+  },
+  "_moduleAliases": {
+    "@common/*": "dist/node/internal/common",
+    "@docker-compose-command-converters/*": "dist/node/internal/command-converters/docker-compose",
+    "@docker-compose-option-interfaces/*": "dist/node/interfaces"
   },
   "devDependencies": {
-    "@types/bluebird": "^3.5.20",
     "@types/chai": "^4.0.3",
     "@types/mocha": "^2.2.41",
     "@types/sinon": "^2.3.4",
@@ -39,12 +43,13 @@
     "sinon": "^3.2.1",
     "sinon-chai": "^2.13.0",
     "ts-node": "^6.0.4",
+    "tsconfig-paths": "^3.3.2",
     "tslint": "^5.6.0",
     "typedoc": "^0.8.0",
     "typescript": "2.4.0"
   },
   "dependencies": {
-    "@types/node": "^10.1.4",
-    "ts-process-promises": "^1.0.2"
+    "@types/node": "^10.3.0",
+    "module-alias": "^2.0.6"
   }
 }

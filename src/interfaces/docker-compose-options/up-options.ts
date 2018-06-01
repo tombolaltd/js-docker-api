@@ -1,51 +1,54 @@
-import { KeyValuePair } from '../../key-value-pair';
+import { KeyValuePair } from '@common/key-value-pair';
+import { ICommandBaseOptions } from './command-base-options';
 
-export interface IUpOptions {
+export interface IUpOptions extends ICommandBaseOptions {
     //  Detached mode: Run containers in the background print new container names. Incompatible with --abort-on-container-exit
-    'detach'?: boolean | undefined;
+    detach?: boolean;
 
     // Produce monochrome output.
-    'no-color'?: boolean | undefined;
+    noColor?: boolean;
 
     // Pull without printing progress information
-    'quiet-pull'?: boolean | undefined;
+    quietPull?: boolean;
 
     // Don't start linked services.
-    'no-deps'?: boolean | undefined;
+    noDeps?: boolean;
 
     // Recreate containers even if their configuration and image haven't changed.
-    'force-recreate'?: boolean | undefined;
+    forceRecreate?: boolean;
 
     // Recreate dependent containers. Incompatible with --no-recreate.
-    'always-recreate-deps'?: boolean | undefined;
+    alwaysRecreateDeps?: boolean;
 
     // If containers already exist, don't recreate them. Incompatible with --force-recreate and --renew-anon-volumes.
-    'no-recreate'?: boolean | undefined;
+    noRecreate?: boolean;
 
     // Don't build an image, even if it's missing.
-    'no-build'?: boolean | undefined;
+    noBuild?: boolean;
 
     // Don't start the services after creating them.
-    'no-start'?: boolean | undefined;
+    noStart?: boolean;
 
     // Build images before starting containers.
-    'build'?: boolean | undefined;
+    build?: boolean;
 
     // Stops all containers if any container was stopped. Incompatible with --detach.
-    'abort-on-container-exit '?: boolean | undefined;
+    abortOnContainerExit?: boolean;
 
     // Use this timeout in seconds for container shutdown when attached or when containers are already running. (default: 10)
-    'timeout'?: number | undefined;
+    timeout?: number;
 
     // Recreate anonymous volumes instead of retrieving data from the previous containers.
-    'renew-anon-volumes'?: boolean | undefined;
+    renewAnonVolumes?: boolean;
 
     // Remove containers for services not defined in the Compose file.
-    'remove-orphans'?: boolean | undefined;
+    removeOrphans?: boolean;
 
     // Return the exit code of the selected service container. Implies --abort-on-container-exit.
-    'exit-code-from'?: boolean | undefined;
+    exitCodeFrom?: boolean;
 
     // Scale SERVICE to NUM instances. Overrides the `scale` setting in the Compose file if present
-    'scale'?: KeyValuePair<number> | Array<KeyValuePair<number>> | undefined;
-    }
+    scale?: KeyValuePair<number> | Array<KeyValuePair<number>>;
+
+    services?: string | string[];
+}

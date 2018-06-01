@@ -1,3 +1,4 @@
+import { KeyValuePair } from '@common/key-value-pair';
 /**
  *
  * @export
@@ -11,7 +12,7 @@ export interface IDockerComposeOptions {
      * @type {string}
      * @memberof IDockerComposeOptions
      */
-    'project-name'?: string;
+    projectName?: string;
 
     /**
      * Show more output
@@ -19,7 +20,7 @@ export interface IDockerComposeOptions {
      * @type {boolean}
      * @memberof IDockerComposeOptions
      */
-    'verbose'?: boolean;
+    verbose?: boolean;
 
     /**
      * Set the logging level ("debug"|"info"|"warn"|"error"|"fatal") (default "info")
@@ -27,7 +28,7 @@ export interface IDockerComposeOptions {
      * @type {string}
      * @memberof IDockerComposeOptions
      */
-    'log-level'?: 'DEBUG' | 'INFO' | 'WARN' | 'ERROR' | 'FATAL' ;
+    logLevel?: 'DEBUG' | 'INFO' | 'WARN' | 'ERROR' | 'FATAL' ;
 
     /**
      * Do not print ANSI control characters
@@ -35,7 +36,7 @@ export interface IDockerComposeOptions {
      * @type {boolean}
      * @memberof IDockerComposeOptions
      */
-    'no-ansi'?: boolean;
+    noAnsi?: boolean;
 
     /**
      * Print version and exit
@@ -43,7 +44,7 @@ export interface IDockerComposeOptions {
      * @type {boolean}
      * @memberof IDockerComposeOptions
      */
-    'version'?: boolean;
+    version?: boolean;
 
     /**
      * Daemon socket(s) to connect to (default [])
@@ -51,7 +52,7 @@ export interface IDockerComposeOptions {
      * @type {string}
      * @memberof IDockerComposeOptions
      */
-    'host'?: string;
+    host?: string;
 
     /**
      * Use TLS; implied by --tlsverify
@@ -59,7 +60,7 @@ export interface IDockerComposeOptions {
      * @type {boolean}
      * @memberof IDockerComposeOptions
      */
-    'tls'?: boolean;
+    tls?: boolean;
 
     /**
      * Trust certs signed only by this CA (default "/root/.docker/ca.pem")
@@ -67,7 +68,7 @@ export interface IDockerComposeOptions {
      * @type {string}
      * @memberof IDockerComposeOptions
      */
-    'tlscacert'?: string;
+    tlsCACert?: string;
 
     /**
      * Path to TLS certificate file (default "/root/.docker/cert.pem")
@@ -75,7 +76,7 @@ export interface IDockerComposeOptions {
      * @type {string}
      * @memberof IDockerComposeOptions
      */
-    'tlscert'?: string;
+    tlsCert?: string;
 
     /**
      * Path to TLS key file (default "/root/.docker/key.pem")
@@ -83,7 +84,7 @@ export interface IDockerComposeOptions {
      * @type {string}
      * @memberof IDockerComposeOptions
      */
-    'tlskey'?: string;
+    tlsKey?: string;
 
     /**
      * Use TLS and verify the remote
@@ -91,14 +92,14 @@ export interface IDockerComposeOptions {
      * @type {boolean}
      * @memberof IDockerComposeOptions
      */
-    'tlsverify'?: boolean;
+    tlsVerify?: boolean;
 
     /**
      * Don't check the daemon's hostname against the name specified in the client certificate
      * @type {boolean}
      * @memberof IDockerComposeOptions
      */
-    'skip-hostname-check'?: boolean;
+    skipHostnameCheck?: boolean;
 
     /**
      * Specify an alternate working directory
@@ -106,7 +107,7 @@ export interface IDockerComposeOptions {
      * @type {string}
      * @memberof IDockerComposeOptions
      */
-    'project-directory'?: string;
+    projectDirectory?: string;
 
     /**
      * If set, Compose will attempt to convert deploy
@@ -114,5 +115,5 @@ export interface IDockerComposeOptions {
      * @type {boolean}
      * @memberof IDockerComposeOptions
      */
-    'compatibility'?: boolean;
+    compatibility?: boolean;
 }

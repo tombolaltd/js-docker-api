@@ -1,20 +1,23 @@
-import { KeyValuePair } from '../../key-value-pair';
-export interface IBuildOptions {
+import { KeyValuePair } from '@common/key-value-pair';
+import { ICommandBaseOptions } from './command-base-options';
+export interface IBuildOptions extends ICommandBaseOptions {
     // Compress the build context using gzip.
-    'compress'?: boolean;
+    compress?: boolean;
 
     // Always remove intermediate containers.
-    'force-rm'?: boolean;
+    forceRm?: boolean;
 
     // Do not use cache when building the image.
-    'no-cache'?: boolean;
+    noCache?: boolean;
 
     // Always attempt to pull a newer version of the image.
-    'pull'?: boolean;
+    pull?: boolean;
 
     // Sets memory limit for the build container.
-    'memory'?: string;
+    memory?: string;
 
     // Set build-time variables for services.
-    'build-arg'?: KeyValuePair<any> | Array<KeyValuePair<any>>;
+    buildArguments?: KeyValuePair<any> | Array<KeyValuePair<any>>;
+
+    services?: string | string[];
 }

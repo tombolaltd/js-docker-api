@@ -1,0 +1,39 @@
+{
+    "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
+        "declaration": true,
+        "declarationDir": "dist/types",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "noImplicitAny": true,
+        "outDir": "dist/node",
+        "sourceMap": true,
+        "removeComments": true,
+        "strictNullChecks": true,
+        "target": "es2015",
+        "typeRoots": ["./node_modules/@types"],
+        "types": [
+            "node"
+        ],
+        "lib": [
+            "es2015",
+            "es5",
+            "es6"
+        ],
+        "baseUrl": "src",
+        "paths": {
+            "@common/*": ["internal/common/*"],
+            "@docker-compose-command-converters/*": ["internal/command-converters/docker-compose/*"],
+            "@docker-compose-option-interfaces/*": ["interfaces/docker-compose-options/*"]
+        }
+    },
+    "include": [
+        "src/**/*",
+        "./node_modules/@types/node/index.d.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

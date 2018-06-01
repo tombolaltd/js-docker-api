@@ -1,4 +1,3 @@
-export * from './docker';
 export * from './docker-compose';
-export { KeyValuePair } from './key-value-pair';
-export * from './interfaces/docker-options';
+export { KeyValuePair } from '@common/key-value-pair';
+export * from '@docker-compose-option-interfaces/index';

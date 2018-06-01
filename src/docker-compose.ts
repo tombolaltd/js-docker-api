@@ -1,11 +1,7 @@
-
-import Promise = require('bluebird');
-import { SpawnOptions } from 'ts-process-promises';
-import { PromiseWithEvents } from 'ts-process-promises/lib/PromiseWithEvents';
-import * as OptionsInterfaces from './interfaces/docker-compose-options';
-import { commandSpawner } from './internal/command-spawner';
-import { DockerComposeArgConverters } from './internal/docker-compose-arg-converters';
-import { KeyValuePair } from './key-value-pair';
+import { commandSpawner } from '@common/command-spawner';
+import * as OptionsConverters from '@docker-compose-command-converters/index';
+import * as OptionsInterfaces from '@docker-compose-option-interfaces/index';
+export { KeyValuePair } from '@common/key-value-pair';
 
 export class DockerCompose {
     // TODO: this typedoc will be out of date...
@@ -21,64 +17,19 @@ export class DockerCompose {
      * @returns {PromiseWithEvents<any[]>}   - the promise use ".on('stdout', (line: any) => { .... })" to get immediate feedback from stdout
      * @memberof Docker
      */
-    public static command({command,
-        commandArguments,
-        composeFilepath,
-        dockerComposeOptions,
-        spawnOptions,
-        useStdIo
-        }: {command?: string | undefined,
-            commandArguments?: | any | any[] | undefined
-            composeFilepath?: string | string[] | undefined,
-            dockerComposeOptions?: OptionsInterfaces.IDockerComposeOptions,
-            spawnOptions?: SpawnOptions | undefined,
-            useStdIo?: boolean | undefined
-        } = {}): PromiseWithEvents<any[]>  {
-
-        const fullArgs: any[] = DockerComposeArgConverters.command({
-            command,
-            commandArguments,
-            composeFilepath,
-            dockerComposeOptions
-        });
-
-        const spawner: PromiseWithEvents<any> = commandSpawner('docker-compose', fullArgs, spawnOptions);
-        if (useStdIo){
-            return spawner.on('stdout', console.log).on('stderr', console.error);
-        }
-        return spawner;
+    public static command(options: OptionsInterfaces.ICommandOptions = {}): Promise<string> {
+        const fullArgs: any[] = OptionsConverters.commandOptionsConverter(options);
+        return commandSpawner('docker-compose', fullArgs, options.spawnOptions);
     }
 
     //  TODO: UNTESTED
-    public static build ({
-        composeFilepath,
-        buildOptions,
-        buildArguments,
-        dockerComposeOptions,
-        services,
-        spawnOptions,
-        useStdIo
-        }: {composeFilepath?: string | string[] | undefined,
-            buildOptions?: OptionsInterfaces.IBuildOptions| undefined,
-            buildArguments?: KeyValuePair<any> | Array<KeyValuePair<any>> | undefined,
-            dockerComposeOptions?: OptionsInterfaces.IDockerComposeOptions | undefined
-            services?: string | string[] | undefined,
-            spawnOptions?: SpawnOptions | undefined,
-            useStdIo?: boolean | undefined
-        } = {}): PromiseWithEvents<any[]> {
-        const commandArguments: any[] = DockerComposeArgConverters.build({
-            buildOptions,
-            buildArguments,
-            services,
-        });
-
+    public static build (options: OptionsInterfaces.IBuildOptions = {}): Promise<string> {
         return DockerCompose.command({
             command: 'build',
-            commandArguments,
-            composeFilepath,
-            dockerComposeOptions,
-            spawnOptions,
-            useStdIo
+            composeFilepath: options.composeFilepath,
+            commandArguments: OptionsConverters.buildOptionsConverter(options),
+            dockerComposeOptions: options.dockerComposeOptions,
+            spawnOptions: options.spawnOptions,
         });
     }
 
@@ -88,30 +39,13 @@ export class DockerCompose {
 
     //  TODO: UNTESTED
     // Stop and remove containers, networks, images, and volumes
-    public static down ({
-        composeFilepath,
-        dockerComposeOptions,
-        downOptions,
-        spawnOptions,
-        useStdIo
-        }: {composeFilepath?: string | undefined,
-            dockerComposeOptions?: OptionsInterfaces.IDockerComposeOptions | undefined
-            downOptions?: OptionsInterfaces.IDownOptions | undefined,
-            spawnOptions?: SpawnOptions | undefined,
-            useStdIo?: boolean | undefined
-        } = {}): PromiseWithEvents<any[]> {
-
-        const commandArguments: any[] = DockerComposeArgConverters.down({
-            downOptions
-        });
-
+    public static down (options: OptionsInterfaces.IDownOptions = {}): Promise<string> {
         return DockerCompose.command({
             command: 'down',
-            composeFilepath,
-            commandArguments,
-            dockerComposeOptions,
-            spawnOptions,
-            useStdIo
+            composeFilepath: options.composeFilepath,
+            commandArguments: OptionsConverters.downOptionsConverter(options),
+            dockerComposeOptions: options.dockerComposeOptions,
+            spawnOptions: options.spawnOptions
         });
     }
 
@@ -119,47 +53,13 @@ export class DockerCompose {
 
     // TODO: untested
     // Execute a command in a running container
-    public static exec ({
-        composeFilepath,
-        dockerComposeOptions,
-        disablePsuedoTty,
-        index,
-        execOptions,
-        environmentVariables,
-        service,
-        command,
-        commandArguments,
-        spawnOptions,
-        useStdIo
-        }: {composeFilepath?: string | undefined,
-            dockerComposeOptions?: OptionsInterfaces.IDockerComposeOptions | undefined,
-            disablePsuedoTty?: boolean | undefined
-            index?: number,
-            execOptions?: OptionsInterfaces.IExecOptions | undefined,
-            environmentVariables?: KeyValuePair<any> | Array<KeyValuePair<any>> | undefined,
-            service?: string | undefined,
-            command?: string | undefined,
-            commandArguments?: any | any[] | undefined,
-            spawnOptions?: SpawnOptions | undefined,
-            useStdIo?: boolean | undefined
-        } = {}): PromiseWithEvents<any[]> {
-        const fullCommandArgs: any[] = DockerComposeArgConverters.exec({
-                disablePsuedoTty,
-                index,
-                execOptions,
-                environmentVariables,
-                service,
-                command,
-                commandArguments
-            });
-
+    public static exec (options: OptionsInterfaces.IExecOptions = {}): Promise<string> {
         return DockerCompose.command({
             command: 'exec',
-            composeFilepath,
-            commandArguments: fullCommandArgs,
-            dockerComposeOptions,
-            spawnOptions,
-            useStdIo
+            composeFilepath: options.composeFilepath,
+            commandArguments: OptionsConverters.execOptionsConverter(options),
+            dockerComposeOptions: options.dockerComposeOptions,
+            spawnOptions: options.spawnOptions
         });
     }
     // TODO: help               Get help on a command
@@ -175,62 +75,13 @@ export class DockerCompose {
     // TODO: rm                 Remove stopped containers
 
     // Run a one-off command
-    public static run ({
-        composeFilepath,
-        dockerComposeOptions,
-        disablePsuedoTty,
-        user,
-        runOptions,
-        publish,
-        volumes,
-        workdir,
-        ports,
-        environmentVariables,
-        labels,
-        service,
-        command,
-        commandArguments,
-        spawnOptions,
-        useStdIo
-        }: {composeFilepath?: string | undefined,
-            dockerComposeOptions?: OptionsInterfaces.IDockerComposeOptions | undefined,
-            disablePsuedoTty?: boolean | undefined,
-            user?: string | undefined,
-            runOptions?: OptionsInterfaces.IRunOptions | undefined,
-            publish?: any| any[] | undefined,
-            volumes?: any| any[] | undefined,
-            workdir?: string | string | undefined,
-            ports?: any| any[] | undefined,
-            environmentVariables?: KeyValuePair<any> | Array<KeyValuePair<any>> | undefined,
-            labels?: KeyValuePair<string> | Array<KeyValuePair<string>> | undefined,
-            service?: string | undefined,
-            command?: string | undefined,
-            commandArguments?: any | any[] | undefined,
-            spawnOptions?: SpawnOptions | undefined,
-            useStdIo?: boolean | undefined
-        } = {}): PromiseWithEvents<any[]> {
-        const fullCommandArgs: any[] = DockerComposeArgConverters.run({
-            disablePsuedoTty,
-            user,
-            runOptions,
-            publish,
-            volumes,
-            workdir,
-            ports,
-            environmentVariables,
-            labels,
-            service,
-            command,
-            commandArguments
-        });
-
+    public static run (options: OptionsInterfaces.IRunOptions = {}): Promise<string> {
         return DockerCompose.command({
             command: 'run',
-            composeFilepath,
-            commandArguments: fullCommandArgs,
-            dockerComposeOptions,
-            spawnOptions,
-            useStdIo
+            composeFilepath: options.composeFilepath,
+            commandArguments: OptionsConverters.runOptionsConverter(options),
+            dockerComposeOptions: options.dockerComposeOptions,
+            spawnOptions: options.spawnOptions
         });
     }
     // TODO: scale              Set number of containers for a service
@@ -242,51 +93,21 @@ export class DockerCompose {
     // TODO: UNTESTED
     // FUTUREWORK: need to genericise KeyValuePair, scale is KeyValuePair<int> where the value is an int...
     // Create and start containers
-    public static up ({
-        composeFilepath,
-        dockerComposeOptions,
-        upOptions,
-        scale,
-        services,
-        spawnOptions,
-        useStdIo
-        }: {composeFilepath?: string | undefined,
-            dockerComposeOptions?: OptionsInterfaces.IDockerComposeOptions | undefined
-            upOptions?: OptionsInterfaces.IUpOptions| undefined,
-            scale?: KeyValuePair<number> | Array<KeyValuePair<number>> | undefined,
-            services?: string | string[] | undefined,
-            spawnOptions?: SpawnOptions | undefined,
-            useStdIo?: boolean | undefined
-        } = {}): PromiseWithEvents<any[]> {
-        const commandArguments: any[] = DockerComposeArgConverters.up({
-            upOptions,
-            scale,
-            services
-        });
-
+    public static up (options: OptionsInterfaces.IUpOptions = {}): Promise<string> {
         return DockerCompose.command({
             command: 'up',
-            composeFilepath,
-            commandArguments,
-            dockerComposeOptions,
-            spawnOptions,
-            useStdIo
+            composeFilepath: options.composeFilepath,
+            commandArguments: OptionsConverters.upOptionsConverter(options),
+            dockerComposeOptions: options.dockerComposeOptions,
+            spawnOptions: options.spawnOptions
         });
     }
 
-    public static version ({
-        dockerComposeOptions,
-        spawnOptions,
-        useStdIo
-    }: { dockerComposeOptions?: OptionsInterfaces.IDockerComposeOptions | undefined
-        spawnOptions?: SpawnOptions | undefined,
-        useStdIo?: boolean | undefined
-       } = {}): PromiseWithEvents<any[]> {
+    public static version (options: OptionsInterfaces.IBaseOptions = {}): Promise<string> {
             return DockerCompose.command({
                 command: 'version',
-                dockerComposeOptions,
-                spawnOptions,
-                useStdIo
+                dockerComposeOptions: options.dockerComposeOptions,
+                spawnOptions: options.spawnOptions
         });
     }
 }

@@ -1,24 +1,21 @@
-import * as OptionsInterfaces from '../../../interfaces/docker-compose-options';
-import { KeyValuePair } from '../../../key-value-pair';
-import { ArgumentBuilders } from '../../argument-builders';
+import { ArgumentBuilder } from '@common/argument-builder';
+import { KeyValuePair } from '@common/key-value-pair';
+import * as OptionsInterfaces from '@docker-compose-option-interfaces/index';
 
 export function execOptionsConverter(options: OptionsInterfaces.IExecOptions): any[] {
-    const fullCommandArgs: any[] = [];
-        // '--detach'?: boolean;
-        // '--privileged'?: boolean;
-        // '--user'?: string;
-        // '--workdir'?: string;
-        ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '-T', options.disablePsuedoTty);
-        ArgumentBuilders.pushEqualArgs(fullCommandArgs, '--index', options.index);
+    const argumentBuilder: ArgumentBuilder = new ArgumentBuilder();
 
-        ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--detach', options.detach);
-        ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--privileged', options.privileged);
-        ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--user', options.user);
-        ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--workdir', options.workdir);
+    argumentBuilder.pushBooleanArgs('-T', options.disablePsuedoTty);
+    argumentBuilder.pushEqualArgs('--index', options.index);
 
-        ArgumentBuilders.pushFlaggedKeyValueArgs(fullCommandArgs, '--env', options.environmentVariables);
-        ArgumentBuilders.pushPlainArgs(fullCommandArgs, options.service);
-        ArgumentBuilders.pushPlainArgs(fullCommandArgs, options.command);
-        ArgumentBuilders.pushPlainArgs(fullCommandArgs, options.commandArguments);
-    return fullCommandArgs;
+    argumentBuilder.pushBooleanArgs('--detach', options.detach);
+    argumentBuilder.pushBooleanArgs('--privileged', options.privileged);
+    argumentBuilder.pushFlaggedArgs('--user', options.user);
+    argumentBuilder.pushFlaggedArgs('--workdir', options.workdir);
+
+    argumentBuilder.pushFlaggedKeyValueArgs('--env', options.environmentVariables);
+    argumentBuilder.pushPlainArgs(options.service);
+    argumentBuilder.pushPlainArgs(options.command);
+    argumentBuilder.pushPlainArgs(options.commandArguments);
+    return argumentBuilder.arguments;
 }

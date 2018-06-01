@@ -1,8 +1,4 @@
-import { SpawnOptions } from 'ts-process-promises';
-import { IDockerComposeOptions } from './docker-compose-options';
-export interface ICommandBaseOptions {
-    composeFilepath?: string;
-    dockerComposeOptions?: IDockerComposeOptions;
-    spawnOptions?: SpawnOptions;
-    useStdIo?: boolean;
+import { IBaseOptions } from './base-options';
+export interface ICommandBaseOptions extends IBaseOptions {
+    composeFilepath?: string | string[];
 }

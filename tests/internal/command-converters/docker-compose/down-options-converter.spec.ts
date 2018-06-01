@@ -1,23 +1,34 @@
+import { downOptionsConverter } from '@docker-compose-command-converters/down-options-converter';
 import { expect } from 'chai';
 import 'mocha';
-import * as converters from '../../../../src/internal/command-converters/docker-compose';
 
-describe('The down function', () => {
-    it('Passing no parameter object results in an empty list', ()  => {
-       const result: any[] = DockerComposeArgConverters.down();
-       expect(result).to.deep.equal([]);
-    });
-
+describe('The downOptionsConverter function', () => {
     it('Passing empty parameter object results in an empty list', ()  => {
-        const result: any[] = DockerComposeArgConverters.down({});
+        const result: any[] = downOptionsConverter({});
         expect(result).to.deep.equal([]);
     });
 
-    it('Passing options value populates correctly', ()  => {
-        const result: any[] = DockerComposeArgConverters.down({
-            downOptions: {'remove-orphans': true, 'volumes': false, 'timeout': 100}
-        });
-        expect(result).to.deep.equal(['--remove-orphans', '--timeout', 100]);
+    it('The DockerCompose value is not converted by this function', ()  => {
+       const result: any[] = downOptionsConverter({
+           dockerComposeOptions: {
+               verbose: true,
+           }
+       });
+       expect(result).to.deep.equal([]);
     });
 
+    it('Passing options value populates correctly', ()  => {
+        const result: any[] = downOptionsConverter({
+            rmi: 'all',
+            removeOrphans: true,
+            volumes: true,
+            timeout: 100
+        });
+        expect(result).to.deep.equal([
+            '--rmi', 'all',
+            '--volumes',
+            '--remove-orphans',
+            '--timeout', 100]
+        );
+    });
 });

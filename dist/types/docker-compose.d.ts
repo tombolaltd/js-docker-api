@@ -1,16 +1,11 @@
-import { SpawnOptions } from 'ts-process-promises';
-import { PromiseWithEvents } from 'ts-process-promises/lib/PromiseWithEvents';
-import * as OptionsInterfaces from './interfaces/docker-compose-options';
+import * as OptionsInterfaces from '@docker-compose-option-interfaces/index';
+export { KeyValuePair } from '@common/key-value-pair';
 export declare class DockerCompose {
-    static command(options?: OptionsInterfaces.ICommandOptions): PromiseWithEvents<any[]>;
-    static build(options?: OptionsInterfaces.IBuildOptions): PromiseWithEvents<any[]>;
-    static down(options?: OptionsInterfaces.IDownOptions): PromiseWithEvents<any[]>;
-    static exec(options?: OptionsInterfaces.IExecOptions): PromiseWithEvents<any[]>;
-    static run(options?: OptionsInterfaces.IRunOptions): PromiseWithEvents<any[]>;
-    static up(options?: OptionsInterfaces.IUpOptions): PromiseWithEvents<any[]>;
-    static version({dockerComposeOptions, spawnOptions, useStdIo}?: {
-        dockerComposeOptions?: OptionsInterfaces.IDockerComposeOptions | undefined;
-        spawnOptions?: SpawnOptions | undefined;
-        useStdIo?: boolean | undefined;
-    }): PromiseWithEvents<any[]>;
+    static command(options?: OptionsInterfaces.ICommandOptions): Promise<string>;
+    static build(options?: OptionsInterfaces.IBuildOptions): Promise<string>;
+    static down(options?: OptionsInterfaces.IDownOptions): Promise<string>;
+    static exec(options?: OptionsInterfaces.IExecOptions): Promise<string>;
+    static run(options?: OptionsInterfaces.IRunOptions): Promise<string>;
+    static up(options?: OptionsInterfaces.IUpOptions): Promise<string>;
+    static version(options?: OptionsInterfaces.IBaseOptions): Promise<string>;
 }

@@ -1,15 +1,15 @@
-import * as OptionsInterfaces from '../../../interfaces/docker-compose-options';
-import { KeyValuePair } from '../../../key-value-pair';
-import { ArgumentBuilders } from '../../argument-builders';
-import { dockerComposeOptionsConverter } from './docker-compose-options-converter';
+import { ArgumentBuilder } from '@common/argument-builder';
+import { KeyValuePair } from '@common/key-value-pair';
+import { dockerComposeOptionsConverter } from '@docker-compose-command-converters/docker-compose-options-converter';
+import * as OptionsInterfaces from '@docker-compose-option-interfaces/index';
 
 export function commandOptionsConverter(options: OptionsInterfaces.ICommandOptions): any[] {
-    const fullCommandArgs: any[] = [];
+    const argumentBuilder: ArgumentBuilder = new ArgumentBuilder();
 
-    ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--file', options.composeFilepath);
-    ArgumentBuilders.pushPlainArgs(fullCommandArgs, dockerComposeOptionsConverter(options.dockerComposeOptions));
-    ArgumentBuilders.pushPlainArgs(fullCommandArgs, options.command);
-    ArgumentBuilders.pushPlainArgs(fullCommandArgs, options.commandArguments);
+    argumentBuilder.pushFlaggedArgs('--file', options.composeFilepath);
+    argumentBuilder.pushPlainArgs(dockerComposeOptionsConverter(options.dockerComposeOptions  || {} ));
+    argumentBuilder.pushPlainArgs(options.command);
+    argumentBuilder.pushPlainArgs(options.commandArguments);
 
-    return fullCommandArgs;
+    return argumentBuilder.arguments;
 }

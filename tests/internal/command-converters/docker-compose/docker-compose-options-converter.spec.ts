@@ -1,23 +1,47 @@
+
+import { dockerComposeOptionsConverter } from '@docker-compose-command-converters/docker-compose-options-converter';
 import { expect } from 'chai';
 import 'mocha';
-import * as converters from '../../../../src/internal/command-converters/docker-compose';
 
-describe.only('The docker-compose-options-converter', () => {
-// '--project-name'?: string;
-    // '--verbose'?: boolean;
-    // '--log-level'?: 'DEBUG' | 'INFO' | 'WARN' | 'ERROR' | 'FATAL' ;
-    // '--no-ansi'?: boolean;
-    // '--version'?: boolean;
-    // '--host'?: string;
-    // '--tls'?: boolean;
-    // '--tlscacert'?: string;
-    // '--tlscert'?: string;
-    // '--tlskey'?: string;
-    // '--tlsverify'?: boolean;
-    // '--skip-hostname-check'?: boolean;
-    // '--project-directory'?: string;
-    // '-compatibility'?: boolean;
-    it('TODO', () => {
-        expect.fail('TODO');
+describe('The dockerComposeOptionsConverter function', () => {
+    it('Passing empty parameter object results in an empty list', ()  => {
+        const result: any[] = dockerComposeOptionsConverter({});
+        expect(result).to.deep.equal([]);
+    });
+
+    it('Passing options value populates correctly', ()  => {
+        const result: any[] = dockerComposeOptionsConverter({
+            projectName: 'project-name',
+            verbose: true,
+            logLevel: 'INFO',
+            noAnsi: true,
+            version: true,
+            host: 'host',
+            tls: true,
+            tlsCACert: 'tlscacert',
+            tlsCert: 'tlscert',
+            tlsKey: 'tlskey',
+            tlsVerify: true,
+            skipHostnameCheck: true,
+            projectDirectory: 'project-directory',
+            compatibility: true,
+        });
+
+        expect(result).to.deep.equal([
+            '--project-name', 'project-name',
+            '--verbose',
+            '--log-level', 'INFO',
+            '--no-ansi',
+            '--version',
+            '--host', 'host',
+            '--tls',
+            '--tlscacert', 'tlscacert',
+            '--tlscert', 'tlscert',
+            '--tlskey', 'tlskey',
+            '--tlsverify',
+            '--skip-hostname-check',
+            '--project-directory', 'project-directory',
+            '--compatibility'
+        ]);
     });
 });

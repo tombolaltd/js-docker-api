@@ -1,26 +1,26 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const argument_builders_1 = require("../../argument-builders");
+const argument_builder_1 = require("@common/argument-builder");
 function upOptionsConverter(options) {
-    const fullCommandArgs = [];
-    argument_builders_1.ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--detach', options.detach);
-    argument_builders_1.ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--no-color', options.noColor);
-    argument_builders_1.ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--quiet-pull', options.quietPull);
-    argument_builders_1.ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--no-deps', options.noDeps);
-    argument_builders_1.ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--force-recreate', options.forceRecreate);
-    argument_builders_1.ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--always-recreate-deps', options.alwaysRecreateDeps);
-    argument_builders_1.ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--no-recreate', options.noRecreate);
-    argument_builders_1.ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--no-build', options.noBuild);
-    argument_builders_1.ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--no-start', options.noStart);
-    argument_builders_1.ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--build', options.build);
-    argument_builders_1.ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--abort-on-container-exit', options.abortOnContainerExit);
-    argument_builders_1.ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--timeout', options.timeout);
-    argument_builders_1.ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--renew-anon-volumes', options.renewAnonVolumes);
-    argument_builders_1.ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--remove-orphans', options.removeOrphans);
-    argument_builders_1.ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--exit-code-from', options.exitCodeFrom);
-    argument_builders_1.ArgumentBuilders.pushFlaggedKeyValueArgs(fullCommandArgs, '--scale', options.scale);
-    argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, options.services);
-    return fullCommandArgs;
+    const argumentBuilder = new argument_builder_1.ArgumentBuilder();
+    argumentBuilder.pushBooleanArgs('--detach', options.detach);
+    argumentBuilder.pushBooleanArgs('--no-color', options.noColor);
+    argumentBuilder.pushBooleanArgs('--quiet-pull', options.quietPull);
+    argumentBuilder.pushBooleanArgs('--no-deps', options.noDeps);
+    argumentBuilder.pushBooleanArgs('--force-recreate', options.forceRecreate);
+    argumentBuilder.pushBooleanArgs('--always-recreate-deps', options.alwaysRecreateDeps);
+    argumentBuilder.pushBooleanArgs('--no-recreate', options.noRecreate);
+    argumentBuilder.pushBooleanArgs('--no-build', options.noBuild);
+    argumentBuilder.pushBooleanArgs('--no-start', options.noStart);
+    argumentBuilder.pushBooleanArgs('--build', options.build);
+    argumentBuilder.pushBooleanArgs('--abort-on-container-exit', options.abortOnContainerExit);
+    argumentBuilder.pushFlaggedArgs('--timeout', options.timeout);
+    argumentBuilder.pushBooleanArgs('--renew-anon-volumes', options.renewAnonVolumes);
+    argumentBuilder.pushBooleanArgs('--remove-orphans', options.removeOrphans);
+    argumentBuilder.pushBooleanArgs('--exit-code-from', options.exitCodeFrom);
+    argumentBuilder.pushFlaggedKeyValueArgs('--scale', options.scale);
+    argumentBuilder.pushPlainArgs(options.services);
+    return argumentBuilder.arguments;
 }
 exports.upOptionsConverter = upOptionsConverter;
 //# sourceMappingURL=up-options-converter.js.map

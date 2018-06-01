@@ -1,17 +1,13 @@
-import * as OptionsInterfaces from '../../../interfaces/docker-compose-options';
-import { KeyValuePair } from '../../../key-value-pair';
-import { ArgumentBuilders } from '../../argument-builders';
+import { ArgumentBuilder } from '@common/argument-builder';
+import { KeyValuePair } from '@common/key-value-pair';
+import * as OptionsInterfaces from '@docker-compose-option-interfaces/index';
 
 export function downOptionsConverter(options: OptionsInterfaces.IDownOptions): any[] {
-    const fullCommandArgs: any[] = [];
-    // '--rmi'?: 'all' | 'local';
-    // '--volumes'?: boolean;
-    // '--remove-orphans'?: boolean;
-    // '--timeout'?: number;
+    const argumentBuilder: ArgumentBuilder = new ArgumentBuilder();
 
-    ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--rmi', options.rmi);
-    ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--volumes', options.volumes);
-    ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--remove-orphans', options.removeOrphans);
-    ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--timeout', options.timeout);
-    return fullCommandArgs;
+    argumentBuilder.pushFlaggedArgs('--rmi', options.rmi);
+    argumentBuilder.pushBooleanArgs('--volumes', options.volumes);
+    argumentBuilder.pushBooleanArgs('--remove-orphans', options.removeOrphans);
+    argumentBuilder.pushFlaggedArgs('--timeout', options.timeout);
+    return argumentBuilder.arguments;
 }

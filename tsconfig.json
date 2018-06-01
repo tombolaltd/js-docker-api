@@ -21,7 +21,13 @@
             "es2015",
             "es5",
             "es6"
-        ]
+        ],
+        "baseUrl": "src",
+        "paths": {
+            "@common/*": ["internal/common/*"],
+            "@docker-compose-command-converters/*": ["internal/command-converters/docker-compose/*"],
+            "@docker-compose-option-interfaces/*": ["interfaces/docker-compose-options/*"]
+        }
     },
     "include": [
         "src/**/*",

@@ -73,7 +73,12 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">IExecOptions</span>
+						<a href="_interfaces_docker_compose_options_command_base_options_.icommandbaseoptions.html" class="tsd-signature-type">ICommandBaseOptions</a>
+						<ul class="tsd-hierarchy">
+							<li>
+								<span class="target">IExecOptions</span>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</section>
@@ -84,9 +89,17 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_compose_options_exec_options_.iexecoptions.html#command" class="tsd-kind-icon">command</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_compose_options_exec_options_.iexecoptions.html#commandarguments" class="tsd-kind-icon">command<wbr>Arguments</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_interfaces_docker_compose_options_exec_options_.iexecoptions.html#composefilepath" class="tsd-kind-icon">compose<wbr>Filepath</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_compose_options_exec_options_.iexecoptions.html#detach" class="tsd-kind-icon">detach</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_compose_options_exec_options_.iexecoptions.html#env" class="tsd-kind-icon">env</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_compose_options_exec_options_.iexecoptions.html#disablepsuedotty" class="tsd-kind-icon">disable<wbr>Psuedo<wbr>Tty</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_interfaces_docker_compose_options_exec_options_.iexecoptions.html#dockercomposeoptions" class="tsd-kind-icon">docker<wbr>Compose<wbr>Options</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_compose_options_exec_options_.iexecoptions.html#environmentvariables" class="tsd-kind-icon">environment<wbr>Variables</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_compose_options_exec_options_.iexecoptions.html#index" class="tsd-kind-icon">index</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_compose_options_exec_options_.iexecoptions.html#privileged" class="tsd-kind-icon">privileged</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_compose_options_exec_options_.iexecoptions.html#service" class="tsd-kind-icon">service</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_interfaces_docker_compose_options_exec_options_.iexecoptions.html#spawnoptions" class="tsd-kind-icon">spawn<wbr>Options</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_compose_options_exec_options_.iexecoptions.html#user" class="tsd-kind-icon">user</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_interfaces_docker_compose_options_exec_options_.iexecoptions.html#workdir" class="tsd-kind-icon">workdir</a></li>
 							</ul>
@@ -97,22 +110,84 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="command" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> command</h3>
+					<div class="tsd-signature tsd-kind-icon">command<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/802d6d9/src/interfaces/docker-compose-options/exec-options.ts#L24">interfaces/docker-compose-options/exec-options.ts:24</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="commandarguments" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> command<wbr>Arguments</h3>
+					<div class="tsd-signature tsd-kind-icon">command<wbr>Arguments<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/802d6d9/src/interfaces/docker-compose-options/exec-options.ts#L25">interfaces/docker-compose-options/exec-options.ts:25</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="composefilepath" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> compose<wbr>Filepath</h3>
+					<div class="tsd-signature tsd-kind-icon">compose<wbr>Filepath<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_interfaces_docker_compose_options_command_base_options_.icommandbaseoptions.html">ICommandBaseOptions</a>.<a href="_interfaces_docker_compose_options_command_base_options_.icommandbaseoptions.html#composefilepath">composeFilepath</a></p>
+						<ul>
+							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/802d6d9/src/interfaces/docker-compose-options/command-base-options.ts#L7">interfaces/docker-compose-options/command-base-options.ts:7</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="detach" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> detach</h3>
 					<div class="tsd-signature tsd-kind-icon">detach<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/11dc115/src/interfaces/docker-compose-options/exec-options.ts#L7">interfaces/docker-compose-options/exec-options.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/802d6d9/src/interfaces/docker-compose-options/exec-options.ts#L7">interfaces/docker-compose-options/exec-options.ts:7</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="env" class="tsd-anchor"></a>
-					<h3>env</h3>
-					<div class="tsd-signature tsd-kind-icon">env<span class="tsd-signature-symbol">:</span> <a href="../modules/_key_value_pair_.html#keyvaluepair" class="tsd-signature-type">KeyValuePair</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/_key_value_pair_.html#keyvaluepair" class="tsd-signature-type">KeyValuePair</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<a name="disablepsuedotty" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> disable<wbr>Psuedo<wbr>Tty</h3>
+					<div class="tsd-signature tsd-kind-icon">disable<wbr>Psuedo<wbr>Tty<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/11dc115/src/interfaces/docker-compose-options/exec-options.ts#L16">interfaces/docker-compose-options/exec-options.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/802d6d9/src/interfaces/docker-compose-options/exec-options.ts#L21">interfaces/docker-compose-options/exec-options.ts:21</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="dockercomposeoptions" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> docker<wbr>Compose<wbr>Options</h3>
+					<div class="tsd-signature tsd-kind-icon">docker<wbr>Compose<wbr>Options<span class="tsd-signature-symbol">:</span> <a href="_interfaces_docker_compose_options_docker_compose_options_.idockercomposeoptions.html" class="tsd-signature-type">IDockerComposeOptions</a></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_interfaces_docker_compose_options_base_options_.ibaseoptions.html">IBaseOptions</a>.<a href="_interfaces_docker_compose_options_base_options_.ibaseoptions.html#dockercomposeoptions">dockerComposeOptions</a></p>
+						<ul>
+							<li>Defined in interfaces/docker-compose-options/base-options.ts:6</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="environmentvariables" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> environment<wbr>Variables</h3>
+					<div class="tsd-signature tsd-kind-icon">environment<wbr>Variables<span class="tsd-signature-symbol">:</span> <a href="../modules/_internal_common_key_value_pair_.html#keyvaluepair" class="tsd-signature-type">KeyValuePair</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/_internal_common_key_value_pair_.html#keyvaluepair" class="tsd-signature-type">KeyValuePair</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/802d6d9/src/interfaces/docker-compose-options/exec-options.ts#L16">interfaces/docker-compose-options/exec-options.ts:16</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="index" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> index</h3>
+					<div class="tsd-signature tsd-kind-icon">index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/802d6d9/src/interfaces/docker-compose-options/exec-options.ts#L22">interfaces/docker-compose-options/exec-options.ts:22</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -122,7 +197,28 @@
 					<div class="tsd-signature tsd-kind-icon">privileged<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/11dc115/src/interfaces/docker-compose-options/exec-options.ts#L10">interfaces/docker-compose-options/exec-options.ts:10</a></li>
+							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/802d6d9/src/interfaces/docker-compose-options/exec-options.ts#L10">interfaces/docker-compose-options/exec-options.ts:10</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="service" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> service</h3>
+					<div class="tsd-signature tsd-kind-icon">service<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/802d6d9/src/interfaces/docker-compose-options/exec-options.ts#L23">interfaces/docker-compose-options/exec-options.ts:23</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="spawnoptions" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> spawn<wbr>Options</h3>
+					<div class="tsd-signature tsd-kind-icon">spawn<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">childProcess.SpawnOptions</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="_interfaces_docker_compose_options_base_options_.ibaseoptions.html">IBaseOptions</a>.<a href="_interfaces_docker_compose_options_base_options_.ibaseoptions.html#spawnoptions">spawnOptions</a></p>
+						<ul>
+							<li>Defined in interfaces/docker-compose-options/base-options.ts:7</li>
 						</ul>
 					</aside>
 				</section>
@@ -132,7 +228,7 @@
 					<div class="tsd-signature tsd-kind-icon">user<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/11dc115/src/interfaces/docker-compose-options/exec-options.ts#L13">interfaces/docker-compose-options/exec-options.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/802d6d9/src/interfaces/docker-compose-options/exec-options.ts#L13">interfaces/docker-compose-options/exec-options.ts:13</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -142,7 +238,7 @@
 					<div class="tsd-signature tsd-kind-icon">workdir<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/11dc115/src/interfaces/docker-compose-options/exec-options.ts#L19">interfaces/docker-compose-options/exec-options.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/802d6d9/src/interfaces/docker-compose-options/exec-options.ts#L19">interfaces/docker-compose-options/exec-options.ts:19</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -164,10 +260,16 @@
 						<a href="../modules/_index_.html">"index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="../modules/_interfaces_docker_compose_options_base_options_.html">"interfaces/docker-<wbr>compose-<wbr>options/base-<wbr>options"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_interfaces_docker_compose_options_build_options_.html">"interfaces/docker-<wbr>compose-<wbr>options/build-<wbr>options"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_interfaces_docker_compose_options_command_base_options_.html">"interfaces/docker-<wbr>compose-<wbr>options/command-<wbr>base-<wbr>options"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_interfaces_docker_compose_options_command_options_.html">"interfaces/docker-<wbr>compose-<wbr>options/command-<wbr>options"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_interfaces_docker_compose_options_docker_compose_options_.html">"interfaces/docker-<wbr>compose-<wbr>options/docker-<wbr>compose-<wbr>options"</a>
@@ -191,13 +293,19 @@
 						<a href="../modules/_interfaces_docker_options_docker_options_.html">"interfaces/docker-<wbr>options/docker-<wbr>options"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_interfaces_docker_options_index_.html">"interfaces/docker-<wbr>options/index"</a>
+						<a href="../modules/_internal_command_converters_docker_compose_build_options_converter_.html">"internal/command-<wbr>converters/docker-<wbr>compose/build-<wbr>options-<wbr>converter"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_interfaces_index_.html">"interfaces/index"</a>
+						<a href="../modules/_internal_command_converters_docker_compose_command_options_converter_.html">"internal/command-<wbr>converters/docker-<wbr>compose/command-<wbr>options-<wbr>converter"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_internal_argument_builders_.html">"internal/argument-<wbr>builders"</a>
+						<a href="../modules/_internal_command_converters_docker_compose_docker_compose_options_converter_.html">"internal/command-<wbr>converters/docker-<wbr>compose/docker-<wbr>compose-<wbr>options-<wbr>converter"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_internal_command_converters_docker_compose_down_options_converter_.html">"internal/command-<wbr>converters/docker-<wbr>compose/down-<wbr>options-<wbr>converter"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_internal_command_converters_docker_compose_exec_options_converter_.html">"internal/command-<wbr>converters/docker-<wbr>compose/exec-<wbr>options-<wbr>converter"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_internal_command_converters_docker_compose_index_.html">"internal/command-<wbr>converters/docker-<wbr>compose/index"</a>
@@ -206,16 +314,16 @@
 						<a href="../modules/_internal_command_converters_docker_compose_run_options_converter_.html">"internal/command-<wbr>converters/docker-<wbr>compose/run-<wbr>options-<wbr>converter"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_internal_command_spawner_.html">"internal/command-<wbr>spawner"</a>
+						<a href="../modules/_internal_command_converters_docker_compose_up_options_converter_.html">"internal/command-<wbr>converters/docker-<wbr>compose/up-<wbr>options-<wbr>converter"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_internal_docker_compose_arg_converters_.html">"internal/docker-<wbr>compose-<wbr>arg-<wbr>converters"</a>
+						<a href="../modules/_internal_common_argument_builder_.html">"internal/common/argument-<wbr>builder"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_internal_option_converter_.html">"internal/option-<wbr>converter"</a>
+						<a href="../modules/_internal_common_command_spawner_.html">"internal/common/command-<wbr>spawner"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="../modules/_key_value_pair_.html">"key-<wbr>value-<wbr>pair"</a>
+						<a href="../modules/_internal_common_key_value_pair_.html">"internal/common/key-<wbr>value-<wbr>pair"</a>
 					</li>
 				</ul>
 			</nav>
@@ -227,13 +335,37 @@
 						<a href="_interfaces_docker_compose_options_exec_options_.iexecoptions.html" class="tsd-kind-icon">IExec<wbr>Options</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_interfaces_docker_compose_options_exec_options_.iexecoptions.html#command" class="tsd-kind-icon">command</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_interfaces_docker_compose_options_exec_options_.iexecoptions.html#commandarguments" class="tsd-kind-icon">command<wbr>Arguments</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_interfaces_docker_compose_options_exec_options_.iexecoptions.html#composefilepath" class="tsd-kind-icon">compose<wbr>Filepath</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_interfaces_docker_compose_options_exec_options_.iexecoptions.html#detach" class="tsd-kind-icon">detach</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_interfaces_docker_compose_options_exec_options_.iexecoptions.html#env" class="tsd-kind-icon">env</a>
+								<a href="_interfaces_docker_compose_options_exec_options_.iexecoptions.html#disablepsuedotty" class="tsd-kind-icon">disable<wbr>Psuedo<wbr>Tty</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_interfaces_docker_compose_options_exec_options_.iexecoptions.html#dockercomposeoptions" class="tsd-kind-icon">docker<wbr>Compose<wbr>Options</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_interfaces_docker_compose_options_exec_options_.iexecoptions.html#environmentvariables" class="tsd-kind-icon">environment<wbr>Variables</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_interfaces_docker_compose_options_exec_options_.iexecoptions.html#index" class="tsd-kind-icon">index</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_interfaces_docker_compose_options_exec_options_.iexecoptions.html#privileged" class="tsd-kind-icon">privileged</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_interfaces_docker_compose_options_exec_options_.iexecoptions.html#service" class="tsd-kind-icon">service</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="_interfaces_docker_compose_options_exec_options_.iexecoptions.html#spawnoptions" class="tsd-kind-icon">spawn<wbr>Options</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_interfaces_docker_compose_options_exec_options_.iexecoptions.html#user" class="tsd-kind-icon">user</a>

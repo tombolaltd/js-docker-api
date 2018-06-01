@@ -1,16 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const OptionsConverters = require("./internal/command-converters/docker-compose");
-const command_spawner_1 = require("./internal/command-spawner");
+const command_spawner_1 = require("@common/command-spawner");
+const OptionsConverters = require("@docker-compose-command-converters/index");
 class DockerCompose {
     static command(options = {}) {
         const fullArgs = OptionsConverters.commandOptionsConverter(options);
-        const spawner = command_spawner_1.commandSpawner('docker-compose', fullArgs, options.spawnOptions);
-        if (options.useStdIo) {
-            return spawner.on('stdout', console.log)
-                .on('stderr', console.error);
-        }
-        return spawner;
+        return command_spawner_1.commandSpawner('docker-compose', fullArgs, options.spawnOptions);
     }
     static build(options = {}) {
         return DockerCompose.command({
@@ -19,7 +14,6 @@ class DockerCompose {
             commandArguments: OptionsConverters.buildOptionsConverter(options),
             dockerComposeOptions: options.dockerComposeOptions,
             spawnOptions: options.spawnOptions,
-            useStdIo: options.useStdIo
         });
     }
     static down(options = {}) {
@@ -28,8 +22,7 @@ class DockerCompose {
             composeFilepath: options.composeFilepath,
             commandArguments: OptionsConverters.downOptionsConverter(options),
             dockerComposeOptions: options.dockerComposeOptions,
-            spawnOptions: options.spawnOptions,
-            useStdIo: options.useStdIo
+            spawnOptions: options.spawnOptions
         });
     }
     static exec(options = {}) {
@@ -38,8 +31,7 @@ class DockerCompose {
             composeFilepath: options.composeFilepath,
             commandArguments: OptionsConverters.execOptionsConverter(options),
             dockerComposeOptions: options.dockerComposeOptions,
-            spawnOptions: options.spawnOptions,
-            useStdIo: options.useStdIo
+            spawnOptions: options.spawnOptions
         });
     }
     static run(options = {}) {
@@ -48,8 +40,7 @@ class DockerCompose {
             composeFilepath: options.composeFilepath,
             commandArguments: OptionsConverters.runOptionsConverter(options),
             dockerComposeOptions: options.dockerComposeOptions,
-            spawnOptions: options.spawnOptions,
-            useStdIo: options.useStdIo
+            spawnOptions: options.spawnOptions
         });
     }
     static up(options = {}) {
@@ -58,16 +49,14 @@ class DockerCompose {
             composeFilepath: options.composeFilepath,
             commandArguments: OptionsConverters.upOptionsConverter(options),
             dockerComposeOptions: options.dockerComposeOptions,
-            spawnOptions: options.spawnOptions,
-            useStdIo: options.useStdIo
+            spawnOptions: options.spawnOptions
         });
     }
-    static version({ dockerComposeOptions, spawnOptions, useStdIo } = {}) {
+    static version(options = {}) {
         return DockerCompose.command({
             command: 'version',
-            dockerComposeOptions,
-            spawnOptions,
-            useStdIo
+            dockerComposeOptions: options.dockerComposeOptions,
+            spawnOptions: options.spawnOptions
         });
     }
 }

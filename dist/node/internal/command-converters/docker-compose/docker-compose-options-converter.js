@@ -1,23 +1,23 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const argument_builders_1 = require("../../argument-builders");
+const argument_builder_1 = require("@common/argument-builder");
 function dockerComposeOptionsConverter(options) {
-    const fullCommandArgs = [];
-    argument_builders_1.ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--project-name', options.projectName);
-    argument_builders_1.ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--verbose', options.verbose);
-    argument_builders_1.ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--log-level', options.logLevel);
-    argument_builders_1.ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--no-ansi', options.noAnsi);
-    argument_builders_1.ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--version', options.version);
-    argument_builders_1.ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--host', options.host);
-    argument_builders_1.ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--tls', options.tls);
-    argument_builders_1.ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--tlscacert', options.tlsCACert);
-    argument_builders_1.ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--tlscert', options.tlsCert);
-    argument_builders_1.ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--tlskey', options.tlsKey);
-    argument_builders_1.ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--tlsverify', options.tlsVerify);
-    argument_builders_1.ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--skip-hostname-check', options.skipHostnameCheck);
-    argument_builders_1.ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--project-directory', options.projectDirectory);
-    argument_builders_1.ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--compatibility', options.compatibility);
-    return fullCommandArgs;
+    const argumentBuilder = new argument_builder_1.ArgumentBuilder();
+    argumentBuilder.pushFlaggedArgs('--project-name', options.projectName);
+    argumentBuilder.pushBooleanArgs('--verbose', options.verbose);
+    argumentBuilder.pushFlaggedArgs('--log-level', options.logLevel);
+    argumentBuilder.pushBooleanArgs('--no-ansi', options.noAnsi);
+    argumentBuilder.pushBooleanArgs('--version', options.version);
+    argumentBuilder.pushFlaggedArgs('--host', options.host);
+    argumentBuilder.pushBooleanArgs('--tls', options.tls);
+    argumentBuilder.pushFlaggedArgs('--tlscacert', options.tlsCACert);
+    argumentBuilder.pushFlaggedArgs('--tlscert', options.tlsCert);
+    argumentBuilder.pushFlaggedArgs('--tlskey', options.tlsKey);
+    argumentBuilder.pushBooleanArgs('--tlsverify', options.tlsVerify);
+    argumentBuilder.pushBooleanArgs('--skip-hostname-check', options.skipHostnameCheck);
+    argumentBuilder.pushFlaggedArgs('--project-directory', options.projectDirectory);
+    argumentBuilder.pushBooleanArgs('--compatibility', options.compatibility);
+    return argumentBuilder.arguments;
 }
 exports.dockerComposeOptionsConverter = dockerComposeOptionsConverter;
 //# sourceMappingURL=docker-compose-options-converter.js.map

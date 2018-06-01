@@ -1,28 +1,28 @@
-import * as OptionsInterfaces from '../../../interfaces/docker-compose-options';
-import { KeyValuePair } from '../../../key-value-pair';
-import { ArgumentBuilders } from '../../argument-builders';
+import { ArgumentBuilder } from '@common/argument-builder';
+import { KeyValuePair } from '@common/key-value-pair';
+import * as OptionsInterfaces from '@docker-compose-option-interfaces/index';
 
 export function runOptionsConverter(options: OptionsInterfaces.IRunOptions): any[] {
-    const fullCommandArgs: any[] = [];
+    const argumentBuilder: ArgumentBuilder = new ArgumentBuilder();
 
-    ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '-T', options.disablePsuedoTty);
-    ArgumentBuilders.pushEqualArgs(fullCommandArgs, '--user', options.user);
-    ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--detach', options.detach);
-    ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--name', options.name);
-    ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--entrypoint', options.entrypoint);
-    ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--no-deps', options.noDeps);
-    ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--rm', options.rm);
-    ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--service-ports', options.servicePorts);
-    ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--use-aliases', options.useAliases);
-    ArgumentBuilders.pushEqualArgs(fullCommandArgs, '--volume', options.volumes);
-    ArgumentBuilders.pushEqualArgs(fullCommandArgs, '--publish', options.ports);
-    ArgumentBuilders.pushEqualArgs(fullCommandArgs, '--workdir', options.workdir);
-    ArgumentBuilders.pushFlaggedKeyValueArgs(fullCommandArgs, '-e', options.environmentVariables);
-    ArgumentBuilders.pushFlaggedKeyValueArgs(fullCommandArgs, '--label', options.labels);
+    argumentBuilder.pushBooleanArgs('-T', options.disablePsuedoTty);
+    argumentBuilder.pushEqualArgs('--user', options.user);
+    argumentBuilder.pushBooleanArgs('--detach', options.detach);
+    argumentBuilder.pushFlaggedArgs('--name', options.name);
+    argumentBuilder.pushFlaggedArgs('--entrypoint', options.entrypoint);
+    argumentBuilder.pushBooleanArgs('--no-deps', options.noDeps);
+    argumentBuilder.pushBooleanArgs('--rm', options.rm);
+    argumentBuilder.pushBooleanArgs('--service-ports', options.servicePorts);
+    argumentBuilder.pushBooleanArgs('--use-aliases', options.useAliases);
+    argumentBuilder.pushEqualArgs('--volume', options.volumes);
+    argumentBuilder.pushEqualArgs('--publish', options.ports);
+    argumentBuilder.pushEqualArgs('--workdir', options.workdir);
+    argumentBuilder.pushFlaggedKeyValueArgs('-e', options.environmentVariables);
+    argumentBuilder.pushFlaggedKeyValueArgs('--label', options.labels);
 
-    ArgumentBuilders.pushPlainArgs(fullCommandArgs, options.service);
-    ArgumentBuilders.pushPlainArgs(fullCommandArgs, options.command);
-    ArgumentBuilders.pushPlainArgs(fullCommandArgs, options.commandArguments);
+    argumentBuilder.pushPlainArgs(options.service);
+    argumentBuilder.pushPlainArgs(options.command);
+    argumentBuilder.pushPlainArgs(options.commandArguments);
 
-    return fullCommandArgs;
+    return argumentBuilder.arguments;
 }

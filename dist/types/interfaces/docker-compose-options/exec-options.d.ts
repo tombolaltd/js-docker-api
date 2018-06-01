@@ -1,4 +1,4 @@
-import { KeyValuePair } from '../../key-value-pair';
+import { KeyValuePair } from '@common/key-value-pair';
 import { ICommandBaseOptions } from './command-base-options';
 export interface IExecOptions extends ICommandBaseOptions {
     detach?: boolean;

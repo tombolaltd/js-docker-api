@@ -1,24 +1,24 @@
-import * as OptionsInterfaces from '../../../interfaces/docker-compose-options';
-import { KeyValuePair } from '../../../key-value-pair';
-import { ArgumentBuilders } from '../../argument-builders';
+import { ArgumentBuilder } from '@common/argument-builder';
+import { KeyValuePair } from '@common/key-value-pair';
+import * as OptionsInterfaces from '@docker-compose-option-interfaces/index';
 
 export function dockerComposeOptionsConverter(options: OptionsInterfaces.IDockerComposeOptions): any[] {
-    const fullCommandArgs: any[] = [];
+    const argumentBuilder: ArgumentBuilder = new ArgumentBuilder();
 
-    ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--project-name', options.projectName);
-    ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--verbose', options.verbose);
-    ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--log-level', options.logLevel);
-    ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--no-ansi', options.noAnsi);
-    ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--version', options.version);
-    ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--host', options.host);
-    ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--tls', options.tls);
-    ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--tlscacert', options.tlsCACert);
-    ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--tlscert', options.tlsCert);
-    ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--tlskey', options.tlsKey);
-    ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--tlsverify', options.tlsVerify);
-    ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--skip-hostname-check', options.skipHostnameCheck);
-    ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--project-directory', options.projectDirectory);
-    ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--compatibility', options.compatibility);
+    argumentBuilder.pushFlaggedArgs('--project-name', options.projectName);
+    argumentBuilder.pushBooleanArgs('--verbose', options.verbose);
+    argumentBuilder.pushFlaggedArgs('--log-level', options.logLevel);
+    argumentBuilder.pushBooleanArgs('--no-ansi', options.noAnsi);
+    argumentBuilder.pushBooleanArgs('--version', options.version);
+    argumentBuilder.pushFlaggedArgs('--host', options.host);
+    argumentBuilder.pushBooleanArgs('--tls', options.tls);
+    argumentBuilder.pushFlaggedArgs('--tlscacert', options.tlsCACert);
+    argumentBuilder.pushFlaggedArgs('--tlscert', options.tlsCert);
+    argumentBuilder.pushFlaggedArgs('--tlskey', options.tlsKey);
+    argumentBuilder.pushBooleanArgs('--tlsverify', options.tlsVerify);
+    argumentBuilder.pushBooleanArgs('--skip-hostname-check', options.skipHostnameCheck);
+    argumentBuilder.pushFlaggedArgs('--project-directory', options.projectDirectory);
+    argumentBuilder.pushBooleanArgs('--compatibility', options.compatibility);
 
-    return fullCommandArgs;
+    return argumentBuilder.arguments;
 }

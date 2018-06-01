@@ -1,19 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const argument_builders_1 = require("../../argument-builders");
+const argument_builder_1 = require("@common/argument-builder");
 function execOptionsConverter(options) {
-    const fullCommandArgs = [];
-    argument_builders_1.ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '-T', options.disablePsuedoTty);
-    argument_builders_1.ArgumentBuilders.pushEqualArgs(fullCommandArgs, '--index', options.index);
-    argument_builders_1.ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--detach', options.detach);
-    argument_builders_1.ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--privileged', options.privileged);
-    argument_builders_1.ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--user', options.user);
-    argument_builders_1.ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--workdir', options.workdir);
-    argument_builders_1.ArgumentBuilders.pushFlaggedKeyValueArgs(fullCommandArgs, '--env', options.environmentVariables);
-    argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, options.service);
-    argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, options.command);
-    argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, options.commandArguments);
-    return fullCommandArgs;
+    const argumentBuilder = new argument_builder_1.ArgumentBuilder();
+    argumentBuilder.pushBooleanArgs('-T', options.disablePsuedoTty);
+    argumentBuilder.pushEqualArgs('--index', options.index);
+    argumentBuilder.pushBooleanArgs('--detach', options.detach);
+    argumentBuilder.pushBooleanArgs('--privileged', options.privileged);
+    argumentBuilder.pushFlaggedArgs('--user', options.user);
+    argumentBuilder.pushFlaggedArgs('--workdir', options.workdir);
+    argumentBuilder.pushFlaggedKeyValueArgs('--env', options.environmentVariables);
+    argumentBuilder.pushPlainArgs(options.service);
+    argumentBuilder.pushPlainArgs(options.command);
+    argumentBuilder.pushPlainArgs(options.commandArguments);
+    return argumentBuilder.arguments;
 }
 exports.execOptionsConverter = execOptionsConverter;
 //# sourceMappingURL=exec-options-converter.js.map

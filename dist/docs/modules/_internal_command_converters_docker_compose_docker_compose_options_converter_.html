@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;internal/option-converter&quot; | js-docker-api</title>
+	<title>&quot;internal/command-converters/docker-compose/docker-compose-options-converter&quot; | js-docker-api</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_internal_option_converter_.html">&quot;internal/option-converter&quot;</a>
+					<a href="_internal_command_converters_docker_compose_docker_compose_options_converter_.html">&quot;internal/command-converters/docker-compose/docker-compose-options-converter&quot;</a>
 				</li>
 			</ul>
-			<h1>External module &quot;internal/option-converter&quot;</h1>
+			<h1>External module &quot;internal/command-converters/docker-compose/docker-compose-options-converter&quot;</h1>
 		</div>
 	</div>
 </header>
@@ -73,9 +73,7 @@
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_internal_option_converter_.html#addoption" class="tsd-kind-icon">add<wbr>Option</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported"><a href="_internal_option_converter_.html#addoptions" class="tsd-kind-icon">add<wbr>Options</a></li>
-								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_internal_option_converter_.html#optionconverter" class="tsd-kind-icon">option<wbr>Converter</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_internal_command_converters_docker_compose_docker_compose_options_converter_.html#dockercomposeoptionsconverter" class="tsd-kind-icon">docker<wbr>Compose<wbr>Options<wbr>Converter</a></li>
 							</ul>
 						</section>
 					</div>
@@ -83,81 +81,23 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-					<a name="addoption" class="tsd-anchor"></a>
-					<h3>add<wbr>Option</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">add<wbr>Option<span class="tsd-signature-symbol">(</span>returnedArray<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/11dc115/src/internal/option-converter.ts#L3">internal/option-converter.ts:3</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>returnedArray: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
-								</li>
-								<li>
-									<h5>key: <span class="tsd-signature-type">string</span></h5>
-								</li>
-								<li>
-									<h5>value: <span class="tsd-signature-type">any</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-					<a name="addoptions" class="tsd-anchor"></a>
-					<h3>add<wbr>Options</h3>
-					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">add<wbr>Options<span class="tsd-signature-symbol">(</span>returnedArray<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span>, key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, values<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/11dc115/src/internal/option-converter.ts#L21">internal/option-converter.ts:21</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>returnedArray: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
-								</li>
-								<li>
-									<h5>key: <span class="tsd-signature-type">string</span></h5>
-								</li>
-								<li>
-									<h5>values: <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-external-module">
-					<a name="optionconverter" class="tsd-anchor"></a>
-					<h3>option<wbr>Converter</h3>
+					<a name="dockercomposeoptionsconverter" class="tsd-anchor"></a>
+					<h3>docker<wbr>Compose<wbr>Options<wbr>Converter</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-external-module">
-						<li class="tsd-signature tsd-kind-icon">option<wbr>Converter<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></li>
+						<li class="tsd-signature tsd-kind-icon">docker<wbr>Compose<wbr>Options<wbr>Converter<span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">OptionsInterfaces.IDockerComposeOptions</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/11dc115/src/internal/option-converter.ts#L27">internal/option-converter.ts:27</a></li>
+									<li>Defined in <a href="https://github.com/tombolaltd/js-docker-api/blob/802d6d9/src/internal/command-converters/docker-compose/docker-compose-options-converter.ts#L5">internal/command-converters/docker-compose/docker-compose-options-converter.ts:5</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5><span class="tsd-flag ts-flagOptional">Optional</span> options: <span class="tsd-signature-type">any</span></h5>
+									<h5>options: <span class="tsd-signature-type">OptionsInterfaces.IDockerComposeOptions</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">[]</span></h4>
@@ -182,10 +122,16 @@
 						<a href="_index_.html">"index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
+						<a href="_interfaces_docker_compose_options_base_options_.html">"interfaces/docker-<wbr>compose-<wbr>options/base-<wbr>options"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
 						<a href="_interfaces_docker_compose_options_build_options_.html">"interfaces/docker-<wbr>compose-<wbr>options/build-<wbr>options"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="_interfaces_docker_compose_options_command_base_options_.html">"interfaces/docker-<wbr>compose-<wbr>options/command-<wbr>base-<wbr>options"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_interfaces_docker_compose_options_command_options_.html">"interfaces/docker-<wbr>compose-<wbr>options/command-<wbr>options"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="_interfaces_docker_compose_options_docker_compose_options_.html">"interfaces/docker-<wbr>compose-<wbr>options/docker-<wbr>compose-<wbr>options"</a>
@@ -209,13 +155,19 @@
 						<a href="_interfaces_docker_options_docker_options_.html">"interfaces/docker-<wbr>options/docker-<wbr>options"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_interfaces_docker_options_index_.html">"interfaces/docker-<wbr>options/index"</a>
+						<a href="_internal_command_converters_docker_compose_build_options_converter_.html">"internal/command-<wbr>converters/docker-<wbr>compose/build-<wbr>options-<wbr>converter"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_interfaces_index_.html">"interfaces/index"</a>
+						<a href="_internal_command_converters_docker_compose_command_options_converter_.html">"internal/command-<wbr>converters/docker-<wbr>compose/command-<wbr>options-<wbr>converter"</a>
+					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="_internal_command_converters_docker_compose_docker_compose_options_converter_.html">"internal/command-<wbr>converters/docker-<wbr>compose/docker-<wbr>compose-<wbr>options-<wbr>converter"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_internal_argument_builders_.html">"internal/argument-<wbr>builders"</a>
+						<a href="_internal_command_converters_docker_compose_down_options_converter_.html">"internal/command-<wbr>converters/docker-<wbr>compose/down-<wbr>options-<wbr>converter"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_internal_command_converters_docker_compose_exec_options_converter_.html">"internal/command-<wbr>converters/docker-<wbr>compose/exec-<wbr>options-<wbr>converter"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="_internal_command_converters_docker_compose_index_.html">"internal/command-<wbr>converters/docker-<wbr>compose/index"</a>
@@ -224,29 +176,23 @@
 						<a href="_internal_command_converters_docker_compose_run_options_converter_.html">"internal/command-<wbr>converters/docker-<wbr>compose/run-<wbr>options-<wbr>converter"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_internal_command_spawner_.html">"internal/command-<wbr>spawner"</a>
+						<a href="_internal_command_converters_docker_compose_up_options_converter_.html">"internal/command-<wbr>converters/docker-<wbr>compose/up-<wbr>options-<wbr>converter"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_internal_docker_compose_arg_converters_.html">"internal/docker-<wbr>compose-<wbr>arg-<wbr>converters"</a>
-					</li>
-					<li class="current tsd-kind-external-module">
-						<a href="_internal_option_converter_.html">"internal/option-<wbr>converter"</a>
+						<a href="_internal_common_argument_builder_.html">"internal/common/argument-<wbr>builder"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_key_value_pair_.html">"key-<wbr>value-<wbr>pair"</a>
+						<a href="_internal_common_command_spawner_.html">"internal/common/command-<wbr>spawner"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_internal_common_key_value_pair_.html">"internal/common/key-<wbr>value-<wbr>pair"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_internal_option_converter_.html#addoption" class="tsd-kind-icon">add<wbr>Option</a>
-					</li>
-					<li class=" tsd-kind-function tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="_internal_option_converter_.html#addoptions" class="tsd-kind-icon">add<wbr>Options</a>
-					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
-						<a href="_internal_option_converter_.html#optionconverter" class="tsd-kind-icon">option<wbr>Converter</a>
+						<a href="_internal_command_converters_docker_compose_docker_compose_options_converter_.html#dockercomposeoptionsconverter" class="tsd-kind-icon">docker<wbr>Compose<wbr>Options<wbr>Converter</a>
 					</li>
 				</ul>
 			</nav>

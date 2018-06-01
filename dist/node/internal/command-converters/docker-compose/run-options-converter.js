@@ -1,26 +1,26 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const argument_builders_1 = require("../../argument-builders");
+const argument_builder_1 = require("@common/argument-builder");
 function runOptionsConverter(options) {
-    const fullCommandArgs = [];
-    argument_builders_1.ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '-T', options.disablePsuedoTty);
-    argument_builders_1.ArgumentBuilders.pushEqualArgs(fullCommandArgs, '--user', options.user);
-    argument_builders_1.ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--detach', options.detach);
-    argument_builders_1.ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--name', options.name);
-    argument_builders_1.ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--entrypoint', options.entrypoint);
-    argument_builders_1.ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--no-deps', options.noDeps);
-    argument_builders_1.ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--rm', options.rm);
-    argument_builders_1.ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--service-ports', options.servicePorts);
-    argument_builders_1.ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--use-aliases', options.useAliases);
-    argument_builders_1.ArgumentBuilders.pushEqualArgs(fullCommandArgs, '--volume', options.volumes);
-    argument_builders_1.ArgumentBuilders.pushEqualArgs(fullCommandArgs, '--publish', options.ports);
-    argument_builders_1.ArgumentBuilders.pushEqualArgs(fullCommandArgs, '--workdir', options.workdir);
-    argument_builders_1.ArgumentBuilders.pushFlaggedKeyValueArgs(fullCommandArgs, '-e', options.environmentVariables);
-    argument_builders_1.ArgumentBuilders.pushFlaggedKeyValueArgs(fullCommandArgs, '--label', options.labels);
-    argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, options.service);
-    argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, options.command);
-    argument_builders_1.ArgumentBuilders.pushPlainArgs(fullCommandArgs, options.commandArguments);
-    return fullCommandArgs;
+    const argumentBuilder = new argument_builder_1.ArgumentBuilder();
+    argumentBuilder.pushBooleanArgs('-T', options.disablePsuedoTty);
+    argumentBuilder.pushEqualArgs('--user', options.user);
+    argumentBuilder.pushBooleanArgs('--detach', options.detach);
+    argumentBuilder.pushFlaggedArgs('--name', options.name);
+    argumentBuilder.pushFlaggedArgs('--entrypoint', options.entrypoint);
+    argumentBuilder.pushBooleanArgs('--no-deps', options.noDeps);
+    argumentBuilder.pushBooleanArgs('--rm', options.rm);
+    argumentBuilder.pushBooleanArgs('--service-ports', options.servicePorts);
+    argumentBuilder.pushBooleanArgs('--use-aliases', options.useAliases);
+    argumentBuilder.pushEqualArgs('--volume', options.volumes);
+    argumentBuilder.pushEqualArgs('--publish', options.ports);
+    argumentBuilder.pushEqualArgs('--workdir', options.workdir);
+    argumentBuilder.pushFlaggedKeyValueArgs('-e', options.environmentVariables);
+    argumentBuilder.pushFlaggedKeyValueArgs('--label', options.labels);
+    argumentBuilder.pushPlainArgs(options.service);
+    argumentBuilder.pushPlainArgs(options.command);
+    argumentBuilder.pushPlainArgs(options.commandArguments);
+    return argumentBuilder.arguments;
 }
 exports.runOptionsConverter = runOptionsConverter;
 //# sourceMappingURL=run-options-converter.js.map

@@ -1,3 +1,4 @@
+import { KeyValuePair } from '@common/key-value-pair';
 /**
  *
  * @export

@@ -1,23 +1,17 @@
-import * as OptionsInterfaces from '../../../interfaces/docker-compose-options';
-import { KeyValuePair } from '../../../key-value-pair';
-import { ArgumentBuilders } from '../../argument-builders';
+import { ArgumentBuilder } from '@common/argument-builder';
+import { KeyValuePair } from '@common/key-value-pair';
+import * as OptionsInterfaces from '@docker-compose-option-interfaces/index';
 
 export function buildOptionsConverter(options: OptionsInterfaces.IBuildOptions): any[] {
-    const fullCommandArgs: any[] = [];
+    const argumentBuilder: ArgumentBuilder = new ArgumentBuilder();
 
-    // '--compress'?: boolean;
-    // '--force-rm'?: boolean;
-    // '--no-cache'?: boolean;
-    // '--pull'?: boolean;
-    // '--memory'?: string;
+    argumentBuilder.pushBooleanArgs('--compress', options.compress);
+    argumentBuilder.pushBooleanArgs('--force-rm', options.forceRm);
+    argumentBuilder.pushBooleanArgs('--no-cache', options.noCache);
+    argumentBuilder.pushBooleanArgs('--pull', options.pull);
+    argumentBuilder.pushFlaggedArgs('--memory', options.memory);
 
-    ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--compress', options.compress);
-    ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--force-rm', options.forceRm);
-    ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--no-cache', options.noCache);
-    ArgumentBuilders.pushBooleanArgs(fullCommandArgs, '--pull', options.pull);
-    ArgumentBuilders.pushFlaggedArgs(fullCommandArgs, '--memory', options.memory);
-
-    ArgumentBuilders.pushFlaggedKeyValueArgs(fullCommandArgs, '--build-arg', options.buildArguments);
-    ArgumentBuilders.pushPlainArgs(fullCommandArgs, options.services);
-    return fullCommandArgs;
+    argumentBuilder.pushFlaggedKeyValueArgs('--build-arg', options.buildArguments);
+    argumentBuilder.pushPlainArgs(options.services);
+    return argumentBuilder.arguments;
 }

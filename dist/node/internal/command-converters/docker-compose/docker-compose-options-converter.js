@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const argument_builder_1 = require("@common/argument-builder");
 function dockerComposeOptionsConverter(options) {
-    const argumentBuilder = new argument_builder_1.ArgumentBuilder();
+    const argumentBuilder = new argument_builder_1.default();
     argumentBuilder.pushFlaggedArgs('--project-name', options.projectName);
     argumentBuilder.pushBooleanArgs('--verbose', options.verbose);
     argumentBuilder.pushFlaggedArgs('--log-level', options.logLevel);

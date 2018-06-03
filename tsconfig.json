@@ -25,8 +25,8 @@
         "baseUrl": "src",
         "paths": {
             "@common/*": ["internal/common/*"],
-            "@docker-compose-command-converters/*": ["internal/command-converters/docker-compose/*"],
-            "@docker-compose-option-interfaces/*": ["interfaces/docker-compose-options/*"]
+            "@docker-compose-command-converters/*": ["internal/command-converters/docker-compose/index"],
+            "@docker-compose-option-interfaces/*": ["interfaces/docker-compose-options/index"]
         }
     },
     "include": [

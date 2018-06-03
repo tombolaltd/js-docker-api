@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import 'mocha';
-import { DockerCompose } from '../../src';
+import { DockerCompose } from '../src';
 
-describe.only('Integration test - up a service, exec, then down it', () => {
+describe('Integration test - up a service, exec, then down it', () => {
     it('Up the serivce, ls, then down itr', (done) => {
         DockerCompose.up({
             composeFilepath: './tests/assets/integration/docker-compose.yml',

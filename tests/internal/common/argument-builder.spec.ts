@@ -1,4 +1,4 @@
-import { ArgumentBuilder } from '@common/argument-builder';
+import ArgumentBuilder from '@common/argument-builder';
 import { expect } from 'chai';
 import 'mocha';
 

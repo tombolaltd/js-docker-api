@@ -1,24 +1,9 @@
-import { ArgumentBuilder } from '@common/argument-builder';
+import ArgumentBuilder from '@common/argument-builder';
 import { KeyValuePair } from '@common/key-value-pair';
 import * as OptionsInterfaces from '@docker-compose-option-interfaces/index';
 
 export function upOptionsConverter(options: OptionsInterfaces.IUpOptions): any[] {
     const argumentBuilder: ArgumentBuilder = new ArgumentBuilder();
-    // '--detach'?: boolean;
-    // '--no-color'?: boolean;
-    // '--quiet-pull'?: boolean;
-    // '--no-deps'?: boolean;
-    // '--force-recreate'?: boolean;
-    // '--always-recreate-deps'?: boolean;
-    // '--no-recreate'?: boolean;
-    // '--no-build'?: boolean;
-    // '--no-start'?: boolean;
-    // '--build'?: boolean;
-    // '--abort-on-container-exit'?: boolean;
-    // '--timeout'?: number;
-    // '--renew-anon-volumes'?: boolean;
-    // '--remove-orphans'?: boolean;
-    // '--exit-code-from'?: boolean;
 
     argumentBuilder.pushBooleanArgs('--detach', options.detach);
     argumentBuilder.pushBooleanArgs('--no-color', options.noColor);

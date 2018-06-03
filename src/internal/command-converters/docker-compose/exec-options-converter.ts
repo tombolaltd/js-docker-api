@@ -1,4 +1,4 @@
-import { ArgumentBuilder } from '@common/argument-builder';
+import ArgumentBuilder from '@common/argument-builder';
 import { KeyValuePair } from '@common/key-value-pair';
 import * as OptionsInterfaces from '@docker-compose-option-interfaces/index';
 

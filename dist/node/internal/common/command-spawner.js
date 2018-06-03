@@ -16,5 +16,5 @@ function commandSpawner(command, fullArgs, spawnOptions = {}, onData) {
         });
     });
 }
-exports.commandSpawner = commandSpawner;
+exports.default = commandSpawner;
 //# sourceMappingURL=command-spawner.js.map

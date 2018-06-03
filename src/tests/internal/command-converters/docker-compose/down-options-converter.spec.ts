@@ -1,4 +1,4 @@
-import { downOptionsConverter } from '@docker-compose-command-converters/down-options-converter';
+import { downOptionsConverter } from '@docker-compose-command-converters';
 import { expect } from 'chai';
 import 'mocha';
 

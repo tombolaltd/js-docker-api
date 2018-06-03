@@ -1,7 +1,7 @@
 import ArgumentBuilder from '@common/argument-builder';
 import { KeyValuePair } from '@common/key-value-pair';
-import { dockerComposeOptionsConverter } from '@docker-compose-command-converters/docker-compose-options-converter';
-import * as OptionsInterfaces from '@docker-compose-option-interfaces/index';
+import { dockerComposeOptionsConverter } from '@docker-compose-command-converters';
+import * as OptionsInterfaces from '@docker-compose-option-interfaces';
 
 export function commandOptionsConverter(options: OptionsInterfaces.ICommandOptions): any[] {
     const argumentBuilder: ArgumentBuilder = new ArgumentBuilder();

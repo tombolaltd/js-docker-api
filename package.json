@@ -23,7 +23,7 @@
     "start": "npm install && npm install -g mocha",
     "integration-test": "find ./integration-tests/ -name '*.spec.ts' | xargs mocha -r ts-node/register -r tsconfig-paths/register",
     "pre-commit": "npm run test && npm run integration-test",
-    "test": "npm run build && find ./tests/ -name '*.spec.ts' | xargs mocha -r ts-node/register -r tsconfig-paths/register",
+    "test": "npm run build && find ./src/tests/ -name '*.spec.ts' | xargs mocha -r ts-node/register -r tsconfig-paths/register",
     "build": "tsc -p tsconfig.json",
     "prebuild": "npm run lint",
     "postbuild": "npm run docs",

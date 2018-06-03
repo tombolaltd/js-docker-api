@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const command_spawner_1 = require("@common/command-spawner");
-const OptionsConverters = require("@docker-compose-command-converters/index");
+const OptionsConverters = require("@docker-compose-command-converters");
 class DockerCompose {
     static command(options = {}) {
         const fullArgs = OptionsConverters.commandOptionsConverter(options);

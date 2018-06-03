@@ -1,5 +1,5 @@
 
-import { dockerComposeOptionsConverter } from '@docker-compose-command-converters/docker-compose-options-converter';
+import { dockerComposeOptionsConverter } from '@docker-compose-command-converters';
 import { expect } from 'chai';
 import 'mocha';
 

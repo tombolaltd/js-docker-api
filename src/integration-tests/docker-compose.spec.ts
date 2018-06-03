@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import 'mocha';
-import { DockerCompose } from '../src';
+import { DockerCompose } from '../';
 
 describe('DockerCompose', () => {
     describe('The command function', () => {

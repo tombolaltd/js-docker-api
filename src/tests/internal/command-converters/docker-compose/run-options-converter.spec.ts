@@ -1,4 +1,4 @@
-import { runOptionsConverter } from '@docker-compose-command-converters/run-options-converter';
+import { runOptionsConverter } from '@docker-compose-command-converters';
 import { expect } from 'chai';
 import 'mocha';
 

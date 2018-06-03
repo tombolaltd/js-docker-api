@@ -1,4 +1,4 @@
-import * as OptionsInterfaces from '@docker-compose-option-interfaces/index';
+import * as OptionsInterfaces from '@docker-compose-option-interfaces';
 export { KeyValuePair } from '@common/key-value-pair';
 export declare class DockerCompose {
     static command(options?: OptionsInterfaces.ICommandOptions): Promise<string>;

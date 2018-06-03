@@ -1,6 +1,6 @@
 import ArgumentBuilder from '@common/argument-builder';
 import { KeyValuePair } from '@common/key-value-pair';
-import * as OptionsInterfaces from '@docker-compose-option-interfaces/index';
+import * as OptionsInterfaces from '@docker-compose-option-interfaces';
 
 export function upOptionsConverter(options: OptionsInterfaces.IUpOptions): any[] {
     const argumentBuilder: ArgumentBuilder = new ArgumentBuilder();

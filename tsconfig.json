@@ -25,8 +25,8 @@
         "baseUrl": "src",
         "paths": {
             "@common/*": ["internal/common/*"],
-            "@docker-compose-command-converters/*": ["internal/command-converters/docker-compose/index"],
-            "@docker-compose-option-interfaces/*": ["interfaces/docker-compose-options/index"]
+            "@docker-compose-command-converters": ["internal/command-converters/docker-compose/index"],
+            "@docker-compose-option-interfaces": ["interfaces/docker-compose-options/index"]
         }
     },
     "include": [
@@ -34,6 +34,8 @@
         "./node_modules/@types/node/index.d.ts"
     ],
     "exclude": [
-        "node_modules"
+        "node_modules",
+        "tests",
+        "integration-tests"
     ]
 }

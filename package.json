@@ -21,7 +21,7 @@
   },
   "scripts": {
     "start": "npm install && npm install -g mocha",
-    "integration-test": "find ./integration-tests/ -name '*.spec.ts' | xargs mocha -r ts-node/register -r tsconfig-paths/register",
+    "integration-test": "find ./src/integration-tests/ -name '*.spec.ts' | xargs mocha -r ts-node/register -r tsconfig-paths/register",
     "pre-commit": "npm run test && npm run integration-test",
     "test": "npm run build && find ./src/tests/ -name '*.spec.ts' | xargs mocha -r ts-node/register -r tsconfig-paths/register",
     "build": "tsc -p tsconfig.json",
@@ -32,8 +32,8 @@
   },
   "_moduleAliases": {
     "@common/*": "dist/node/internal/common",
-    "@docker-compose-command-converters/*": "dist/node/internal/command-converters/docker-compose",
-    "@docker-compose-option-interfaces/*": "dist/node/interfaces"
+    "@docker-compose-command-converters/*": "dist/node/internal/command-converters/docker-compose/index",
+    "@docker-compose-option-interfaces/*": "dist/node/interfaces/docker-compose-options/index"
   },
   "devDependencies": {
     "@types/chai": "^4.0.3",
@@ -52,7 +52,6 @@
     "typescript": "2.4.0"
   },
   "dependencies": {
-    "@types/node": "^10.3.0",
-    "module-alias": "^2.0.6"
+    "@types/node": "^10.3.0"
   }
 }

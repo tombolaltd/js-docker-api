@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import 'mocha';
 import { DockerCompose } from '../';
+const composeFilepath: string = './src/integration-tests/assets/docker-compose.yml';
 
 describe('DockerCompose', () => {
     describe('The command function', () => {
@@ -30,7 +31,7 @@ describe('DockerCompose', () => {
 
         it('Run as ps command with filepath - get result', (done) => {
             DockerCompose.command({
-                composeFilepath: './tests/assets/docker-compose.yml',
+                composeFilepath,
                 command: 'ps'
             })
             .then((result: string) => {
@@ -41,7 +42,7 @@ describe('DockerCompose', () => {
 
         it('Run as ps --service command with filepath - get result', (done) => {
             DockerCompose.command({
-                composeFilepath: './tests/assets/docker-compose.yml',
+                composeFilepath,
                 command: 'ps',
                 commandArguments: '--services',
             })

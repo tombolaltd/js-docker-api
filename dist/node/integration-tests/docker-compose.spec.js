@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const chai_1 = require("chai");
 require("mocha");
 const _1 = require("../");
+const composeFilepath = './src/integration-tests/assets/docker-compose.yml';
 describe('DockerCompose', () => {
     describe('The command function', () => {
         it('Run as ps command without filepath - get error', (done) => {
@@ -29,7 +30,7 @@ describe('DockerCompose', () => {
         });
         it('Run as ps command with filepath - get result', (done) => {
             _1.DockerCompose.command({
-                composeFilepath: './tests/assets/docker-compose.yml',
+                composeFilepath,
                 command: 'ps'
             })
                 .then((result) => {
@@ -39,7 +40,7 @@ describe('DockerCompose', () => {
         });
         it('Run as ps --service command with filepath - get result', (done) => {
             _1.DockerCompose.command({
-                composeFilepath: './tests/assets/docker-compose.yml',
+                composeFilepath,
                 command: 'ps',
                 commandArguments: '--services',
             })

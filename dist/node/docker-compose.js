@@ -5,7 +5,7 @@ const OptionsConverters = require("@docker-compose-command-converters/index");
 class DockerCompose {
     static command(options = {}) {
         const fullArgs = OptionsConverters.commandOptionsConverter(options);
-        return command_spawner_1.commandSpawner('docker-compose', fullArgs, options.spawnOptions);
+        return command_spawner_1.default('docker-compose', fullArgs, options.spawnOptions);
     }
     static build(options = {}) {
         return DockerCompose.command({

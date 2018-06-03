@@ -1,4 +1,4 @@
-import { commandSpawner } from '@common/command-spawner';
+import commandSpawner from '@common/command-spawner';
 import * as OptionsConverters from '@docker-compose-command-converters/index';
 import * as OptionsInterfaces from '@docker-compose-option-interfaces/index';
 export { KeyValuePair } from '@common/key-value-pair';

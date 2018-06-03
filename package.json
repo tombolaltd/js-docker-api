@@ -21,8 +21,11 @@
   },
   "scripts": {
     "start": "npm install && npm install -g mocha",
-    "test": "npm run lint && npm run build && find ./tests/ -name '*.spec.ts' | xargs mocha -r ts-node/register -r tsconfig-paths/register",
+    "integration-test": "find ./integration-tests/ -name '*.spec.ts' | xargs mocha -r ts-node/register -r tsconfig-paths/register",
+    "pre-commit": "npm run test && npm run integration-test",
+    "test": "npm run build && find ./tests/ -name '*.spec.ts' | xargs mocha -r ts-node/register -r tsconfig-paths/register",
     "build": "tsc -p tsconfig.json",
+    "prebuild": "npm run lint",
     "postbuild": "npm run docs",
     "docs": "typedoc --out dist/docs --tsconfig tsconfig.json",
     "lint": "tslint -t codeFrame ./{src,tests}/{,**}/**/**/**/*.ts"

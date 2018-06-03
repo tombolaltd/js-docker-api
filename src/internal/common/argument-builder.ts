@@ -1,6 +1,6 @@
 import { KeyValuePair } from '@common/key-value-pair';
 
-export class ArgumentBuilder {
+export default class ArgumentBuilder {
     private args: any = [];
 
     public pushFlaggedKeyValueArgs(argFlagName: string, values: KeyValuePair<any> | Array<KeyValuePair<any>> | undefined): void {

@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const argument_builder_1 = require("@common/argument-builder");
 function runOptionsConverter(options) {
-    const argumentBuilder = new argument_builder_1.ArgumentBuilder();
+    const argumentBuilder = new argument_builder_1.default();
     argumentBuilder.pushBooleanArgs('-T', options.disablePsuedoTty);
     argumentBuilder.pushEqualArgs('--user', options.user);
     argumentBuilder.pushBooleanArgs('--detach', options.detach);

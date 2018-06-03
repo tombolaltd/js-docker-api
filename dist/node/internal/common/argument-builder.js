@@ -90,5 +90,5 @@ class ArgumentBuilder {
         return value !== '';
     }
 }
-exports.ArgumentBuilder = ArgumentBuilder;
+exports.default = ArgumentBuilder;
 //# sourceMappingURL=argument-builder.js.map

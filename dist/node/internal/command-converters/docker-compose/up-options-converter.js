@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const argument_builder_1 = require("@common/argument-builder");
 function upOptionsConverter(options) {
-    const argumentBuilder = new argument_builder_1.ArgumentBuilder();
+    const argumentBuilder = new argument_builder_1.default();
     argumentBuilder.pushBooleanArgs('--detach', options.detach);
     argumentBuilder.pushBooleanArgs('--no-color', options.noColor);
     argumentBuilder.pushBooleanArgs('--quiet-pull', options.quietPull);
